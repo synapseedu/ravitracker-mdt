@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/GridLegacy'
 import {
     Box,
-    Container,
     Typography,
     Card,
     CardContent,
@@ -12,21 +11,16 @@ import {
     Tooltip,
     TextField,
 } from '@mui/material'
+import PatientLayout from '../../components/PatientLayout'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
-import { getAge } from '../../data/patients'
 
 const sectionTitleSx = {
-    color: 'primary.main',
+  color: 'primary.main',
     fontWeight: 600,
     fontSize: 18,
     mb: 1,
 }
 
-const mainTitleSx = {
-    color: 'primary.main',
-    fontWeight: 700,
-    mb: 2,
-}
 
 const pdfMap: Record<string, string[]> = {
     ct: ['Lingard CT TAVI.pdf', 'Lingard medtronic.pdf'],
@@ -147,12 +141,7 @@ export default function LingardPatientPage() {
     }
 
     return (
-        <Box sx={{ bgcolor: 'background.paper', py: 4, minHeight: '100vh' }}>
-            <Container maxWidth="md">
-                <Box sx={{ background: '#fff', p: 3, borderRadius: 2, boxShadow: 2 }}>
-                    <Typography variant="h4" sx={mainTitleSx}>
-                        {patient.name}
-                    </Typography>
+        <PatientLayout title={patient.name}>
 
                     {/* Demographics */}
                     <Grid container spacing={2} sx={{ mb: 3 }}>
@@ -300,8 +289,6 @@ export default function LingardPatientPage() {
                             <EditableMDTMeeting />
                         </CardContent>
                     </Card>
-                </Box>
-            </Container>
-        </Box>
+        </PatientLayout>
     )
 }
