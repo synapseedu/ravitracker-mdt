@@ -1,22 +1,17 @@
 'use client'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { Layout, Card, Descriptions, Button, Typography } from 'antd'
+import { Layout, Descriptions, Button, Typography } from 'antd'
 import { allPatients, Patient, getAge } from '../data/patients'
 
 const { Content } = Layout
 const { Title } = Typography
 
 export default function PatientPageClient() {
-  const { query, push } = useRouter()
+  const { query } = useRouter()
   const id = Array.isArray(query.id) ? query.id[0] : query.id
   const patient = typeof id === 'string'
     ? allPatients.find(p => p.id === id) || null
     : null
-
-  useEffect(() => {
-    if (localStorage.getItem('loggedIn') !== 'true') push('/login')
-  }, [push])
 
   if (!patient) {
     return (

@@ -2,7 +2,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import {
     Container,
     Box,
@@ -15,15 +14,6 @@ import { allPatients, Patient, getAge } from '../../data/patients'
 export default function Patients() {
     const [patients, setPatients] = useState<Patient[]>(allPatients)
     const [presentedIds, setPresentedIds] = useState<string[]>([])
-    const router = useRouter()
-
-    // Redirect to login if not authenticated
-    useEffect(() => {
-        if (typeof window !== 'undefined' && localStorage.getItem('loggedIn') !== 'true') {
-            router.push('/login')
-        }
-    }, [router])
-
     // Load from sessionStorage
     useEffect(() => {
         const storedList = sessionStorage.getItem('patientsList')

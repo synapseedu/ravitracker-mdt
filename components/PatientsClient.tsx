@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import { Layout, List, Card, Button, Typography } from 'antd'
 import { allPatients, Patient, getAge } from '../data/patients'
 
@@ -10,15 +9,6 @@ const { Title, Text } = Typography
 export default function PatientsClient() {
   const [patients, setPatients]       = useState<Patient[]>(allPatients)
   const [presentedIds, setPresented]  = useState<string[]>([])
-  const router = useRouter()
-
-  // redirect if not logged in
-  useEffect(() => {
-    if (localStorage.getItem('loggedIn') !== 'true') {
-      router.push('/login')
-    }
-  }, [router])
-
   // hydrate from sessionStorage
   useEffect(() => {
     const pL = sessionStorage.getItem('patientsList')
