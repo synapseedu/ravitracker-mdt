@@ -14,10 +14,6 @@ export default function PatientPageClient() {
     ? allPatients.find(p => p.id === id) || null
     : null
 
-  useEffect(() => {
-    if (localStorage.getItem('loggedIn') !== 'true') push('/login')
-  }, [push])
-
   if (!patient) {
     return (
       <Layout style={{ minHeight: '100vh', background: '#f0f2f5' }}>

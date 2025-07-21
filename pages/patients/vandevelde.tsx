@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import Grid from '@mui/material/GridLegacy'
 import {
     Box,
@@ -93,12 +92,6 @@ function EditableMDTMeeting() {
 }
 
 export default function VandeVeldePatientPage() {
-    const router = useRouter()
-    useEffect(() => {
-        if (typeof window !== 'undefined' && localStorage.getItem('loggedIn') !== 'true') {
-            router.replace('/login')
-        }
-    }, [router])
 
     const patient = {
         name: 'Janice Van de Velde',
