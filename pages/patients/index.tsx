@@ -74,9 +74,28 @@ export default function Patients() {
                                 }}
                             >
                                 <Box>
-                                    <Typography variant="h6" component="div">
-                                        {patient.name}
-                                    </Typography>
+                                    <Box display="flex" alignItems="center" gap={1}>
+                                        <Typography variant="h6" component="div">
+                                            {patient.name}
+                                        </Typography>
+                                        {patient.status === 'private' && (
+                                            <Box
+                                                sx={{
+                                                    px: 1.2,
+                                                    py: 0.2,
+                                                    bgcolor: '#1976d2',
+                                                    color: '#fff',
+                                                    borderRadius: 1,
+                                                    fontWeight: 700,
+                                                    fontSize: 13,
+                                                    letterSpacing: 1,
+                                                    ml: 1,
+                                                }}
+                                            >
+                                                NSP
+                                            </Box>
+                                        )}
+                                    </Box>
                                     <Typography variant="body2" color="text.secondary">
                                         DOB: {patient.dob} &nbsp;|&nbsp; Age: {getAge(patient.dob)}
                                     </Typography>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { Grid } from '@mui/material';
 import {
   Box,
   Paper,
@@ -30,6 +29,7 @@ const mainTitleSx = {
 const pdfMap: Record<string, string[]> = {
   ct: ['Riggs CT TAVI.pdf', 'Riggs medtronic.pdf'],
   tte: ['Riggs TTE 6.6.25.pdf', 'Riggs TTE 2024.pdf', 'Riggs TTE RNSH.pdf'],
+  dse: ['Riggs DSE RNSH 15.7.25.pdf'], // Dobutamine Stress Echo
   angio: ['Riggs angio report.pdf'],
   bloods: ['Riggs bloods.pdf'],
   holter: ['Riggs Holter.pdf'],
@@ -206,6 +206,14 @@ export default function RiggsPatientPage() {
             <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">MR</Typography><Typography>Mild</Typography></Grid>
             <Grid item xs={12}><Typography variant="subtitle2" color="textSecondary">Comments</Typography><Typography>Bioprosthetic aortic valve in situ. Turbulent flow and increased velocities through prosthesis (moderate-severe stenosis).</Typography></Grid>
           </Grid>
+        </CardContent>
+      </Card>
+
+      {/* Dobutamine Stress Echo Section */}
+      <Card variant="outlined" sx={{ mb: 2 }}>
+        <CardHeader title={<Typography sx={sectionTitleSx}>Dobutamine Stress Echo 15/7/25</Typography>} action={<PdfIcons files={pdfMap.dse} />} />
+        <CardContent>
+          {/* Optionally add summary/findings here if available */}
         </CardContent>
       </Card>
 
