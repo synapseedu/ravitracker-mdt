@@ -1,0 +1,21 @@
+# Next.js / Node
+node_modules/
+.next/
+out/
+.turbo/
+*.log
+npm-debug.*
+yarn-error.log
+
+# Typescript / tooling
+dist/
+coverage/
+.eslintcache
+
+# OS / editor cruft
+.DS_Store
+.idea/
+.vscode/
+
+# Env & secrets
+.env*
