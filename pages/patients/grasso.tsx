@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { Grid } from '@mui/material';
+import Grid from '@mui/material/GridLegacy'
 import {
   Box,
   Paper,
@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardContent,
   Typography,
-  Grid,
   Tooltip,
   IconButton,
   TextField,
@@ -106,35 +105,35 @@ export default function GrassoPatientPage() {
         Patient Details
       </Typography>
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">DOB</Typography>
           <Typography>19/12/1938</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Age</Typography>
           <Typography>86</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">MRN</Typography>
           <Typography>0274378</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referral Date</Typography>
           <Typography>30/5/25</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Structural Physician</Typography>
           <Typography>Dr Bhindi</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referrer</Typography>
           <Typography>Dr Bassin / Dr Rogers</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Contact</Typography>
           <Typography>0400 233 289</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Email/Alt Contact</Typography>
           <Typography>Grace 0408 478 007</Typography>
         </Grid>
@@ -145,7 +144,7 @@ export default function GrassoPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Past Medical History:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Atrial fibrillation</li>
@@ -159,7 +158,7 @@ export default function GrassoPatientPage() {
                 <li>Bakers cyst</li>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Medications:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Amitriptyline 10mg</li>

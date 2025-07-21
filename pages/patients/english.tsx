@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Grid } from '@mui/material';
+import Grid from '@mui/material/GridLegacy';
 import { useRouter } from 'next/router'
 import {
   Box,
@@ -166,7 +166,7 @@ export default function EnglishPatientPage() {
           {/* Demographics */}
           <Grid container spacing={2} sx={{ mb: 3 }}>
             {['dob', 'mrn', 'referralDate', 'email'].map((field) => (
-              <Grid item xs={6} sm={3} key={field}>
+              <Grid xs={6} sm={3} key={field}>
                 <Typography variant="subtitle2">{field.charAt(0).toUpperCase() + field.slice(1)}</Typography>
                 <Typography>{(patient as any)[field]}</Typography>
               </Grid>
@@ -211,7 +211,7 @@ export default function EnglishPatientPage() {
               </Box>
               <Grid container spacing={1} sx={{ mt: 1 }}>
                 {Object.entries(patient.tteData).map(([k, v]) => (
-                  <Grid item xs={6} key={k}>
+                  <Grid xs={6} key={k}>
                     <Typography variant="body2"><strong>{k}:</strong> {v}</Typography>
                   </Grid>
                 ))}
@@ -251,7 +251,7 @@ export default function EnglishPatientPage() {
               </Box>
               <Grid container spacing={1} sx={{ mt: 1 }}>
                 {Object.entries(patient.bloods).map(([k, v]) => (
-                  <Grid item xs={6} key={k}>
+                  <Grid xs={6} key={k}>
                     <Typography variant="body2"><strong>{k}:</strong> {v}</Typography>
                   </Grid>
                 ))}
@@ -268,7 +268,7 @@ export default function EnglishPatientPage() {
               </Box>
               <Grid container spacing={1} sx={{ mt: 1 }}>
                 {Object.entries(patient.otherConsults).map(([k, v]) => (
-                  <Grid item xs={6} key={k}>
+                  <Grid xs={6} key={k}>
                     <Typography variant="body2"><strong>{k}:</strong> {v}</Typography>
                   </Grid>
                 ))}

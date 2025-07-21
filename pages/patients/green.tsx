@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { Grid } from '@mui/material';
+import Grid from '@mui/material/GridLegacy'
 import {
   Box,
   Paper,
@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardContent,
   Typography,
-  Grid,
   Tooltip,
   IconButton,
   TextField,
@@ -108,27 +107,27 @@ export default function GreenPatientPage() {
         Patient Details
       </Typography>
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">DOB</Typography>
           <Typography>27/10/1946</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Age</Typography>
           <Typography>78</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">MRN</Typography>
           <Typography>0198323</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Height/Weight</Typography>
           <Typography>1.82m / 97kg</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Structural Physician</Typography>
           <Typography>Dr Hansen</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referrer</Typography>
           <Typography>Dr Vernon</Typography>
         </Grid>
@@ -139,7 +138,7 @@ export default function GreenPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Past Medical History:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Perimount 25mm Tissue AVR + LAA closure (2018)</li>
@@ -158,7 +157,7 @@ export default function GreenPatientPage() {
                 <li>ORIF fractured hip</li>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Medications:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Tranexamic Acid 1g tds</li>

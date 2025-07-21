@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { Grid } from '@mui/material';
+import Grid from '@mui/material/GridLegacy'
 import {
   Box,
   Paper,
@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardContent,
   Typography,
-  Grid,
   Tooltip,
   IconButton,
   TextField,
@@ -104,39 +103,39 @@ export default function KnieppPatientPage() {
         Patient Details
       </Typography>
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">DOB</Typography>
           <Typography>7/12/1950</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Age</Typography>
           <Typography>74</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">MRN</Typography>
           <Typography>2029741</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referral Date</Typography>
           <Typography>12/6/25</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Structural Physician</Typography>
           <Typography>Dr Hansen</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referrer</Typography>
           <Typography>Dr Chung (Renal)</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Contact</Typography>
           <Typography>9346 1300</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid xs={12}>
           <Typography variant="subtitle2" color="textSecondary">Weight/Height</Typography>
           <Typography>65kg / 160cm</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid xs={12}>
           <Typography variant="subtitle2" color="textSecondary">Comments</Typography>
           <Typography>Intellectual disability; public Guardian</Typography>
         </Grid>
@@ -147,7 +146,7 @@ export default function KnieppPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Past Medical History:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Intellectual disability (public guardianship)</li>
@@ -155,7 +154,7 @@ export default function KnieppPatientPage() {
                 <li>Schizoaffective disorder</li>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Medications:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Calcitriol 0.25mcg</li>
@@ -195,13 +194,13 @@ export default function KnieppPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>TTE: 12/6/25</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">LV EF</Typography><Typography>55-60%</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">AVA</Typography><Typography>0.9</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">AVAi</Typography><Typography>0.5</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Peak Gradient</Typography><Typography>80.6</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Mean Gradient</Typography><Typography>47</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Peak AV</Typography><Typography>4.5</Typography></Grid>
-            <Grid item xs={12}><Typography variant="subtitle2" color="textSecondary">Comments</Typography><Typography>Severe AS, trileaflet valve; echo density in LA</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">LV EF</Typography><Typography>55-60%</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">AVA</Typography><Typography>0.9</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">AVAi</Typography><Typography>0.5</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Peak Gradient</Typography><Typography>80.6</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Mean Gradient</Typography><Typography>47</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Peak AV</Typography><Typography>4.5</Typography></Grid>
+            <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">Comments</Typography><Typography>Severe AS, trileaflet valve; echo density in LA</Typography></Grid>
           </Grid>
         </CardContent>
       </Card>
@@ -247,11 +246,11 @@ export default function KnieppPatientPage() {
         />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography variant="subtitle2" color="textSecondary">Cardiothoracic Surgeon</Typography>
               <Typography>Dr Sherrah</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography variant="subtitle2" color="textSecondary">Structural Consult</Typography>
               <Typography>&nbsp;</Typography>
             </Grid>

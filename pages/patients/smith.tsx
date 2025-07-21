@@ -1,14 +1,13 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-// import { Grid } from '@mui/material';
 import { useRouter } from 'next/router'
+import Grid from '@mui/material/GridLegacy'
 import {
   Box,
   Container,
   Typography,
   Card,
   CardContent,
-  Grid,
   Stack,
   IconButton,
   Tooltip,
@@ -187,7 +186,7 @@ export default function SmithPatientPage() {
               ['MRN', patient.mrn],
               ['Referral Date', patient.referralDate],
             ].map(([label, value]) => (
-              <Grid item xs={6} sm={3} key={label as string}>
+              <Grid xs={6} sm={3} key={label as string}>
                 <Typography variant="subtitle2">{label}</Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Typography>{value}</Typography>
@@ -195,19 +194,19 @@ export default function SmithPatientPage() {
                 </Box>
               </Grid>
             ))}
-            <Grid item xs={6} sm={3}>
+            <Grid xs={6} sm={3}>
               <Typography variant="subtitle2">Structural Physician</Typography>
               <Typography>{patient.structuralPhysician}</Typography>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid xs={6} sm={3}>
               <Typography variant="subtitle2">Referrer</Typography>
               <Typography>{patient.referrer}</Typography>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid xs={6} sm={3}>
               <Typography variant="subtitle2">Contact</Typography>
               <Typography>{patient.contact}</Typography>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid xs={6} sm={3}>
               <Typography variant="subtitle2">Email/Alt Contact</Typography>
               <Typography>{patient.email}</Typography>
             </Grid>
@@ -251,7 +250,7 @@ export default function SmithPatientPage() {
               </Box>
               <Grid container spacing={1} sx={{ mt: 1 }}>
                 {Object.entries(patient.tteData).map(([label, value]) => (
-                  <Grid item xs={6} key={label}>
+                  <Grid xs={6} key={label}>
                     <Typography variant="body2"><strong>{label}:</strong> {value}</Typography>
                   </Grid>
                 ))}
@@ -291,7 +290,7 @@ export default function SmithPatientPage() {
               </Box>
               <Grid container spacing={1} sx={{ mt: 1 }}>
                 {Object.entries(patient.bloods).map(([label, value]) => (
-                  <Grid item xs={6} key={label}>
+                  <Grid xs={6} key={label}>
                     <Typography variant="body2"><strong>{label}:</strong> {value}</Typography>
                   </Grid>
                 ))}
@@ -308,7 +307,7 @@ export default function SmithPatientPage() {
               </Box>
               <Grid container spacing={1} sx={{ mt: 1 }}>
                 {Object.entries(patient.otherConsults).map(([label, value]) => (
-                  <Grid item xs={6} key={label}>
+                  <Grid xs={6} key={label}>
                     <Typography variant="body2"><strong>{label}:</strong> {value}</Typography>
                   </Grid>
                 ))}

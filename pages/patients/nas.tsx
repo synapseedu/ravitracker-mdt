@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Grid from '@mui/material/GridLegacy'
 import { useRouter } from 'next/router'
 import {
     Box,
@@ -12,7 +13,6 @@ import {
     Tooltip,
     TextField,
     Divider,
-    Grid
 } from '@mui/material'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
 import { getAge } from '../../data/patients'
@@ -207,19 +207,19 @@ export default function NasPatientPage() {
 
                     {/* Demographics */}
                     <Grid container spacing={2} sx={{ mb: 3 }}>
-                        <Grid item xs={6} sm={3}>
+                        <Grid xs={6} sm={3}>
                             <Typography variant="subtitle2">DOB</Typography>
                             <Typography>{patient.dob}</Typography>
                         </Grid>
-                        <Grid item xs={6} sm={3}>
+                        <Grid xs={6} sm={3}>
                             <Typography variant="subtitle2">MRN</Typography>
                             <Typography>ME00463006</Typography>
                         </Grid>
-                        <Grid item xs={6} sm={3}>
+                        <Grid xs={6} sm={3}>
                             <Typography variant="subtitle2">Contact</Typography>
                             <Typography>{patient.contact}</Typography>
                         </Grid>
-                        <Grid item xs={6} sm={3}>
+                        <Grid xs={6} sm={3}>
                             <Typography variant="subtitle2">Referrer</Typography>
                             <Typography>{patient.referrer}</Typography>
                         </Grid>
@@ -285,7 +285,7 @@ export default function NasPatientPage() {
                             <Typography sx={sectionTitleSx}>Recent Bloods</Typography>
                             <Grid container spacing={1} sx={{ mt: 1 }}>
                                 {Object.entries(patient.bloods).map(([k, v]) => (
-                                    <Grid item xs={6} key={k}>
+                                    <Grid xs={6} key={k}>
                                         <Typography variant="body2">
                                             <strong>{k}:</strong> {v}
                                         </Typography>

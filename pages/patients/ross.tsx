@@ -1,7 +1,7 @@
 // pages/patients/ross.tsx
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Grid } from '@mui/material'
+import Grid from '@mui/material/GridLegacy'
 import { useRouter } from 'next/router'
 import {
     Box,
@@ -184,22 +184,22 @@ export default function RossPatientPage() {
 
                     {/* Demographics */}
                     <Grid container spacing={2} sx={{ mb: 3 }}>
-                        <Grid item xs={6} sm={3}>
+                        <Grid xs={6} sm={3}>
                             <Typography variant="subtitle2">DOB</Typography>
                             <Typography>{patient.dob}</Typography>
                         </Grid>
-                        <Grid item xs={6} sm={3}>
+                        <Grid xs={6} sm={3}>
                             <Typography variant="subtitle2">MRN</Typography>
                             <Typography>{patient.mrn}</Typography>
                         </Grid>
-                        <Grid item xs={6} sm={3}>
+                        <Grid xs={6} sm={3}>
                             <Typography variant="subtitle2">Referral Date</Typography>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                 <Typography>{patient.referralDate}</Typography>
                                 <PdfIcons files={pdfMap.referral} />
                             </Box>
                         </Grid>
-                        <Grid item xs={6} sm={3}>
+                        <Grid xs={6} sm={3}>
                             <Typography variant="subtitle2">Contact</Typography>
                             <Typography>{patient.contact}</Typography>
                         </Grid>
@@ -250,7 +250,7 @@ export default function RossPatientPage() {
                             </Box>
                             <Grid container spacing={1} sx={{ mt: 1 }}>
                                 {Object.entries(patient.tteData).map(([k, v]) => (
-                                    <Grid item xs={6} key={k}>
+                                    <Grid xs={6} key={k}>
                                         <Typography variant="body2">
                                             <strong>{k}:</strong> {v}
                                         </Typography>
@@ -301,7 +301,7 @@ export default function RossPatientPage() {
                             </Box>
                             <Grid container spacing={1} sx={{ mt: 1 }}>
                                 {Object.entries(patient.bloods).map(([k, v]) => (
-                                    <Grid item xs={6} key={k}>
+                                    <Grid xs={6} key={k}>
                                         <Typography variant="body2">
                                             <strong>{k}:</strong> {v}
                                         </Typography>
@@ -317,7 +317,7 @@ export default function RossPatientPage() {
                             <Typography sx={sectionTitleSx}>Consults</Typography>
                             <Grid container spacing={1} sx={{ mt: 1 }}>
                                 {Object.entries(patient.otherConsults).map(([k, v]) => (
-                                    <Grid item xs={12} key={k}>
+                                    <Grid xs={12} key={k}>
                                         <Typography variant="body2">
                                             <strong>{k}:</strong> {v}
                                         </Typography>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { Grid } from '@mui/material';
+import Grid from '@mui/material/GridLegacy'
 import {
   Box,
   Paper,
@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardContent,
   Typography,
-  Grid,
   Tooltip,
   IconButton,
   TextField,
@@ -102,35 +101,35 @@ export default function RoseePatientPage() {
         Patient Details
       </Typography>
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">DOB</Typography>
           <Typography>03/09/1943</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Age</Typography>
           <Typography>81</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">MRN</Typography>
           <Typography>0268471</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referral Date</Typography>
           <Typography>23/6/25</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Structural Physician</Typography>
           <Typography>Dr Hansen</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referrer</Typography>
           <Typography>Dr Rogers / Dr Bassin</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Contact</Typography>
           <Typography>Dianne 0476 636 512</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Email</Typography>
           <Typography>dro02956@bigpond.net.au</Typography>
         </Grid>
@@ -141,7 +140,7 @@ export default function RoseePatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Past Medical History:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Sensorineural deafness - since birth</li>
@@ -154,7 +153,7 @@ export default function RoseePatientPage() {
                 <li>Falls 2022, 2023</li>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Medications:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Apixaban 5mg BD</li>
@@ -229,11 +228,11 @@ export default function RoseePatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Other Consults</Typography>} action={<PdfIcons files={pdfMap.referral} />} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography variant="subtitle2" color="textSecondary">Aged Care</Typography>
               <Typography>&nbsp;</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography variant="subtitle2" color="textSecondary">Cardiothoracic</Typography>
               <Typography>&nbsp;</Typography>
             </Grid>

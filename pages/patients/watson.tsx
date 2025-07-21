@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { Grid } from '@mui/material';
+import Grid from '@mui/material/GridLegacy';
 import {
   Box,
   Paper,
@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardContent,
   Typography,
-  Grid,
   Tooltip,
   IconButton,
   TextField,
@@ -104,39 +103,39 @@ export default function WatsonPatientPage() {
         Patient Details
       </Typography>
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">DOB</Typography>
           <Typography>9/12/1952</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Age</Typography>
           <Typography>72</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">MRN</Typography>
           <Typography>0106881</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referral Date</Typography>
           <Typography>&nbsp;</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Structural Physician</Typography>
           <Typography>Dr Bhindi</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referrer</Typography>
           <Typography>Dr Rogers</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Contact</Typography>
           <Typography>0412 500 375</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Email</Typography>
           <Typography>sueandbazz@gmail.com</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid xs={12}>
           <Typography variant="subtitle2" color="textSecondary">Weight/Height</Typography>
           <Typography>125kg / 170cm</Typography>
         </Grid>
@@ -147,7 +146,7 @@ export default function WatsonPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Past Medical History:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Severe obesity (125kg, was 140kg)</li>
@@ -161,7 +160,7 @@ export default function WatsonPatientPage() {
                 <li>Osteopaenia</li>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Medications:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Apixaban 5mg</li>
@@ -218,11 +217,11 @@ export default function WatsonPatientPage() {
         />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid xs={12}>
               <Typography variant="subtitle2" color="textSecondary">Angio</Typography>
               <Typography>Mild non-obstructive CAD</Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid xs={12}>
               <Typography variant="subtitle2" color="textSecondary">ECG</Typography>
               <Typography>AF</Typography>
             </Grid>
@@ -235,7 +234,7 @@ export default function WatsonPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={12}><Typography variant="subtitle2" color="textSecondary">Incidentals</Typography><Typography>The HRCT chest (11/3/25): no evidence of parenchymal dysfunction</Typography></Grid>
+            <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">Incidentals</Typography><Typography>The HRCT chest (11/3/25): no evidence of parenchymal dysfunction</Typography></Grid>
           </Grid>
         </CardContent>
       </Card>
@@ -256,15 +255,15 @@ export default function WatsonPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Bloods (30/4/25)</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid xs={12}>
               <Typography variant="subtitle2" color="textSecondary">MOCA / MMSE</Typography>
               <Typography>28/30 <IconButton size="small" sx={{ p: 0 }}>{<PictureAsPdfIcon />}</IconButton></Typography>
             </Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Hb</Typography><Typography>162</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Plts</Typography><Typography>142</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Cre</Typography><Typography>205</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">eGFR</Typography><Typography>27</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Albumin</Typography><Typography>&nbsp;</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Hb</Typography><Typography>162</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Plts</Typography><Typography>142</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Cre</Typography><Typography>205</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">eGFR</Typography><Typography>27</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Albumin</Typography><Typography>&nbsp;</Typography></Grid>
           </Grid>
         </CardContent>
       </Card>
@@ -274,8 +273,8 @@ export default function WatsonPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Other Consults</Typography>} action={<PdfIcons files={pdfMap.referral} />} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Aged Care</Typography><Typography>&nbsp;</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Cardiothoracic Surgeon</Typography><Typography>Dr Bassin</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Aged Care</Typography><Typography>&nbsp;</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Cardiothoracic Surgeon</Typography><Typography>Dr Bassin</Typography></Grid>
           </Grid>
         </CardContent>
       </Card>
