@@ -1,10 +1,13 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { Layout, List, Card, Button, Typography } from 'antd'
+import {
+  Container,
+  Box,
+  Typography,
+  Paper,
+  Button,
+} from '@mui/material'
 import { allPatients, Patient, getAge } from '../data/patients'
-
-const { Content } = Layout
-const { Title, Text } = Typography
 
 export default function PatientsClient() {
   const [patients, setPatients]       = useState<Patient[]>(allPatients)
@@ -33,65 +36,64 @@ export default function PatientsClient() {
   }
 
   return (
-    <Layout style={{ minHeight: '100vh', background: '#f0f2f5' }}>
-      <Content style={{ maxWidth: 900, margin: '40px auto', padding: '0 16px' }}>
-        <Title level={2} style={{ textAlign: 'center', margin: '24px 0' }}>
+    <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
+      <Container maxWidth="md">
+        <Typography variant="h4" align="center" gutterBottom>
           Patients to Present
-        </Title>
-        <List
-          dataSource={patients}
-          locale={{ emptyText: 'All patients presented!' }}
-          renderItem={p => {
-            const done = presentedIds.includes(p.id)
-            return (
-              <List.Item
-                key={p.id}
-                style={{ border: 'none', marginBottom: 24, display: 'flex', justifyContent: 'center' }}
-              >
-                <Card
-                  style={{
-                    width: '90%',
-                    maxWidth: 700,
-                    background: done ? '#fafafa' : '#fff',
-                    boxShadow: done
-                      ? '0 2px 16px rgba(82,196,26,0.10)'
-                      : '0 4px 24px rgba(24,144,255,0.13),0 2px 8px rgba(0,0,0,0.03)',
-                    borderRadius: 12,
+        </Typography>
+        <Box display="flex" flexDirection="column" gap={3}>
+          {patients.length === 0 ? (
+            <Typography align="center">All patients presented!</Typography>
+          ) : (
+            patients.map((p) => {
+              const done = presentedIds.includes(p.id)
+              return (
+                <Paper
+                  key={p.id}
+                  elevation={done ? 1 : 3}
+                  sx={{
+                    p: 3,
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    bgcolor: done ? 'grey.50' : 'background.paper',
                     opacity: done ? 0.6 : 1,
-                    transition: 'box-shadow .2s, opacity .2s',
+                    borderRadius: 2,
                   }}
-                  bodyStyle={{ padding: 24 }}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div>
-                      <Text strong style={{ fontSize: 20 }}>{p.name}</Text>
-                      <div style={{ color: '#888', marginTop: 8 }}>
-                        <Text>DOB:</Text> {p.dob} | <Text>Age:</Text> {getAge(p.dob)}
-                      </div>
-                      <div style={{ marginTop: 12, fontSize: 16 }}>
-                        <Text strong>Referring:</Text> {p.referring}<br/>
-                        <Text strong>Consulting:</Text> {p.consulting}
-                      </div>
-                    </div>
-                    <Button
-                      type={done ? 'default' : 'primary'}
-                      style={{
-                        minWidth: 110,
-                        background: done ? '#52c41a' : undefined,
-                        borderColor: done ? '#52c41a' : undefined,
-                        color: done ? '#fff' : undefined,
-                      }}
-                      onClick={() => toggle(p.id)}
-                    >
-                      {done ? 'Presented' : 'Present'}
-                    </Button>
-                  </div>
-                </Card>
-              </List.Item>
-            )
-          }}
-        />
-      </Content>
-    </Layout>
+                  <Box>
+                    <Typography variant="h6" component="div">
+                      {p.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      DOB: {p.dob} &nbsp;|&nbsp; Age: {getAge(p.dob)}
+                    </Typography>
+                    <Box mt={1}>
+                      <Typography variant="body1" component="span" fontWeight={600}>
+                        Referring:
+                      </Typography>{' '}
+                      {p.referring}
+                      <br />
+                      <Typography variant="body1" component="span" fontWeight={600}>
+                        Consulting:
+                      </Typography>{' '}
+                      {p.consulting}
+                    </Box>
+                  </Box>
+                  <Button
+                    variant={done ? 'contained' : 'outlined'}
+                    color={done ? 'success' : 'primary'}
+                    onClick={() => toggle(p.id)}
+                    sx={{ minWidth: 120 }}
+                  >
+                    {done ? 'Presented' : 'Present'}
+                  </Button>
+                </Paper>
+              )
+            })
+          )}
+        </Box>
+      </Container>
+    </Box>
   )
 }

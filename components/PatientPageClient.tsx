@@ -1,14 +1,17 @@
 'use client'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { Layout, Card, Descriptions, Button, Typography } from 'antd'
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Paper,
+  Button,
+} from '@mui/material'
 import { allPatients, Patient, getAge } from '../data/patients'
 
-const { Content } = Layout
-const { Title } = Typography
-
 export default function PatientPageClient() {
-  const { query, push } = useRouter()
+  const { query } = useRouter()
   const id = Array.isArray(query.id) ? query.id[0] : query.id
   const patient = typeof id === 'string'
     ? allPatients.find(p => p.id === id) || null
@@ -16,11 +19,11 @@ export default function PatientPageClient() {
 
   if (!patient) {
     return (
-      <Layout style={{ minHeight: '100vh', background: '#f0f2f5' }}>
-        <Content style={{ maxWidth: 700, margin: '40px auto', padding: 32 }}>
-          <Title level={3}>Patient not found</Title>
-        </Content>
-      </Layout>
+      <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
+        <Container maxWidth="sm">
+          <Typography variant="h6">Patient not found</Typography>
+        </Container>
+      </Box>
     )
   }
 
@@ -39,27 +42,35 @@ export default function PatientPageClient() {
   }
 
   return (
-    <Layout style={{ minHeight: '100vh', background: '#f0f2f5' }}>
-      <Content
-        style={{
-          maxWidth: 700,
-          margin: '40px auto',
-          background: '#fff',
-          padding: 32,
-          borderRadius: 12,
-        }}
-      >
-        <Title level={2}>{patient.name}</Title>
-        <Descriptions bordered column={2} size="small">
-          <Descriptions.Item label="DOB">{patient.dob}</Descriptions.Item>
-          <Descriptions.Item label="Age">{getAge(patient.dob)}</Descriptions.Item>
-          <Descriptions.Item label="Referring">{patient.referring}</Descriptions.Item>
-          <Descriptions.Item label="Consulting">{patient.consulting}</Descriptions.Item>
-        </Descriptions>
-        <Button type="primary" block style={{ marginTop: 24 }} onClick={complete}>
-          Complete Presentation
-        </Button>
-      </Content>
-    </Layout>
+    <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
+      <Container maxWidth="sm">
+        <Paper sx={{ p: 3 }}>
+          <Typography variant="h4" gutterBottom>
+            {patient.name}
+          </Typography>
+          <Grid container spacing={2} sx={{ mb: 2 }}>
+            <Grid item xs={6}>
+              <Typography variant="subtitle2">DOB</Typography>
+              <Typography>{patient.dob}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="subtitle2">Age</Typography>
+              <Typography>{getAge(patient.dob)}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="subtitle2">Referring</Typography>
+              <Typography>{patient.referring}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="subtitle2">Consulting</Typography>
+              <Typography>{patient.consulting}</Typography>
+            </Grid>
+          </Grid>
+          <Button variant="contained" fullWidth sx={{ mt: 3 }} onClick={complete}>
+            Complete Presentation
+          </Button>
+        </Paper>
+      </Container>
+    </Box>
   )
 }
