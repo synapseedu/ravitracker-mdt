@@ -5,7 +5,8 @@ import {
   Container,
   Typography,
   Grid,
-  Paper,
+  Card,
+  CardContent,
   Button,
 } from '@mui/material'
 import { allPatients, Patient, getAge } from '../data/patients'
@@ -44,10 +45,11 @@ export default function PatientPageClient() {
   return (
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
       <Container maxWidth="sm">
-        <Paper sx={{ p: 3 }}>
-          <Typography variant="h4" gutterBottom>
-            {patient.name}
-          </Typography>
+        <Card elevation={3}>
+          <CardContent>
+            <Typography variant="h4" gutterBottom>
+              {patient.name}
+            </Typography>
           <Grid container spacing={2} sx={{ mb: 2 }}>
             <Grid item xs={6}>
               <Typography variant="subtitle2">DOB</Typography>
@@ -66,10 +68,11 @@ export default function PatientPageClient() {
               <Typography>{patient.consulting}</Typography>
             </Grid>
           </Grid>
-          <Button variant="contained" fullWidth sx={{ mt: 3 }} onClick={complete}>
-            Complete Presentation
-          </Button>
-        </Paper>
+            <Button variant="contained" fullWidth sx={{ mt: 3 }} onClick={complete}>
+              Complete Presentation
+            </Button>
+          </CardContent>
+        </Card>
       </Container>
     </Box>
   )

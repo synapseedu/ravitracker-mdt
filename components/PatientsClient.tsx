@@ -4,8 +4,11 @@ import {
   Container,
   Box,
   Typography,
-  Paper,
+  Card,
+  CardContent,
   Button,
+  Chip,
+  Stack,
 } from '@mui/material'
 import { allPatients, Patient, getAge } from '../data/patients'
 
@@ -48,47 +51,43 @@ export default function PatientsClient() {
             patients.map((p) => {
               const done = presentedIds.includes(p.id)
               return (
-                <Paper
+                <Card
                   key={p.id}
                   elevation={done ? 1 : 3}
-                  sx={{
-                    p: 3,
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    bgcolor: done ? 'grey.50' : 'background.paper',
-                    opacity: done ? 0.6 : 1,
-                    borderRadius: 2,
-                  }}
+                  sx={{ bgcolor: done ? 'grey.50' : 'background.paper', opacity: done ? 0.6 : 1 }}
                 >
-                  <Box>
-                    <Typography variant="h6" component="div">
-                      {p.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      DOB: {p.dob} &nbsp;|&nbsp; Age: {getAge(p.dob)}
-                    </Typography>
-                    <Box mt={1}>
-                      <Typography variant="body1" component="span" fontWeight={600}>
-                        Referring:
-                      </Typography>{' '}
-                      {p.referring}
-                      <br />
-                      <Typography variant="body1" component="span" fontWeight={600}>
-                        Consulting:
-                      </Typography>{' '}
-                      {p.consulting}
-                    </Box>
-                  </Box>
-                  <Button
-                    variant={done ? 'contained' : 'outlined'}
-                    color={done ? 'success' : 'primary'}
-                    onClick={() => toggle(p.id)}
-                    sx={{ minWidth: 120 }}
-                  >
-                    {done ? 'Presented' : 'Present'}
-                  </Button>
-                </Paper>
+                  <CardContent>
+                    <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
+                      <Box>
+                        <Stack direction="row" alignItems="center" spacing={1}>
+                          <Typography variant="h6" component="div">
+                            {p.name}
+                          </Typography>
+                          {p.status === 'private' && (
+                            <Chip label="NSP" color="primary" size="small" />
+                          )}
+                        </Stack>
+                        <Typography variant="body2" color="text.secondary" mt={0.5}>
+                          DOB: {p.dob} &nbsp;|&nbsp; Age: {getAge(p.dob)}
+                        </Typography>
+                        <Typography variant="body2" sx={{ mt: 1 }}>
+                          <strong>Referring:</strong> {p.referring}
+                        </Typography>
+                        <Typography variant="body2">
+                          <strong>Consulting:</strong> {p.consulting}
+                        </Typography>
+                      </Box>
+                      <Button
+                        variant={done ? 'contained' : 'outlined'}
+                        color={done ? 'success' : 'primary'}
+                        onClick={() => toggle(p.id)}
+                        sx={{ minWidth: 120 }}
+                      >
+                        {done ? 'Presented' : 'Present'}
+                      </Button>
+                    </Stack>
+                  </CardContent>
+                </Card>
               )
             })
           )}
