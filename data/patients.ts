@@ -19,6 +19,70 @@ export const allPatients: Patient[] = [
   { id: 'ross', name: 'Wendy Ross', dob: '1942-06-11', referring: 'Dr Wang', consulting: 'Dr Hansen', status: 'public' },
   { id: 'mcmullen', name: 'John McMullen', dob: '1938-04-05', referring: 'Dr Armit Michael', consulting: 'Dr Bhindi', status: 'public' },
   { id: 'smithm', name: 'Marilyn Smith', dob: '1948-05-13', referring: 'Dr Tony Kull', consulting: 'Dr Hansen', status: 'public' },
+  {
+    id: 'mcguire',
+    name: 'Stephen McGuire',
+    dob: '1953-07-22',
+    referring: 'Dr Gemma Figtree',
+    consulting: 'Dr Bhindi',
+    status: 'private'
+  },
+  {
+    id: 'nas',
+    name: 'Arnold Nas',
+    dob: '1947-07-30',
+    referring: 'Dr Clyne Fernandes',
+    consulting: 'Dr Bhindi',
+    status: 'private'
+  },
+  {
+    id: 'newlands',
+    name: 'Patricia Newlands',
+    dob: '1940-11-08',
+    referring: 'Dr Chrishan Nalliah',
+    consulting: 'Dr Bhindi',
+    status: 'private'
+  },
+  {
+    id: 'shepherd',
+    name: 'Graham Shepherd',
+    dob: '1942-09-15',
+    referring: 'Dr Tony Kull',
+    consulting: 'Dr Hansen',
+    status: 'private'
+  },
+  {
+    id: 'russ',
+    name: 'Gary Russ',
+    dob: '1946-07-10',
+    referring: 'Dr Helestrand',
+    consulting: 'Dr Bhindi',
+    status: 'private'
+  },
+  {
+    id: 'vandevelde',
+    name: 'Janice Van de Velde',
+    dob: '1936-06-01',
+    referring: 'Dr Choong',
+    consulting: 'Dr Bhindi',
+    status: 'private'
+  },
+  {
+    id: 'gaffney',
+    name: 'Marian Gaffney',
+    dob: '1943-07-18',
+    referring: 'Dr Usaid Allahwala',
+    consulting: '',
+    status: 'private'
+  },
+  {
+    id: 'mooney',
+    name: 'Grahame Mooney',
+    dob: '1942-12-31',
+    referring: 'Dr James Rogers',
+    consulting: 'Dr Bhindi',
+    status: 'private'
+  },
   // Add private patients below with status: 'private'
   // { id: 'private1', name: '...', dob: '...', referring: '...', consulting: '...', status: 'private' },
 ];
