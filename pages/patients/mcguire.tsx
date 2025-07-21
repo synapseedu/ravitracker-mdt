@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/GridLegacy'
 import {
     Box,
-    Container,
     Typography,
     Card,
     CardContent,
@@ -13,21 +12,16 @@ import {
     TextField,
     Divider,
 } from '@mui/material'
+import PatientLayout from '../../components/PatientLayout'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
-import { getAge } from '../../data/patients'
 
 const sectionTitleSx = {
-    color: 'primary.main',
+  color: 'primary.main',
     fontWeight: 600,
     fontSize: 18,
     mb: 1,
 }
 
-const mainTitleSx = {
-    color: 'primary.main',
-    fontWeight: 700,
-    mb: 2,
-}
 
 const pdfMap: Record<string, string[]> = {
     ct: ['Stephen McGuire CT TAVI Report.pdf'],
@@ -166,13 +160,8 @@ export default function McGuirePatientPage() {
     }
 
     return (
-        <Box sx={{ bgcolor: 'background.paper', py: 4, minHeight: '100vh' }}>
-            <Container maxWidth="md">
-                <Box sx={{ background: '#fff', p: 3, borderRadius: 2, boxShadow: 2 }}>
+        <PatientLayout title={patient.name}>
                     <Box display="flex" alignItems="center" gap={2} mb={2}>
-                        <Typography variant="h4" sx={mainTitleSx}>
-                            {patient.name}
-                        </Typography>
                         <Box
                             sx={{
                                 px: 1.2,
@@ -180,10 +169,6 @@ export default function McGuirePatientPage() {
                                 bgcolor: '#1976d2',
                                 color: '#fff',
                                 borderRadius: 1,
-                                fontWeight: 700,
-                                fontSize: 13,
-                                letterSpacing: 1,
-                            }}
                         >
                             NSP
                         </Box>
@@ -354,8 +339,6 @@ export default function McGuirePatientPage() {
                             <EditableMDTMeeting />
                         </CardContent>
                     </Card>
-                </Box>
-            </Container>
-        </Box>
+        </PatientLayout>
     )
 }

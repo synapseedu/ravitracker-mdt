@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/GridLegacy'
 import {
   Box,
-  Paper,
   Card,
   CardHeader,
   CardContent,
@@ -11,20 +10,18 @@ import {
   IconButton,
   TextField,
 } from '@mui/material';
+import PatientLayout from '../../components/PatientLayout'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 const sectionTitleSx = {
+  color: 'primary.main',
   color: '#1677ff',
   fontWeight: 600,
   fontSize: 18,
   mb: 1,
 };
 
-const mainTitleSx = {
   color: '#1677ff',
-  fontWeight: 700,
-  mb: 2,
-};
 
 const pdfMap: Record<string, string[]> = {
   ct: ['Rosee CT TAVI.pdf', 'Rosee medtronic.pdf'],
@@ -87,14 +84,7 @@ function EditableMDTMeeting() {
 
 export default function RoseePatientPage() {
   return (
-    <Paper
-      elevation={3}
-      sx={{ maxWidth: 800, mx: 'auto', mt: 5, p: 4, borderRadius: 2, bgcolor: '#fff' }}
-    >
-      {/* Main Title */}
-      <Typography variant="h4" sx={mainTitleSx}>
-        Paul Rosee
-      </Typography>
+    <PatientLayout title="Paul Rosee">
 
       {/* Patient Details */}
       <Typography variant="h6" sx={sectionTitleSx}>
@@ -247,6 +237,6 @@ export default function RoseePatientPage() {
           <EditableMDTMeeting />
         </CardContent>
       </Card>
-    </Paper>
+    </PatientLayout>
   );
 }

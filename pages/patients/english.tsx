@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/GridLegacy';
 import {
   Box,
-  Container,
   Typography,
   Card,
   CardContent,
@@ -13,8 +12,8 @@ import {
   TextField,
   Divider,
 } from '@mui/material'
+import PatientLayout from '../../components/PatientLayout'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
-import { getAge } from '../../data/patients'
 
 const sectionTitleSx = {
   color: 'primary.main',
@@ -23,11 +22,6 @@ const sectionTitleSx = {
   mb: 1,
 }
 
-const mainTitleSx = {
-  color: 'primary.main',
-  fontWeight: 700,
-  mb: 2,
-}
 
 // Available PDF files for English patient
 const pdfMap: Record<string, string[]> = {
@@ -149,12 +143,7 @@ export default function EnglishPatientPage() {
   }
 
   return (
-    <Box sx={{ bgcolor: 'background.paper', py: 4, minHeight: '100vh' }}>
-      <Container maxWidth="md">
-        <Box sx={{ background: '#fff', p: 3, borderRadius: 2, boxShadow: 2 }}>
-          <Typography variant="h4" sx={mainTitleSx}>
-            {patient.name}
-          </Typography>
+    <PatientLayout title={patient.name}>
 
           {/* Demographics */}
           <Grid container spacing={2} sx={{ mb: 3 }}>
@@ -273,13 +262,11 @@ export default function EnglishPatientPage() {
           <Card variant="outlined" sx={{ mb: 3 }}>
             <CardContent>
               <Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>
-              <EditableMDTMeeting />
-            </CardContent>
-          </Card>
+          <EditableMDTMeeting />
+        </CardContent>
+      </Card>
 
           {/* --- Removed Back to List Button and Divider --- */}
-        </Box>
-      </Container>
-    </Box>
+    </PatientLayout>
   )
 }

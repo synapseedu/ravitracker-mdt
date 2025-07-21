@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/GridLegacy'
 import {
   Box,
-  Container,
   Typography,
   Card,
   CardContent,
@@ -14,19 +13,15 @@ import {
   Divider,
   Button,
 } from '@mui/material'
+import PatientLayout from '../../components/PatientLayout'
+import { useRouter } from 'next/router'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
-import { getAge } from '../../data/patients'
 
 const sectionTitleSx = {
   color: 'primary.main',
   fontWeight: 600,
   fontSize: 18,
   mb: 1,
-}
-const mainTitleSx = {
-  color: 'primary.main',
-  fontWeight: 700,
-  mb: 2,
 }
 
 // Smith PDF map
@@ -163,19 +158,15 @@ export default function SmithPatientPage() {
     },
   }
 
+  const router = useRouter()
+
   return (
-    <Box sx={{ bgcolor: 'background.paper', py: 4, minHeight: '100vh' }}>
-      <Container maxWidth="md">
-        <Box sx={{ background: '#fff', p: 3, borderRadius: 2, boxShadow: 2 }}>
-          <Typography variant="h4" sx={mainTitleSx}>
-            {patient.name}
-          </Typography>
+    <PatientLayout title={patient.name}>
 
           {/* Demographics */}
           <Grid container spacing={2} sx={{ mb: 3 }}>
             {[
               ['DOB', patient.dob],
-              ['Age', getAge(patient.dob)],
               ['MRN', patient.mrn],
               ['Referral Date', patient.referralDate],
             ].map(([label, value]) => (
@@ -318,8 +309,6 @@ export default function SmithPatientPage() {
 
           <Divider sx={{ my: 3 }} />
           <Button variant="outlined" onClick={() => router.push('/patients')}>&larr; Back to list</Button>
-        </Box>
-      </Container>
-    </Box>
+    </PatientLayout>
   )
 }
