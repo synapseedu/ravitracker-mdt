@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { Grid } from '@mui/material';
+import Grid from '@mui/material/GridLegacy'
 import {
   Box,
   Paper,
@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardContent,
   Typography,
-  Grid,
   Tooltip,
   IconButton,
   TextField,
@@ -116,55 +115,55 @@ export default function PavlidisPatientPage() {
 
       {/* Patient Details Grid */}
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">
             DOB
           </Typography>
           <Typography>23/1/1951</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">
             Age
           </Typography>
           <Typography>74</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">
             MRN
           </Typography>
           <Typography>0791463</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">
             Referral Date
           </Typography>
           <Typography>23/5/25</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">
             Structural Physician
           </Typography>
           <Typography>Dr Bhindi</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">
             Referrer
           </Typography>
           <Typography>Dr Yeoh / Dr Ekmijian</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">
             Contact
           </Typography>
           <Typography>Louise (wife): 0415 100 153</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">
             Email
           </Typography>
           <Typography>&nbsp;</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid xs={12}>
           <Typography variant="subtitle2" color="textSecondary">
             Special Comments
           </Typography>
@@ -179,7 +178,7 @@ export default function PavlidisPatientPage() {
         />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>
                 Past Medical History:
               </Typography>
@@ -195,7 +194,7 @@ export default function PavlidisPatientPage() {
                 <li>OSA</li>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>
                 Medications:
               </Typography>

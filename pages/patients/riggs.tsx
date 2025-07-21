@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Grid from '@mui/material/GridLegacy'
 import {
   Box,
   Paper,
@@ -6,7 +7,6 @@ import {
   CardHeader,
   CardContent,
   Typography,
-  Grid,
   Tooltip,
   IconButton,
   TextField,
@@ -104,38 +104,38 @@ export default function RiggsPatientPage() {
         Patient Details
       </Typography>
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">DOB</Typography>
           <Typography>14/07/1945</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Age</Typography>
           <Typography>79</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">MRN</Typography>
           <Typography>0346148</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referral Date</Typography>
           <Box display="flex" alignItems="center">
             <Typography>15/6/25</Typography>
             <PdfIcons files={pdfMap.referral} />
           </Box>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Structural Physician</Typography>
           <Typography>Dr Hansen</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Referrer</Typography>
           <Typography>Dr Hill</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Contact</Typography>
           <Typography>0417 883 916</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid xs={6}>
           <Typography variant="subtitle2" color="textSecondary">Weight</Typography>
           <Typography>96 kg</Typography>
         </Grid>
@@ -146,7 +146,7 @@ export default function RiggsPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Background:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>IHD</li>
@@ -159,7 +159,7 @@ export default function RiggsPatientPage() {
                 <li>Rheumatoid arthritis</li>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Medications:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
                 <li>Apixaban 5mg bd</li>
@@ -196,15 +196,15 @@ export default function RiggsPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>TTE 20/6/25</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">LV EF</Typography><Typography>30%</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">AVA</Typography><Typography>0.8</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">AVAi</Typography><Typography>0.4</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Peak Gradient</Typography><Typography>54</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Mean Gradient</Typography><Typography>33</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">SVI</Typography><Typography>38.2</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Peak AV</Typography><Typography>3.7</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">MR</Typography><Typography>Mild</Typography></Grid>
-            <Grid item xs={12}><Typography variant="subtitle2" color="textSecondary">Comments</Typography><Typography>Bioprosthetic aortic valve in situ. Turbulent flow and increased velocities through prosthesis (moderate-severe stenosis).</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">LV EF</Typography><Typography>30%</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">AVA</Typography><Typography>0.8</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">AVAi</Typography><Typography>0.4</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Peak Gradient</Typography><Typography>54</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Mean Gradient</Typography><Typography>33</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">SVI</Typography><Typography>38.2</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Peak AV</Typography><Typography>3.7</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">MR</Typography><Typography>Mild</Typography></Grid>
+            <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">Comments</Typography><Typography>Bioprosthetic aortic valve in situ. Turbulent flow and increased velocities through prosthesis (moderate-severe stenosis).</Typography></Grid>
           </Grid>
         </CardContent>
       </Card>
@@ -222,8 +222,8 @@ export default function RiggsPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Angio & ECG</Typography>} action={<PdfIcons files={pdfMap.angio} />} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={12}><Typography variant="subtitle2" color="textSecondary">Angio</Typography><Typography>Mild coronary artery disease</Typography></Grid>
-            <Grid item xs={12}><Typography variant="subtitle2" color="textSecondary">ECG</Typography><Typography>Sinus rhythm 38–92, avg 65 bpm, LBBB pattern</Typography></Grid>
+            <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">Angio</Typography><Typography>Mild coronary artery disease</Typography></Grid>
+            <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">ECG</Typography><Typography>Sinus rhythm 38–92, avg 65 bpm, LBBB pattern</Typography></Grid>
           </Grid>
         </CardContent>
       </Card>
@@ -250,12 +250,12 @@ export default function RiggsPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Bloods 3/6/25</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={12}><Typography variant="subtitle2" color="textSecondary">MOCA</Typography><Typography>29/30 (with GP)</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Hb</Typography><Typography>145</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Plts</Typography><Typography>189</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Cre</Typography><Typography>85</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">eGFR</Typography><Typography>75</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Albumin</Typography><Typography>38</Typography></Grid>
+            <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">MOCA</Typography><Typography>29/30 (with GP)</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Hb</Typography><Typography>145</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Plts</Typography><Typography>189</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Cre</Typography><Typography>85</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">eGFR</Typography><Typography>75</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Albumin</Typography><Typography>38</Typography></Grid>
           </Grid>
         </CardContent>
       </Card>
@@ -273,8 +273,8 @@ export default function RiggsPatientPage() {
         <CardHeader title={<Typography sx={sectionTitleSx}>Other Consults</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">CTSx</Typography><Typography>Dr Bassin</Typography></Grid>
-            <Grid item xs={6}><Typography variant="subtitle2" color="textSecondary">Aged Care</Typography><Typography>N/A</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">CTSx</Typography><Typography>Dr Bassin</Typography></Grid>
+            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Aged Care</Typography><Typography>N/A</Typography></Grid>
           </Grid>
         </CardContent>
       </Card>

@@ -7,7 +7,6 @@ import {
     Container,
     Box,
     Typography,
-    Grid,
     Paper,
     Button,
 } from '@mui/material'
