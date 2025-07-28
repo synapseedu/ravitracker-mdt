@@ -1,11 +1,11 @@
 'use client';
 import { Typography } from 'antd';
-import PatientLayout from '../../components/PatientLayout';
+import PatientLayout from '../../components/patient/PatientLayout';
 import DemographicsGrid from '../../components/patient/DemographicsGrid';
 import StatusCard from '../../components/patient/StatusCard';
 import PatientSection from '../../components/patient/PatientSection';
 
-import { allPatients } from '../../data/patients';
+import { allPatients, getAge } from '../../data/patients';
 const { Title, Text } = Typography;
 
 const doc = allPatients.find(p => p.id === 'watson')!;        // quick lookup
@@ -15,7 +15,7 @@ export default function WatsonPage() {
     <PatientLayout title={<Title level={3}>{doc.name}</Title>}>
       <DemographicsGrid data={{
         DOB: doc.dob,
-        Age: 72,
+        Age: getAge(doc.dob),
         MRN: '0106881',
         'Structural Physician': 'Dr Bhindi',
         Referrer: 'Dr Rogers',
