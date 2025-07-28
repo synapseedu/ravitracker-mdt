@@ -124,7 +124,7 @@ export default function RoseePatientPage() {
 
       {/* Background */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={6}>
@@ -158,7 +158,7 @@ export default function RoseePatientPage() {
 
       {/* Social & Functional Status */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
         <CardContent>
           <Typography component="div">
             Lives with wife (carer for her).<br />
@@ -172,7 +172,7 @@ export default function RoseePatientPage() {
 
       {/* TTE Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>TTE</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>TTE</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
         <CardContent>
           {/* ... fields ... */}
         </CardContent>
@@ -180,7 +180,7 @@ export default function RoseePatientPage() {
 
       {/* Angio / CABG Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Angio / CABG</Typography>} action={<PdfIcons files={pdfMap.angio} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Angio / CABG</Typography>} action={<PdfIcons files={pdfMap.angio} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
@@ -188,7 +188,7 @@ export default function RoseePatientPage() {
 
       {/* Holter Monitor Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Holter Monitor</Typography>} action={<PdfIcons files={pdfMap.holter} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Holter Monitor</Typography>} action={<PdfIcons files={pdfMap.holter} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
@@ -196,7 +196,7 @@ export default function RoseePatientPage() {
 
       {/* CT TAVI / Access / Valve Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
@@ -204,7 +204,7 @@ export default function RoseePatientPage() {
 
       {/* Bloods Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Bloods</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Bloods</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
@@ -212,7 +212,7 @@ export default function RoseePatientPage() {
 
       {/* Other Consults Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Other Consults</Typography>} action={<PdfIcons files={pdfMap.referral} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Other Consults</Typography>} action={<PdfIcons files={pdfMap.referral} />} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={6}>
@@ -229,7 +229,7 @@ export default function RoseePatientPage() {
 
       {/* MDT Meeting Notes */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
         <CardContent>
           <EditableMDTMeeting />
         </CardContent>

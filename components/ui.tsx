@@ -31,11 +31,9 @@ export interface TypographyProps
   align?: 'left' | 'right' | 'center' | 'justify';
 }
 
-export interface CardProps extends React.ComponentProps<typeof AntCard>, StyledProps {
-  variant?: string;
-}
+export interface UICardProps extends React.ComponentProps<typeof AntCard>, StyledProps {}
 
-export interface ButtonProps extends React.ComponentProps<typeof AntButton>, StyledProps {
+export interface ButtonProps extends Omit<React.ComponentProps<typeof AntButton>, 'type' | 'variant'>, StyledProps {
   variant?: 'contained' | 'text' | 'outlined';
   fullWidth?: boolean;
 }
@@ -74,7 +72,7 @@ export interface TextFieldProps extends React.ComponentProps<typeof Input> {
 export interface PaperProps extends React.ComponentProps<typeof AntCard>, StyledProps {}
 
 export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement>, StyledProps {
-  title: ReactNode;
+  heading: ReactNode;
   action?: ReactNode;
 }
 
@@ -104,8 +102,8 @@ export function Typography({ variant, sx, style, gutterBottom, align, ...props }
   return <Text style={combined} {...props}>{children}</Text>;
 }
 
-export function Card({ variant, sx, style, ...props }: CardProps) {
-  return <AntCard bordered={variant !== 'outlined'} style={{ ...(sx || {}), ...(style || {}) }} {...props} />;
+export function Card({ sx, style, ...props }: UICardProps) {
+  return <AntCard style={{ ...(sx || {}), ...(style || {}) }} {...props} />;
 }
 
 export function CardContent(props: HTMLAttributes<HTMLDivElement>) {
@@ -157,9 +155,15 @@ export function IconButton(props: React.ComponentProps<typeof AntButton>) {
 export const Tooltip = AntTooltip;
 export function TextField({ multiline, minRows, maxRows, fullWidth, sx, style, ...props }: TextFieldProps) {
   if (multiline) {
-    return <Input.TextArea autoSize={{ minRows, maxRows }} style={{ width: fullWidth ? '100%' : undefined, ...(sx || {}), ...(style || {}) }} {...props} />;
+    return (
+      <Input.TextArea
+        autoSize={{ minRows, maxRows }}
+        style={{ width: fullWidth ? '100%' : undefined, ...(sx || {}), ...(style || {}) }}
+        {...(props as any)}
+      />
+    );
   }
-  return <Input style={{ width: fullWidth ? '100%' : undefined, ...(sx || {}), ...(style || {}) }} {...props} />;
+  return <Input style={{ width: fullWidth ? '100%' : undefined, ...(sx || {}), ...(style || {}) }} {...(props as any)} />;
 }
 
 export const Divider = AntDivider;
@@ -168,10 +172,10 @@ export function Paper({ sx, style, ...props }: PaperProps) {
   return <AntCard bordered style={{ ...(sx || {}), ...(style || {}) }} {...props} />;
 }
 
-export function CardHeader({ title, action, sx, style, ...rest }: CardHeaderProps) {
+export function CardHeader({ heading, action, sx, style, ...rest }: CardHeaderProps) {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', ...(sx || {}), ...(style || {}) }} {...rest}>
-      <div>{title}</div>
+      <div>{heading}</div>
       {action}
     </div>
   );

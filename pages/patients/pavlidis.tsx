@@ -154,7 +154,7 @@ export default function PavlidisPatientPage() {
       {/* Background */}
       <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={<Typography sx={sectionTitleSx}>Background</Typography>}
+          heading={<Typography sx={sectionTitleSx}>Background</Typography>}
         />
         <CardContent>
           <Grid container spacing={2}>
@@ -202,7 +202,7 @@ export default function PavlidisPatientPage() {
       {/* Social & Functional Status */}
       <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>}
+          heading={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>}
         />
         <CardContent>
           <Typography component="div">
@@ -220,7 +220,7 @@ export default function PavlidisPatientPage() {
       {/* TTE Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={<Typography sx={sectionTitleSx}>TTE</Typography>}
+          heading={<Typography sx={sectionTitleSx}>TTE</Typography>}
           action={<PdfIcons files={pdfMap.tte} />}
         />
         <CardContent>
@@ -233,7 +233,7 @@ export default function PavlidisPatientPage() {
       {/* Angio / ECG Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={<Typography sx={sectionTitleSx}>Angio / ECG</Typography>}
+          heading={<Typography sx={sectionTitleSx}>Angio / ECG</Typography>}
           action={<PdfIcons files={pdfMap.angio} />}
         />
         <CardContent>
@@ -244,7 +244,7 @@ export default function PavlidisPatientPage() {
       {/* CT TAVI / Access / Valve Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>}
+          heading={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>}
           action={<PdfIcons files={pdfMap.ct} />}
         />
         <CardContent>
@@ -255,7 +255,7 @@ export default function PavlidisPatientPage() {
       {/* Bloods Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={<Typography sx={sectionTitleSx}>Bloods (29/5/25)</Typography>}
+          heading={<Typography sx={sectionTitleSx}>Bloods (29/5/25)</Typography>}
           action={<PdfIcons files={pdfMap.bloods} />}
         />
         <CardContent>
@@ -266,7 +266,7 @@ export default function PavlidisPatientPage() {
       {/* Other Consults Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={<Typography sx={sectionTitleSx}>Other Consults</Typography>}
+          heading={<Typography sx={sectionTitleSx}>Other Consults</Typography>}
           action={<PdfIcons files={pdfMap.consults} />}
         />
         <CardContent>
@@ -277,7 +277,7 @@ export default function PavlidisPatientPage() {
       {/* MDT Meeting Notes */}
       <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>}
+          heading={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>}
         />
         <CardContent>
           <EditableMDTMeeting />

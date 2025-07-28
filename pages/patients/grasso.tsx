@@ -128,7 +128,7 @@ export default function GrassoPatientPage() {
 
       {/* Background */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={6}>
@@ -160,7 +160,7 @@ export default function GrassoPatientPage() {
 
       {/* Social & Functional Status */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
         <CardContent>
           <Typography component="div">
             Lives alone at home.<br />
@@ -177,7 +177,7 @@ export default function GrassoPatientPage() {
 
       {/* TTE Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>TTE: RNSH 27/6 – Dr Choong</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>TTE: RNSH 27/6 – Dr Choong</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
         <CardContent>
           {/* ... fields ... */}
         </CardContent>
@@ -185,7 +185,7 @@ export default function GrassoPatientPage() {
 
       {/* Angio / ECG Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Angio / ECG</Typography>} action={<PdfIcons files={pdfMap.angio} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Angio / ECG</Typography>} action={<PdfIcons files={pdfMap.angio} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
@@ -193,7 +193,7 @@ export default function GrassoPatientPage() {
 
       {/* CT TAVI / Access / Valve Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
@@ -201,7 +201,7 @@ export default function GrassoPatientPage() {
 
       {/* Bloods Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Bloods (25/1/25)</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Bloods (25/1/25)</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
@@ -209,7 +209,7 @@ export default function GrassoPatientPage() {
 
       {/* Other Consults Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Other Consults</Typography>} action={<PdfIcons files={pdfMap.summary} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Other Consults</Typography>} action={<PdfIcons files={pdfMap.summary} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
@@ -217,7 +217,7 @@ export default function GrassoPatientPage() {
 
       {/* MDT Meeting Notes */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
         <CardContent>
           <EditableMDTMeeting />
         </CardContent>

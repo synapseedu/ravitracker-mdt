@@ -130,7 +130,7 @@ export default function KnieppPatientPage() {
 
       {/* Background */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={6}>
@@ -165,7 +165,7 @@ export default function KnieppPatientPage() {
 
       {/* Social & Functional Status */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
         <CardContent>
           <Typography component="div">
             Lives in RACF (Cooinda Court).<br />
@@ -178,7 +178,7 @@ export default function KnieppPatientPage() {
 
       {/* TTE Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>TTE: 12/6/25</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>TTE: 12/6/25</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">LV EF</Typography><Typography>55-60%</Typography></Grid>
@@ -194,7 +194,7 @@ export default function KnieppPatientPage() {
 
       {/* Angio / ECG Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Angio / ECG</Typography>} action={<PdfIcons files={pdfMap.ecg} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Angio / ECG</Typography>} action={<PdfIcons files={pdfMap.ecg} />} />
         <CardContent>
           <Typography variant="subtitle2" color="textSecondary">Angio</Typography>
           <Typography>Not completed; CT shows non-obstructive calcium</Typography>
@@ -205,7 +205,7 @@ export default function KnieppPatientPage() {
 
       {/* CT TAVI / Access / Valve Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
         <CardContent>
           <Typography variant="subtitle2" color="textSecondary">Incidentals</Typography>
           <Typography>Nil</Typography>
@@ -214,7 +214,7 @@ export default function KnieppPatientPage() {
 
       {/* Aged Care Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Aged Care</Typography>} action={<PdfIcons files={pdfMap.agedcare} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Aged Care</Typography>} action={<PdfIcons files={pdfMap.agedcare} />} />
         <CardContent>
           <Typography>Dr Ogle</Typography>
         </CardContent>
@@ -223,7 +223,7 @@ export default function KnieppPatientPage() {
       {/* Cardiothoracic / Structural Consults */}
       <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={<Typography sx={sectionTitleSx}>Cardiothoracic / Structural Consults</Typography>}
+          heading={<Typography sx={sectionTitleSx}>Cardiothoracic / Structural Consults</Typography>}
           action={
             <>
               <PdfIcons files={pdfMap.consults} />
@@ -247,7 +247,7 @@ export default function KnieppPatientPage() {
 
       {/* MDT Meeting Notes */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
         <CardContent>
           <EditableMDTMeeting />
         </CardContent>

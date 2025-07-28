@@ -115,7 +115,7 @@ export default function GreenPatientPage() {
 
       {/* Background */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={6}>
@@ -156,7 +156,7 @@ export default function GreenPatientPage() {
 
       {/* Social & Functional Status */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
         <CardContent>
           <Typography component="div">
             Lives at home alone.<br />
@@ -173,7 +173,7 @@ export default function GreenPatientPage() {
 
       {/* Investigations */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>TTE (13/3/25)</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>TTE (13/3/25)</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
         <CardContent>
           <Grid container spacing={2}>
             {/* Fields as Descriptions */}
@@ -182,35 +182,35 @@ export default function GreenPatientPage() {
       </Card>
 
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Angio / ECG (5/6/25)</Typography>} action={<PdfIcons files={pdfMap.angio} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Angio / ECG (5/6/25)</Typography>} action={<PdfIcons files={pdfMap.angio} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
       </Card>
 
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
       </Card>
 
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Bloods (13/5/25)</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Bloods (13/5/25)</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
         <CardContent>
           {/* ... */}
         </CardContent>
       </Card>
 
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Other Consults</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Other Consults</Typography>} />
         <CardContent>
           {/* ... */}
         </CardContent>
       </Card>
 
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
         <CardContent>
           <EditableMDTMeeting />
         </CardContent>
