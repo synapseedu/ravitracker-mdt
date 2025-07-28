@@ -1,12 +1,13 @@
-// ────────────────────────────────────────────────────────────────────────────
-// components/DemographicsGrid.tsx
-// ────────────────────────────────────────────────────────────────────────────
+/* -------------------------------------------------------------------------
+   components/patient/DemographicsGrid.tsx (rewritten)
+   -------------------------------------------------------------------------*/
 'use client';
 import { Row, Col, Typography } from 'antd';
+import { ReactNode } from 'react';
 const { Text } = Typography;
 
 interface Props {
-  data: Record<string, string | number>;
+  data: Record<string, ReactNode | string | number>;
 }
 
 export default function DemographicsGrid({ data }: Props) {
@@ -16,10 +17,13 @@ export default function DemographicsGrid({ data }: Props) {
         <Col xs={12} sm={6} key={key}>
           <Text type="secondary">{key}</Text>
           <br />
-          <Text>{value}</Text>
+          {typeof value === 'string' || typeof value === 'number' ? (
+            <Text>{value}</Text>
+          ) : (
+            value
+          )}
         </Col>
       ))}
     </Row>
   );
 }
-

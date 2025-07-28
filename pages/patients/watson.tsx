@@ -1,54 +1,170 @@
+// pages/patients/watson.tsx
 'use client';
+
 import { Typography } from 'antd';
 import PatientLayout from '../../components/patient/PatientLayout';
 import DemographicsGrid from '../../components/patient/DemographicsGrid';
 import StatusCard from '../../components/patient/StatusCard';
 import PatientSection from '../../components/patient/PatientSection';
+import PdfIcons from '../../components/patient/PdfIcons';
+import { getAge } from '../../data/patients';
 
-import { allPatients, getAge } from '../../data/patients';
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
-const doc = allPatients.find(p => p.id === 'watson')!;        // quick lookup
+/* ------------------------------------------------------------------
+   Patient-specific data (kept local to this file)
+-------------------------------------------------------------------*/
+const patient = {
+  id: 'watson',
+  name: 'BARRY WATSON',
+  dob: '1952-12-09',
+  weightKg: 125,
+  heightCm: 170,
+  mrn: '0106881',
+  structuralPhysician: 'Dr Bhindi',
+  referrer: 'Dr Rogers',
+  contact: '0412 500 375',
+  email: 'sueandbazz@gmail.com',
+  pdfs: {
+    tte: ['Watson TTE 26.3.25.pdf'],
+    angio: ['Watson angio.pdf'],
+    ecg: ['Watson ECG.pdf'],
+    ct: ['Watson CT TAVI.pdf', 'Watson medtronic.pdf'],
+    respiratory: ['Watson respiratory Dr.pdf'],
+    cts: ['Watson Dr Bassin.pdf'],
+    referral: ['Watson Dr Rogers referral.pdf'], // original referral
+    bloods: ['Watson bloods.pdf'],
+  },
+  history: [
+    'Severe obesity (125 kg, was 140 kg)',
+    'CKD (creatinine 200)',
+    'Permanent AF',
+    'OSA on CPAP',
+    'HTN',
+    'Gout',
+    'Back pain, lumbar disc disease',
+    'Peripheral neuropathy',
+    'Osteopaenia',
+  ],
+  medications: [
+    'Apixaban 5 mg',
+    'Dapagliflozin 10 mg',
+    'Atorvastatin 10 mg',
+    'Motilium PRN',
+    'Telmisartan 40 mg',
+    'Amlodipine 5 mg',
+    'Vitamin D',
+    'Pantoprazole 40 mg',
+    'Xalacom eye drops',
+    'Trelegy Ellipta',
+    'Fish oil',
+    'Panadol',
+    'Furosemide 40 mg mane (new)',
+  ],
+  social:
+    'Lives at home with wife and sons (wife has low vision). Quit smoking 34 years ago (15 pack-years). Drinks 1–2 mid-strength beers/day (reduced).',
+  functional:
+    'Uses walking stick due to back pain. Independent with pADLs, shares household tasks. Still drives. Worsening SOBOE—shops slowly, worse with hills/stairs. Occasional dizziness, no syncope, chest pain or oedema. Occasional poor CPAP tolerance. MOCA 28/30.',
+  /* TTE findings */
+  tteSummary: [
+    'LV EF 40% — AVA 0.7 cm² (AVAi 0.3)',
+    'Peak gradient 51 mmHg — AR Mild',
+    'Mean gradient 37 mmHg — SVI 24.4 ml/m²',
+    'Peak AV velocity 3.6 m/s — MR Mild',
+    'Comments: Tricuspid aortic valve, thickened & calcified leaflets with markedly restricted motion; severe aortic stenosis. Reviewed by Dr Choong (clips 28, 29, 32 confirm severe AS).',
+  ],
+  angioSummary: 'Mild non-obstructive coronary artery disease',
+  ecgSummary: 'Atrial fibrillation',
+  ctIncidentals:
+    'HRCT chest (11 Mar 2025): no evidence of parenchymal dysfunction',
+  respiratorySummary:
+    'Barry’s exertional symptoms related to his cardiac failure, obesity, aortic stenosis, and obstructive sleep apnoea. He has restarted CPAP therapy (Pacific Sleep download pending). Experiencing mouth leak—chinstrap advised. Review in 6 months with CPAP oximetry. No respiratory disease requiring treatment. Discussed intermittent fasting and keto for weight loss.\n- Dr Alex Erdstein',
+  ctsSummary: `Thank you for referring Barry for consideration of aortic valve intervention. He has severe symptomatic aortic valve stenosis with a mean gradient of 33 mmHg, an AVA of 1.0 cm², and LVEF 40%. He experiences marked dyspnoea with occasional dizziness. Comorbidities include severe obesity, CKD (creatinine 200), permanent AF, and OSA on CPAP. Coronary angiography shows no significant obstructive disease.
+I believe he is high-risk for open surgery and should undergo TAVI if feasible. I will forward his details to our structural heart team for evaluation.
+- Levi Bassin`,
+  bloods: { Hb: 162, Plts: 142, Cre: 205, eGFR: 27, Albumin: null },
+};
 
 export default function WatsonPage() {
   return (
-    <PatientLayout title={doc.name}>
-      <DemographicsGrid data={{
-        DOB: doc.dob,
-        Age: getAge(doc.dob),
-        MRN: '0106881',
-        'Structural Physician': 'Dr Bhindi',
-        Referrer: 'Dr Rogers',
-        Contact: '0412 500 375',
-        Email: 'sueandbazz@gmail.com',
-        Weight: `${doc.weightKg} kg`,
-        Height: `${doc.heightCm} cm`
-      }} />
-
-      <PatientSection title="Background">
-        <StatusCard
-          history={[
-            'Severe obesity (125 kg, was 140 kg)',
-            'CKD (creatinine 200)',
-            'Permanent AF'
-          ]}
-          medications={['Apixaban 5 mg', 'Dapagliflozin 10 mg']}
-          social="Lives at home with wife and sons…"
-          functional="Uses walking stick… still drives…"
+    <PatientLayout title={patient.name}>
+      {/* Demographics */}
+      <PatientSection title="Demographics">
+        <DemographicsGrid
+          data={{
+            DOB: patient.dob,
+            Age: getAge(patient.dob),
+            MRN: patient.mrn,
+            Structural: (
+              <>
+                {patient.structuralPhysician}&nbsp;
+                <PdfIcons files={patient.pdfs.referral} />
+              </>
+            ),
+            Referrer: patient.referrer,
+            Contact: patient.contact,
+            Email: patient.email,
+            Weight: `${patient.weightKg} kg`,
+            Height: `${patient.heightCm} cm`,
+          }}
         />
       </PatientSection>
 
-      <PatientSection title="TTE" pdfs={doc.pdfs.tte} />
-      <PatientSection title="Angio" pdfs={doc.pdfs.angio}>
-        <Text type="secondary">Mild non-obstructive CAD</Text>
+      {/* Background */}
+      <PatientSection title="Background">
+        <StatusCard
+          history={patient.history}
+          medications={patient.medications}
+          social={patient.social}
+          functional={patient.functional}
+        />
       </PatientSection>
-      <PatientSection title="ECG" pdfs={doc.pdfs.ecg}>
-        <Text type="secondary">AF</Text>
+
+      {/* Investigations */}
+      <PatientSection title="TTE" pdfs={patient.pdfs.tte}>
+        {patient.tteSummary.map((line) => (
+          <div key={line}>{line}</div>
+        ))}
       </PatientSection>
-      <PatientSection title="CT TAVI / Access / Valve" pdfs={doc.pdfs.ct} />
-      <PatientSection title="Respiratory" pdfs={doc.pdfs.respiratory} />
-      <PatientSection title="Bloods" pdfs={doc.pdfs.bloods} />
-      <PatientSection title="Other Consults" pdfs={doc.pdfs.referral} />
+
+      <PatientSection title="Angio" pdfs={patient.pdfs.angio}>
+        <Text>{patient.angioSummary}</Text>
+      </PatientSection>
+
+      <PatientSection title="ECG" pdfs={patient.pdfs.ecg}>
+        <Text>{patient.ecgSummary}</Text>
+      </PatientSection>
+
+      <PatientSection title="CT TAVI / Access / Valve" pdfs={patient.pdfs.ct}>
+        <Text type="secondary">Incidentals:</Text> {patient.ctIncidentals}
+      </PatientSection>
+
+      {/* Consults */}
+      <PatientSection
+        title="Respiratory Consult"
+        pdfs={patient.pdfs.respiratory}
+      >
+        <Text>{patient.respiratorySummary}</Text>
+      </PatientSection>
+
+      <PatientSection
+        title="Cardiothoracic Surgery Consult"
+        pdfs={patient.pdfs.cts}
+      >
+        <Text>{patient.ctsSummary}</Text>
+      </PatientSection>
+
+      {/* Bloods */}
+      <PatientSection title="Bloods" pdfs={patient.pdfs.bloods}>
+        <DemographicsGrid
+          data={{
+            Hb: patient.bloods.Hb,
+            Plts: patient.bloods.Plts,
+            Cre: patient.bloods.Cre,
+            eGFR: patient.bloods.eGFR,
+          }}
+        />
+      </PatientSection>
     </PatientLayout>
   );
 }

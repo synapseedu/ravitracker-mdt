@@ -1,13 +1,18 @@
-// ────────────────────────────────────────────────────────────────────────────
-// components/PdfIcons.tsx
-// ────────────────────────────────────────────────────────────────────────────
 'use client';
 import { Space, Button, Tooltip } from 'antd';
 import { FilePdfOutlined } from '@ant-design/icons';
 import { iconBtnStyle } from './theme';
 
-export default function PdfIcons({ files }: { files?: string[] }) {
+/** When `onBlue` is true we paint the icon white for a blue header. */
+export default function PdfIcons({
+  files,
+  onBlue = false,
+}: {
+  files?: string[];
+  onBlue?: boolean;
+}) {
   if (!files?.length) return null;
+
   return (
     <Space>
       {files.map((f) => (
@@ -18,11 +23,10 @@ export default function PdfIcons({ files }: { files?: string[] }) {
             href={`/pdfs/${encodeURIComponent(f)}`}
             target="_blank"
             icon={<FilePdfOutlined />}
-            style={iconBtnStyle}
+            style={onBlue ? iconBtnStyle : undefined}
           />
         </Tooltip>
       ))}
     </Space>
   );
 }
-
