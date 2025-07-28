@@ -20,7 +20,7 @@ export default function PatientPageClient() {
 
   if (!patient) {
     return (
-      <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
+      <Box sx={{ backgroundColor: 'background.default', minHeight: '100vh', padding: '32px 0' }}>
         <Container maxWidth="sm">
           <Typography variant="h6">Patient not found</Typography>
         </Container>
@@ -43,32 +43,32 @@ export default function PatientPageClient() {
   }
 
   return (
-    <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
+    <Box sx={{ backgroundColor: 'background.default', minHeight: '100vh', padding: '32px 0' }}>
       <Container maxWidth="sm">
-        <Card elevation={3}>
+        <Card>
           <CardContent>
             <Typography variant="h4" gutterBottom>
               {patient.name}
             </Typography>
-          <Grid container spacing={2} sx={{ mb: 2 }}>
-            <Grid item xs={6}>
+          <Grid container spacing={2} sx={{ marginBottom: 16 }}>
+            <Grid xs={6}>
               <Typography variant="subtitle2">DOB</Typography>
               <Typography>{patient.dob}</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography variant="subtitle2">Age</Typography>
               <Typography>{getAge(patient.dob)}</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography variant="subtitle2">Referring</Typography>
               <Typography>{patient.referring}</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Typography variant="subtitle2">Consulting</Typography>
               <Typography>{patient.consulting}</Typography>
             </Grid>
           </Grid>
-            <Button variant="contained" fullWidth sx={{ mt: 3 }} onClick={complete}>
+            <Button variant="contained" fullWidth sx={{ marginTop: 24 }} onClick={complete}>
               Complete Presentation
             </Button>
           </CardContent>

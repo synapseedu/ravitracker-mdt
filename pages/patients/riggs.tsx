@@ -130,7 +130,7 @@ export default function RiggsPatientPage() {
 
       {/* Background */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Background</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={6}>
@@ -163,7 +163,7 @@ export default function RiggsPatientPage() {
 
       {/* Social & Functional Status */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
         <CardContent>
           <Typography component="div">
             Lives at home on property with flatmate (mini horses and dogs).<br />
@@ -180,7 +180,7 @@ export default function RiggsPatientPage() {
 
       {/* TTE Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>TTE 20/6/25</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>TTE 20/6/25</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">LV EF</Typography><Typography>30%</Typography></Grid>
@@ -198,7 +198,7 @@ export default function RiggsPatientPage() {
 
       {/* Dobutamine Stress Echo Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Dobutamine Stress Echo 15/7/25</Typography>} action={<PdfIcons files={pdfMap.dse} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Dobutamine Stress Echo 15/7/25</Typography>} action={<PdfIcons files={pdfMap.dse} />} />
         <CardContent>
           {/* Optionally add summary/findings here if available */}
         </CardContent>
@@ -206,7 +206,7 @@ export default function RiggsPatientPage() {
 
       {/* Angio & ECG Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Angio & ECG</Typography>} action={<PdfIcons files={pdfMap.angio} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Angio & ECG</Typography>} action={<PdfIcons files={pdfMap.angio} />} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">Angio</Typography><Typography>Mild coronary artery disease</Typography></Grid>
@@ -217,7 +217,7 @@ export default function RiggsPatientPage() {
 
       {/* Holter Monitor Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Holter Monitor</Typography>} action={<PdfIcons files={pdfMap.holter} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Holter Monitor</Typography>} action={<PdfIcons files={pdfMap.holter} />} />
         <CardContent>
           {/* Findings if any */}
         </CardContent>
@@ -225,7 +225,7 @@ export default function RiggsPatientPage() {
 
       {/* CT TAVI / Access / Valve Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
         <CardContent>
           <Typography variant="subtitle2" color="textSecondary">Incidentals</Typography>
           <Typography>Non-specific 7mm nodule in right adrenal gland</Typography>
@@ -234,7 +234,7 @@ export default function RiggsPatientPage() {
 
       {/* Bloods Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Bloods 3/6/25</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Bloods 3/6/25</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">MOCA</Typography><Typography>29/30 (with GP)</Typography></Grid>
@@ -249,7 +249,7 @@ export default function RiggsPatientPage() {
 
       {/* AVR Operation Report Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>AVR Operation Report</Typography>} action={<PdfIcons files={pdfMap.avr} />} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>AVR Operation Report</Typography>} action={<PdfIcons files={pdfMap.avr} />} />
         <CardContent>
           {/* Operation notes if needed */}
         </CardContent>
@@ -257,7 +257,7 @@ export default function RiggsPatientPage() {
 
       {/* Other Consults Section */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Other Consults</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>Other Consults</Typography>} />
         <CardContent>
           <Grid container spacing={2}>
             <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">CTSx</Typography><Typography>Dr Bassin</Typography></Grid>
@@ -268,7 +268,7 @@ export default function RiggsPatientPage() {
 
       {/* MDT Meeting Notes */}
       <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
+        <CardHeader heading={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
         <CardContent>
           <EditableMDTMeeting />
         </CardContent>

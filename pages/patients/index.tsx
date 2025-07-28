@@ -20,7 +20,7 @@ export default function Patients() {
 
     return (
         <Card
-            title={<Typography.Title level={3}>Patients to Present</Typography.Title>}
+            heading={<Typography.Title level={3}>Patients to Present</Typography.Title>}
             bordered={false}
             style={{ maxWidth: 800, margin: '32px auto' }}
         >

@@ -42,12 +42,12 @@ export default function PatientsClient() {
   const visiblePatients = patients.filter(p => !completedIds.includes(p.id))
 
   return (
-    <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
+    <Box sx={{ backgroundColor: 'background.default', minHeight: '100vh', padding: '32px 0' }}>
       <Container maxWidth="md">
         <Typography variant="h4" align="center" gutterBottom>
           Patients to Present
         </Typography>
-        <Box display="flex" flexDirection="column" gap={3}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {visiblePatients.length === 0 ? (
             <Typography align="center">All patients presented!</Typography>
           ) : (
@@ -56,33 +56,31 @@ export default function PatientsClient() {
               return (
                 <Card
                   key={p.id}
-                  elevation={done ? 1 : 3}
-                  sx={{ bgcolor: done ? 'grey.50' : 'background.paper', opacity: done ? 0.6 : 1 }}
+                  sx={{ backgroundColor: done ? 'grey.50' : 'background.paper', opacity: done ? 0.6 : 1 }}
                 >
                   <CardContent>
                     <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
                       <Box>
                         <Stack direction="row" alignItems="center" spacing={1}>
-                          <Typography variant="h6" component="div">
+                          <Typography variant="h6">
                             {p.name}
                           </Typography>
                           {p.status === 'private' && (
-                            <Chip label="NSP" color="primary" size="small" />
+                            <Chip label="NSP" color="primary" />
                           )}
                         </Stack>
-                        <Typography variant="body2" color="text.secondary" mt={0.5}>
+                        <Typography color="text.secondary" sx={{ marginTop: 4 }}>
                           DOB: {p.dob} &nbsp;|&nbsp; Age: {getAge(p.dob)}
                         </Typography>
-                        <Typography variant="body2" sx={{ mt: 1 }}>
+                        <Typography sx={{ marginTop: 8 }}>
                           <strong>Referring:</strong> {p.referring}
                         </Typography>
-                        <Typography variant="body2">
+                        <Typography>
                           <strong>Consulting:</strong> {p.consulting}
                         </Typography>
                       </Box>
                       <Button
                         variant={done ? 'contained' : 'outlined'}
-                        color={done ? 'success' : 'primary'}
                         onClick={() => toggle(p.id)}
                         sx={{ minWidth: 120 }}
                       >

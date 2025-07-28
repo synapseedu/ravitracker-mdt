@@ -9,10 +9,10 @@ interface PatientLayoutProps {
 
 export default function PatientLayout({ title, children }: PatientLayoutProps) {
   return (
-    <Box sx={{ bgcolor: 'background.default', py: 4, minHeight: '100vh' }}>
+    <Box sx={{ backgroundColor: 'background.default', padding: '32px 0', minHeight: '100vh' }}>
       <Container maxWidth="md">
-        <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
-          <Typography variant="h4" sx={{ color: 'primary.main', fontWeight: 700, mb: 3 }}>
+        <Paper sx={{ padding: 24, borderRadius: 2 }}>
+          <Typography variant="h4" sx={{ color: 'primary.main', fontWeight: 700, marginBottom: 24 }}>
             {title}
           </Typography>
           <Stack spacing={3}>{children}</Stack>
