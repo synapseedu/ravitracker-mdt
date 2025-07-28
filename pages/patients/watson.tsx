@@ -12,7 +12,7 @@ const doc = allPatients.find(p => p.id === 'watson')!;        // quick lookup
 
 export default function WatsonPage() {
   return (
-    <PatientLayout title={<Title level={3}>{doc.name}</Title>}>
+    <PatientLayout title={doc.name}>
       <DemographicsGrid data={{
         DOB: doc.dob,
         Age: getAge(doc.dob),
