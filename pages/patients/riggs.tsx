@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Grid from '@mui/material/GridLegacy'
+import { Grid } from '../../components/ui'
 import {
   Box,
   Card,
@@ -9,9 +9,9 @@ import {
   Tooltip,
   IconButton,
   TextField,
-} from '@mui/material';
+} from '../../components/ui';
 import PatientLayout from '../../components/PatientLayout'
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import { PdfIcon } from '../../components/ui';
 
 const sectionTitleSx = {
   color: 'primary.main',
@@ -46,7 +46,7 @@ function PdfIcons({ files }: { files: string[] }) {
             size="small"
             sx={{ p: 0, mr: 1 }}
           >
-            <PictureAsPdfIcon />
+            <PdfIcon />
           </IconButton>
         </Tooltip>
       ))}

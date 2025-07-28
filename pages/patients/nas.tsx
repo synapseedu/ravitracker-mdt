@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Grid from '@mui/material/GridLegacy'
+import { Grid } from '../../components/ui'
 import {
     Box,
     Typography,
@@ -11,9 +11,9 @@ import {
     Tooltip,
     TextField,
     Divider,
-} from '@mui/material'
+} from '../../components/ui'
 import PatientLayout from '../../components/PatientLayout'
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
+import { PdfIcon } from '../../components/ui'
 
 const sectionTitleSx = {
   color: 'primary.main',
@@ -49,7 +49,7 @@ function PdfIcons({ files }: { files?: string[] }) {
                         rel="noopener noreferrer"
                         size="small"
                     >
-                        <PictureAsPdfIcon fontSize="small" />
+                        <PdfIcon fontSize="small" />
                     </IconButton>
                 </Tooltip>
             ))}

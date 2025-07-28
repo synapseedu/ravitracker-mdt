@@ -11,7 +11,7 @@ import {
     Button,
     Chip,
     Stack,
-} from '@mui/material'
+} from '../../components/ui'
 import { allPatients, Patient, getAge } from '../../data/patients'
 
 export default function Patients() {

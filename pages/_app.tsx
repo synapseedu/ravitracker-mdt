@@ -1,22 +1,19 @@
 // pages/_app.tsx
 import type { AppProps } from 'next/app'
-import { ThemeProvider, createTheme } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
+import { ConfigProvider } from 'antd'
+import 'antd/dist/reset.css'
 
-const theme = createTheme({
-  palette: {
-    background: {
-      default: '#f5f5f5',
-    },
+const theme = {
+  token: {
+    colorBgLayout: '#f5f5f5',
   },
-})
+}
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <ConfigProvider theme={theme}>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </ConfigProvider>
   )
 }
 
