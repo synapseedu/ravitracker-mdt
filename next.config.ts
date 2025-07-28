@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     'rc-util',
     'rc-picker',
     'rc-trigger',
+    'rc-pagination',
   ],
 
   // Disable ESLint during builds to allow type-unsafe utility components
