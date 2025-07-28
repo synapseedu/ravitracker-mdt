@@ -1,5 +1,5 @@
 'use client'
-import { Box, Container, Paper, Stack, Typography } from '@mui/material'
+import { Box, Container, Paper, Stack, Typography } from './ui'
 import React from 'react'
 
 interface PatientLayoutProps {

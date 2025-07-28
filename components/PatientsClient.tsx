@@ -9,7 +9,7 @@ import {
   Button,
   Chip,
   Stack,
-} from '@mui/material'
+} from './ui'
 import { allPatients, Patient, getAge } from '../data/patients'
 
 export default function PatientsClient() {

@@ -7,8 +7,8 @@ import {
   Card,
   CardContent,
   Button,
-} from '@mui/material'
-import Grid from '@mui/material/GridLegacy'
+  Grid,
+} from './ui'
 import { allPatients, getAge } from '../data/patients'
 
 export default function PatientPageClient() {
