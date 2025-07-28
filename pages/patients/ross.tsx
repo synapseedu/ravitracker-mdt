@@ -1,321 +1,170 @@
 // pages/patients/ross.tsx
-'use client'
-import React, { useEffect, useState } from 'react'
-import { Grid } from '../../components/ui'
-import {
-    Box,
-    Typography,
-    Card,
-    CardContent,
-    Stack,
-    IconButton,
-    Tooltip,
-    TextField,
-    Divider,
-} from '../../components/ui'
-import PatientLayout from '../../components/PatientLayout'
-import { PdfIcon } from '../../components/ui'
+'use client';
 
-const sectionTitleSx = {
-  color: 'primary.main',
-    fontWeight: 600,
-    fontSize: 18,
-    mb: 1,
-}
+import { Typography } from 'antd';
+import PatientLayout from '../../components/patient/PatientLayout';
+import DemographicsGrid from '../../components/patient/DemographicsGrid';
+import StatusCard from '../../components/patient/StatusCard';
+import PatientSection from '../../components/patient/PatientSection';
+import PdfIcons from '../../components/patient/PdfIcons';
+import { getAge } from '../../data/patients';
 
+const { Text } = Typography;
 
-const pdfMap: Record<string, string[]> = {
-    ct: ['Ross CT TAVI.pdf'],
-    tte: ['Ross TTE.pdf', 'Ross referral.pdf'],
-    angio: ['Ross angio.pdf'],
-    bloods: ['Ross Bloods.pdf'],
-    correspond: [],
-    mdt: ['Ross MDT.docx'],
-    other: ['Ross pelvic ultrasound.pdf'],
-    referral: ['Ross referral.pdf'],
-}
+/* ------------------------------------------------------------------
+   Patient data – WENDY ROSS
+-------------------------------------------------------------------*/
+const patient = {
+    id: 'ross',
+    name: 'WENDY ROSS',
+    dob: '1942-06-11',
+    mrn: '0068643',
+    referralDate: '18/06/2025',
+    structuralPhysician: 'Dr Hansen',
+    referrer: 'Dr Wang',
+    contact: '0435 023 246',
+    weight: '58 kg',
+    height: '147 cm',
+    pdfs: {
+        referral: ['Ross referral.pdf'],
+        tte: ['Ross TTE.pdf'],
+        angio: ['Ross angio.pdf'],
+        ecg: ['Ross ECG.pdf'],
+        ct: ['Ross CT TAVI.pdf'],
+        pelvicUS: ['Ross pelvic ultrasound.pdf'], // NEW
+        bloods: ['Ross Bloods.pdf'],
+    },
 
-function PdfIcons({ files }: { files?: string[] }) {
-    if (!Array.isArray(files) || files.length === 0) return null
-    return (
-        <Stack direction="row" spacing={1} ml={1}>
-            {files.map((file) => (
-                <Tooltip title={file} key={file}>
-                    <IconButton
-                        component="a"
-                        href={`/pdfs/${encodeURIComponent(file)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        size="small"
-                    >
-                        <PdfIcon fontSize="small" />
-                    </IconButton>
-                </Tooltip>
-            ))}
-        </Stack>
-    )
-}
+    /* history & meds --------------------------------------------------*/
+    background: [
+        'Myocardial infarction >20 years ago (no stents)',
+        'Aortic root dilatation',
+        'Hypertension',
+        'Hypercholesterolaemia',
+        'Osteoarthritis',
+        'Bilateral total knee replacements',
+        'Osteopenia',
+    ],
+    medications: [
+        'Catapress 100 mcg nocte',
+        'Lipitor 40 mg OD',
+        'Telmisartan 80 mg OD',
+        'Dothiepin 75 mg OD',
+    ],
+    social:
+        'Lives at home in a unit. Supportive children nearby. Non-smoker; drinks 2–3 champagnes on Fridays at the club. Uses public transport; retired seamstress.',
+    functional:
+        'Independent ADLs and mobility; walks three blocks (limited by pain). Occasional dizziness and nocturnal chest discomfort (uses GTN once / month, denies syncope). Minimal SOBOE. Main complaint: hypertension. Denies oedema, PND, orthopnoea.',
 
-const MDT_KEY = 'ross_mdt_notes'
-function EditableMDTMeeting() {
-    const [notes, setNotes] = useState('')
-    useEffect(() => {
-        const stored = sessionStorage.getItem(MDT_KEY)
-        if (stored) setNotes(stored)
-    }, [])
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const v = e.target.value
-        setNotes(v)
-        sessionStorage.setItem(MDT_KEY, v)
-    }
-    return (
-        <TextField
-            fullWidth
-            multiline
-            minRows={4}
-            maxRows={12}
-            value={notes}
-            placeholder="Type or paste MDT notes and outcomes here. (Saved in session only)"
-            onChange={handleChange}
-            variant="outlined"
-            sx={{ mt: 1 }}
-        />
-    )
-}
+    /* investigations --------------------------------------------------*/
+    tteData: {
+        'LV EF': '55 %',
+        AVA: '0.9 cm²',
+        'Peak Gradient': '74 mmHg',
+        'Mean Gradient': '51 mmHg',
+        'Peak AV Velocity': '4.29 m/s',
+        MR: 'None',
+        AR: 'Mild',
+        Comments: 'Severe aortic stenosis with mild regurgitation.',
+    },
+    angio:
+        'Mild–moderate CAD: 40 % proximal LAD, 90 % OM4 (small calibre, collateralised), 40–50 % proximal RCA.',
+    ecg: 'Sinus rhythm.',
+    ctIncidentals:
+        'Dilated ascending thoracic aorta and proximal arch. Sub-pleural nodule (LLL) – CT follow-up in 12 months.',
 
-export default function RossPatientPage() {
+    pelvicReport: (
+        <>
+            Thickening of the endometrial complex noted on CT.<br />
+            While the endometrial canal is distended with fluid there is no obvious thickening of the
+            endometrium itself and no obvious focal endometrial lesion. A complex cystic area in the anterior
+            myometrium is noted. There is also no obvious ovarian or adnexal abnormality.
+        </>
+    ),
 
-    const patient = {
-        name: 'Wendy Ross',
-        dob: '1942-06-11',
-        mrn: '0068643',
-        referralDate: '18/6/25',
-        structuralPhysician: 'Dr Hansen',
-        referrer: 'Dr Wang',
-        contact: '0435 023 246',
-        weight: '58kg',
-        height: '147cm',
-        background: [
-            'Myocardial infarction >20 years ago (no stents)',
-            'Aortic root dilatation',
-            'Hypertension',
-            'Hypercholesterolaemia',
-            'Osteoarthritis',
-            'Bilateral total knee replacements',
-            'Osteopenia',
-        ],
-        medications: [
-            'Catapress 100mcg nocte',
-            'Lipitor 40mg OD',
-            'Telmisartan 80mg OD',
-            'Dothiepin 75mg OD',
-        ],
-        socialStatus: (
-            <>
-                Lives at home in unit.<br />
-                Supportive children close by.<br />
-                Independent ADLs and mobility.<br />
-                Non-smoker, drinks 2–3 champagne on Fridays at the club.<br />
-                Does not drive, uses public transport.<br />
-                Retired seamstress.
-            </>
-        ),
-        functional: (
-            <>
-                Occasional dizziness and chest discomfort at night (uses GTN once a month, denies syncope).<br />
-                Minimal SOBOE, can walk unrestricted on the flat (3 blocks, mainly limited by pain).<br />
-                Main complaint is high blood pressure.<br />
-                Denies oedema, chest pain, PND, orthopnoea.
-            </>
-        ),
-        tteData: {
-            'LV EF': '55%',
-            AVA: '0.9',
-            'Peak Gradient': '74',
-            'Mean Gradient': '51',
-            'Peak AV': '4.29',
-            'MR': 'None',
-            'AR': 'Mild',
-            'Comments': 'Severe aortic stenosis with mild regurgitation.',
-        },
-        angio: 'Mild to moderate coronary artery disease: 40% pro LAD, 90% OM4 (small calibre), 90% (well collateralised), 40-50% prox RCA.',
-        ecg: 'Sinus rhythm.',
-        ctIncidentals: (
-            <>
-                Dilated ascending thoracic aorta and proximal arch.<br />
-                Subpleural nodule left lower lobe (CT follow up in 12 months).<br />
-                Thickening of endometrial complex in the uterus (pelvic ultrasound recommended).
-            </>
-        ),
-        bloods: {
-            MOCA: '27/30',
-            Hb: '136',
-            Plts: '234',
-            Cre: '72',
-            eGFR: '67',
-            Albumin: '43',
-        },
-        otherConsults: {
-            'Aged Care': 'N/A',
-            'Cardiothoracic': 'N/A',
-        },
-    }
+    bloods: {
+        MOCA: '27/30',
+        Hb: '136',
+        Plts: '234',
+        Cre: '72',
+        eGFR: '67',
+        Albumin: '43',
+    },
+    consults: { 'Aged Care': 'N/A', 'Cardiothoracic': 'N/A' },
+};
 
+/* ------------------------------------------------------------------ */
+export default function RossPage() {
     return (
         <PatientLayout title={patient.name}>
+            {/* Demographics */}
+            <PatientSection title="Demographics">
+                <DemographicsGrid
+                    data={{
+                        DOB: patient.dob,
+                        Age: getAge(patient.dob),
+                        MRN: patient.mrn,
+                        'Referral Date': (
+                            <>
+                                {patient.referralDate}&nbsp;
+                                <PdfIcons files={patient.pdfs.referral} />
+                            </>
+                        ),
+                        Structural: patient.structuralPhysician,
+                        Referrer: patient.referrer,
+                        Contact: patient.contact,
+                        Weight: patient.weight,
+                        Height: patient.height,
+                    }}
+                />
+            </PatientSection>
 
-                    {/* Demographics */}
-                    <Grid container spacing={2} sx={{ mb: 3 }}>
-                        <Grid xs={6} sm={3}>
-                            <Typography variant="subtitle2">DOB</Typography>
-                            <Typography>{patient.dob}</Typography>
-                        </Grid>
-                        <Grid xs={6} sm={3}>
-                            <Typography variant="subtitle2">MRN</Typography>
-                            <Typography>{patient.mrn}</Typography>
-                        </Grid>
-                        <Grid xs={6} sm={3}>
-                            <Typography variant="subtitle2">Referral Date</Typography>
-                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Typography>{patient.referralDate}</Typography>
-                                <PdfIcons files={pdfMap.referral} />
-                            </Box>
-                        </Grid>
-                        <Grid xs={6} sm={3}>
-                            <Typography variant="subtitle2">Contact</Typography>
-                            <Typography>{patient.contact}</Typography>
-                        </Grid>
-                    </Grid>
+            {/* Background & Medications */}
+            <PatientSection title="Background & Medications">
+                <StatusCard
+                    history={patient.background}
+                    medications={patient.medications}
+                    social={patient.social}
+                    functional={patient.functional}
+                />
+            </PatientSection>
 
-                    {/* Background & Medications */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Typography sx={sectionTitleSx}>Background & Medications</Typography>
-                            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4}>
-                                <Box>
-                                    <Typography fontWeight={600}>History:</Typography>
-                                    <ul>
-                                        {patient.background.map((b) => (
-                                            <li key={b}>{b}</li>
-                                        ))}
-                                    </ul>
-                                </Box>
-                                <Box>
-                                    <Typography fontWeight={600}>Meds:</Typography>
-                                    <ul>
-                                        {patient.medications.map((m) => (
-                                            <li key={m}>{m}</li>
-                                        ))}
-                                    </ul>
-                                </Box>
-                            </Stack>
-                        </CardContent>
-                    </Card>
+            {/* TTE */}
+            <PatientSection title="TTE" pdfs={patient.pdfs.tte}>
+                <DemographicsGrid data={patient.tteData} />
+            </PatientSection>
 
-                    {/* Social / Functional */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Typography sx={sectionTitleSx}>Social & Functional</Typography>
-                            <Typography>{patient.socialStatus}</Typography>
-                            <Divider sx={{ my: 2 }} />
-                            <Typography fontWeight={600}>Symptoms / Function:</Typography>
-                            <Typography>{patient.functional}</Typography>
-                        </CardContent>
-                    </Card>
+            {/* Angio */}
+            <PatientSection title="Angio" pdfs={patient.pdfs.angio}>
+                <Text>{patient.angio}</Text>
+            </PatientSection>
 
-                    {/* TTE */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                <Typography sx={sectionTitleSx}>TTE</Typography>
-                                <PdfIcons files={pdfMap.tte} />
-                            </Box>
-                            <Grid container spacing={1} sx={{ mt: 1 }}>
-                                {Object.entries(patient.tteData).map(([k, v]) => (
-                                    <Grid xs={6} key={k}>
-                                        <Typography variant="body2">
-                                            <strong>{k}:</strong> {v}
-                                        </Typography>
-                                    </Grid>
-                                ))}
-                            </Grid>
-                        </CardContent>
-                    </Card>
+            {/* ECG */}
+            <PatientSection title="ECG" pdfs={patient.pdfs.ecg}>
+                <Text>{patient.ecg}</Text>
+            </PatientSection>
 
-                    {/* Angio/ECG */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                <Typography sx={sectionTitleSx}>Angio / ECG</Typography>
-                                <PdfIcons files={pdfMap.angio} />
-                            </Box>
-                            <Typography>
-                                <strong>Angio:</strong> {patient.angio}
-                            </Typography>
-                            <Typography>
-                                <strong>ECG:</strong> {patient.ecg}
-                            </Typography>
-                        </CardContent>
-                    </Card>
+            {/* CT TAVI */}
+            <PatientSection title="CT TAVI" pdfs={patient.pdfs.ct}>
+                <Text>
+                    <strong>Incidentals:</strong>&nbsp;{patient.ctIncidentals}
+                </Text>
+            </PatientSection>
 
-                    {/* CT TAVI */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                <Typography sx={sectionTitleSx}>CT TAVI</Typography>
-                                <PdfIcons files={pdfMap.ct} />
-                            </Box>
-                            <Typography>
-                                <strong>Incidentals:</strong> {patient.ctIncidentals}
-                            </Typography>
-                            <Box sx={{ mt: 2 }}>
-                                <PdfIcons files={pdfMap.other} />
-                            </Box>
-                        </CardContent>
-                    </Card>
+            {/* Pelvic Ultrasound */}
+            <PatientSection title="Pelvic Ultrasound" pdfs={patient.pdfs.pelvicUS}>
+                <Text>{patient.pelvicReport}</Text>
+            </PatientSection>
 
-                    {/* Bloods */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                <Typography sx={sectionTitleSx}>Bloods</Typography>
-                                <PdfIcons files={pdfMap.bloods} />
-                            </Box>
-                            <Grid container spacing={1} sx={{ mt: 1 }}>
-                                {Object.entries(patient.bloods).map(([k, v]) => (
-                                    <Grid xs={6} key={k}>
-                                        <Typography variant="body2">
-                                            <strong>{k}:</strong> {v}
-                                        </Typography>
-                                    </Grid>
-                                ))}
-                            </Grid>
-                        </CardContent>
-                    </Card>
+            {/* Bloods */}
+            <PatientSection title="Bloods" pdfs={patient.pdfs.bloods}>
+                <DemographicsGrid data={patient.bloods} />
+            </PatientSection>
 
-                    {/* Consults */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Typography sx={sectionTitleSx}>Consults</Typography>
-                            <Grid container spacing={1} sx={{ mt: 1 }}>
-                                {Object.entries(patient.otherConsults).map(([k, v]) => (
-                                    <Grid xs={12} key={k}>
-                                        <Typography variant="body2">
-                                            <strong>{k}:</strong> {v}
-                                        </Typography>
-                                    </Grid>
-                                ))}
-                            </Grid>
-                        </CardContent>
-                    </Card>
-
-                    {/* MDT Meeting Notes */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>
-                            <EditableMDTMeeting />
-                        </CardContent>
-                    </Card>
+            {/* Consults */}
+            <PatientSection title="Consults">
+                <DemographicsGrid data={patient.consults} />
+            </PatientSection>
         </PatientLayout>
-    )
+    );
 }

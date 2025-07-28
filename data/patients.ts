@@ -1,21 +1,18 @@
 // data/patients.ts
 export interface Patient {
-  id: string
-  name: string
-  dob: string
-  referring: string
-  consulting: string
-  /** public = MDT list; private = NSP list */
-  status?: 'public' | 'private'
-
-  /** optional additional data used by Ant‑D patient pages */
-  weightKg?: number
-  heightCm?: number
-  pdfs?: Record<string, string[]>
+  id: string;
+  name: string;
+  dob: string;
+  referring: string;
+  consulting: string;
+  status?: 'public' | 'private';
+  weightKg?: number;
+  heightCm?: number;
+  pdfs?: Record<string, string[]>;
 }
 
 export const allPatients: Patient[] = [
-  // ─────────────────────── Public patients ───────────────────────
+  /* ─────────── Public patients (MDT list) ─────────── */
   {
     id: 'watson',
     name: 'Barry Watson',
@@ -23,8 +20,6 @@ export const allPatients: Patient[] = [
     referring: 'Dr Rogers',
     consulting: 'Dr Bhindi',
     status: 'public',
-
-    // new structured fields
     weightKg: 125,
     heightCm: 170,
     pdfs: {
@@ -43,7 +38,7 @@ export const allPatients: Patient[] = [
   { id: 'smithm', name: 'Marilyn Smith', dob: '1948-05-13', referring: 'Dr Tony Kull', consulting: 'Dr Hansen', status: 'public' },
   { id: 'tefler', name: 'Janet Tefler', dob: '1940-09-19', referring: '', consulting: '', status: 'public' },
 
-  // ─────────────────────── Private patients ───────────────────────
+  /* ─────────── Private patients (NSP list) ─────────── */
   { id: 'mcguire', name: 'Stephen McGuire', dob: '1953-07-22', referring: 'Dr Gemma Figtree', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'nas', name: 'Arnold Nas', dob: '1947-07-30', referring: 'Dr Clyne Fernandes', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'newlands', name: 'Patricia Newlands', dob: '1940-11-08', referring: 'Dr Chrishan Nalliah', consulting: 'Dr Bhindi', status: 'private' },
@@ -52,7 +47,18 @@ export const allPatients: Patient[] = [
   { id: 'vandevelde', name: 'Janice Van de Velde', dob: '1936-06-01', referring: 'Dr Choong', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'gaffney', name: 'Marian Gaffney', dob: '1943-07-18', referring: 'Dr Usaid Allahwala', consulting: '', status: 'private' },
   { id: 'mooney', name: 'Grahame Mooney', dob: '1942-12-31', referring: 'Dr James Rogers', consulting: 'Dr Bhindi', status: 'private' },
-  // add more private patients below
+
+  /* ── NEW private patient ── */
+  {
+    id: 'sorentino',
+    name: 'Carlos Sorentino',
+    dob: '1945-09-26',
+    referring: 'Dr Kozor',
+    consulting: 'Dr Hansen',
+    status: 'private',
+  },
+  { id: 'austin', name: 'Gaetane Austin', dob: '1941-11-18', referring: 'TBC', consulting: 'Dr Hansen', status: 'private' },
+
 ];
 
 export function getAge(dob: string): number {

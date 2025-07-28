@@ -1,346 +1,181 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import { Grid } from '../../components/ui'
-import {
-    Box,
-    Typography,
-    Card,
-    CardContent,
-    Stack,
-    IconButton,
-    Tooltip,
-    TextField,
-    Divider,
-} from '../../components/ui'
-import PatientLayout from '../../components/PatientLayout'
-import { PdfIcon } from '../../components/ui'
+// pages/patients/nas.tsx
+'use client';
 
-const sectionTitleSx = {
-  color: 'primary.main',
-    fontWeight: 600,
-    fontSize: 18,
-    mb: 1,
-}
+import { Typography } from 'antd';
+import PatientLayout from '../../components/patient/PatientLayout';
+import DemographicsGrid from '../../components/patient/DemographicsGrid';
+import StatusCard from '../../components/patient/StatusCard';
+import PatientSection from '../../components/patient/PatientSection';
+import PdfIcons from '../../components/patient/PdfIcons';
+import { getAge } from '../../data/patients';
 
+const { Text } = Typography;
 
-const pdfMap: Record<string, string[]> = {
-    ct: ['NAS Arnold - CT 88.1598294.pdf'],
-    tte: [],
-    angio: ['Arnold NAS Angio.pdf'],
-    toe: ['Nas TOE workup.pdf', 'Royal North Shore Hospital TOE review for TriClip suitability Arnold Nas.pdf'],
-    rhc: ['Nas RHC Workup.pdf'],
-    ecg: ['Nas ECG.pdf'],
-    bloods: [],
-    summary: ['Nas Tricuspid patient summary.docx'],
-    referral: ['Nas Arnold 03.10.2024 Dr Fernandes symptom history.pdf'],
-    correspond: ['Nas Dr Mathur rv.pdf'],
-}
+/* ------------------------------------------------------------------
+   Patient data – ARNOLD NAS
+-------------------------------------------------------------------*/
+const patient = {
+    id: 'nas',
+    name: 'ARNOLD NAS',
+    dob: '1947-07-30',
+    mrn: 'ME00463006',
+    referralDate: '',                      // none on MDT
+    structuralPhysician: 'Dr Bhindi',
+    referrer: 'Dr Clyne Fernandes',
+    contact: '0412 036 125',
+    weight: '88 kg',
+    height: '188 cm',
 
-function PdfIcons({ files }: { files?: string[] }) {
-    if (!Array.isArray(files) || files.length === 0) return null
-    return (
-        <Stack direction="row" spacing={1} ml={1}>
-            {files.map((file) => (
-                <Tooltip title={file} key={file}>
-                    <IconButton
-                        component="a"
-                        href={`/pdfs/${encodeURIComponent(file)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        size="small"
-                    >
-                        <PdfIcon fontSize="small" />
-                    </IconButton>
-                </Tooltip>
-            ))}
-        </Stack>
-    )
-}
-
-const MDT_KEY = 'nas_mdt_notes'
-function EditableMDTMeeting() {
-    const [notes, setNotes] = useState('')
-    useEffect(() => {
-        const stored = sessionStorage.getItem(MDT_KEY)
-        if (stored) setNotes(stored)
-    }, [])
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const v = e.target.value
-        setNotes(v)
-        sessionStorage.setItem(MDT_KEY, v)
-    }
-    return (
-        <TextField
-            fullWidth
-            multiline
-            minRows={4}
-            maxRows={12}
-            value={notes}
-            placeholder="Type or paste MDT notes and outcomes here. (Saved in session only)"
-            onChange={handleChange}
-            variant="outlined"
-            sx={{ mt: 1 }}
-        />
-    )
-}
-
-export default function NasPatientPage() {
-
-    const patient = {
-        name: 'Arnold Nas',
-        dob: '1947-07-30',
-        mrn: 'ME00463006',
-        referralDate: '',
-        structuralPhysician: 'Dr Bhindi',
-        referrer: 'Dr Clyne Fernandes',
-        contact: '0412 036 125',
-        weight: '88kg',
-        height: '188cm',
-        allergies: 'NKDA',
-        background: [
-            'Severe atrial functional tricuspid regurgitation (TR) with regurgitant jet close to the septum',
-            'Atrial fibrillation',
-            'Sleep apnoea (CPAP)',
-            'HFpEF',
-            'BPH',
+    /* PDFs grouped by section */
+    pdfs: {
+        ct: [
+            'NAS Arnold - CT 88.1598294.pdf',
         ],
-        familyHistory: [
-            'Mother & Father: CVAs in 70s',
-            'Brother: HBP; Prostate cancer (father 70s, brother 58)',
+        angio: ['Arnold NAS Angio.pdf'],
+        toe: [
+            'Nas TOE workup.pdf',
+            'Royal North Shore Hospital TOE review for TriClip suitability Arnold Nas.pdf',
         ],
-        medications: [
-            'Pradaxa (Dabigatran etexilate)',
-            'Entresto 24/26mg nocte',
-        ],
-        socialStatus: (
-            <>
-                Retired aircraft engineer.<br />
-                Lives with wife (who has dementia; Arnold is her carer).<br />
-                4 children, one daughter lives nearby.<br />
-                Independent of all ADLs.<br />
-                Nil stairs at home.
-            </>
-        ),
-        functional: (
-            <>
-                Increased shortness of breath.<br />
-                Exercise tolerance reduced to 100 meters.<br />
-                Takes inclines slowly with regular breaks.<br />
-                Fluctuating fatigue.<br />
-                Nil dizziness, orthopnoea, or PND.
-            </>
-        ),
-        bloods: {
-            'Date': '28/03/2025',
-            'Hb': '154',
-            'Plts': '249',
-            'Creatinine': '90',
-            'eGFR': '72',
-        },
-        rhc: (
-            <>
-                <strong>PASP:</strong> 44/20 (29)<br />
-                <strong>PCWP:</strong> 19/20 (19)
-            </>
-        ),
-        angio: (
-            <>
-                LAD: 40% stenosis<br />
-                Otherwise only minor irregularities
-            </>
-        ),
-        toeSummary: (
-            <>
-                Trileaflet tricuspid valve (Type I).<br />
-                Moderate to severe secondary tricuspid regurgitation.<br />
-                RV: Markedly dilated, moderate hypokinesis.<br />
-                LA/RA: Dilated.<br />
-                Atrial fibrillation.<br />
-                Mild secondary mitral regurgitation.<br />
-                Aortic sclerosis without obstruction.<br />
-                GLIDE score 2.<br />
-                TEER will be difficult if septal-anterior clipping is required.<br />
-                Tricuspid valve anatomy suitable for TriClip.
-            </>
-        ),
-        consults: {
-            'Cardiothoracic Surgeon': 'Dr Mathur: Low risk for surgery. Patient prefers TriClip, but open to best option.',
-        },
-    }
+        rhc: ['Nas RHC Workup.pdf'],
+        ecg: ['Nas ECG.pdf'],
+        bloods: [],
+        summary: ['Nas Tricuspid patient summary.docx'],
+        referral: ['Nas Arnold 03.10.2024 Dr Fernandes symptom history.pdf'],
+        consult: ['Nas Dr Mathur rv.pdf'],
+    },
 
+    /* history & meds --------------------------------------------------*/
+    background: [
+        'Severe atrial functional tricuspid regurgitation',
+        'Atrial fibrillation',
+        'Sleep apnoea (CPAP)',
+        'HFpEF',
+        'BPH',
+    ],
+    familyHistory: [
+        'Both parents CVA in 70 s',
+        'Brother: hypertension & prostate cancer',
+    ],
+    medications: [
+        'Dabigatran 110 mg bd',
+        'Entresto 24/26 mg nocte',
+    ],
+    social:
+        'Retired aircraft engineer. Lives with wife (dementia; Arnold is primary carer). Four children — daughter nearby. Independent for ADLs; no stairs.',
+    functional:
+        'Increased SOB, ET ≈ 100 m, slow on inclines, fluctuating fatigue; no orthopnoea/PND.',
+
+    /* investigations --------------------------------------------------*/
+    bloods: {
+        Date: '28 Mar 2025',
+        Hb: '154',
+        Plts: '249',
+        Creatinine: '90',
+        eGFR: '72',
+    },
+    rhc: (
+        <>
+            <b>PASP:</b> 44/20 (29)&nbsp;&nbsp;&nbsp;
+            <b>PCWP:</b> 19/20 (19)
+        </>
+    ),
+    angio: (
+        <>
+            LAD 40 % stenosis.<br />
+            Only minor irregularities elsewhere.
+        </>
+    ),
+    ctSummary:
+        '4D cardiac CT: right-atrial enlargement, reflux into hepatic veins (possible RH dysfunction), possible early hepatic fibrosis.',
+    toeSummary: (
+        <>
+            Trileaflet TV (Type I) — moderate–severe secondary TR.<br />
+            RV markedly dilated, moderate hypokinesis; LA/RA dilated.<br />
+            Mild secondary MR; aortic sclerosis.<br />
+            GLIDE 2 — TEER difficult if septal-anterior clip needed.<br />
+            Anatomy suitable for TriClip.
+        </>
+    ),
+
+    /* consults --------------------------------------------------------*/
+    consultText:
+        'Dr Manu Mathur: surgical risk low. Patient prefers TriClip but is open to heart-team decision.',
+};
+
+/* ------------------------------------------------------------------*/
+export default function NasPage() {
     return (
         <PatientLayout title={patient.name}>
-                    <Box display="flex" alignItems="center" gap={2} mb={2}>
-                        <Typography variant="h6">{patient.name}</Typography>
-                        <Box
-                            sx={{
-                                px: 1.2,
-                                py: 0.2,
-                                bgcolor: '#1976d2',
-                                color: '#fff',
-                                borderRadius: 1,
-                            }}
-                        >
-                            NSP
-                        </Box>
-                    </Box>
+            {/* Demographics */}
+            <PatientSection title="Demographics">
+                <DemographicsGrid
+                    data={{
+                        DOB: patient.dob,
+                        Age: getAge(patient.dob),
+                        MRN: patient.mrn,
+                        'Referral Date': patient.referralDate || '—',
+                        Structural: patient.structuralPhysician,
+                        Referrer: (
+                            <>
+                                {patient.referrer}&nbsp;
+                                <PdfIcons files={patient.pdfs.referral} />
+                            </>
+                        ),
+                        Contact: patient.contact,
+                        Weight: patient.weight,
+                        Height: patient.height,
+                    }}
+                />
+            </PatientSection>
 
-                    {/* Demographics */}
-                    <Grid container spacing={2} sx={{ mb: 3 }}>
-                        <Grid xs={6} sm={3}>
-                            <Typography variant="subtitle2">DOB</Typography>
-                            <Typography>{patient.dob}</Typography>
-                        </Grid>
-                        <Grid xs={6} sm={3}>
-                            <Typography variant="subtitle2">MRN</Typography>
-                            <Typography>ME00463006</Typography>
-                        </Grid>
-                        <Grid xs={6} sm={3}>
-                            <Typography variant="subtitle2">Contact</Typography>
-                            <Typography>{patient.contact}</Typography>
-                        </Grid>
-                        <Grid xs={6} sm={3}>
-                            <Typography variant="subtitle2">Referrer</Typography>
-                            <Typography>{patient.referrer}</Typography>
-                        </Grid>
-                    </Grid>
+            {/* Background & Medications */}
+            <PatientSection title="Background & Medications">
+                <StatusCard
+                    history={patient.background}
+                    medications={patient.medications}
+                    social={patient.social}
+                    functional={patient.functional}
+                    familyHistory={patient.familyHistory}
+                />
+            </PatientSection>
 
-                    {/* Social & Functional */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Typography sx={sectionTitleSx}>Social & Functional</Typography>
-                            <Typography>{patient.socialStatus}</Typography>
-                            <Divider sx={{ my: 2 }} />
-                            <Typography fontWeight={600}>Current Symptoms / Function:</Typography>
-                            <Typography>{patient.functional}</Typography>
-                        </CardContent>
-                    </Card>
+            {/* ECG */}
+            <PatientSection title="ECG" pdfs={patient.pdfs.ecg}>
+                <Text>Atrial fibrillation, RBBB</Text>
+            </PatientSection>
 
-                    {/* Background & Family History */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4}>
-                                <Box>
-                                    <Typography fontWeight={600}>Background:</Typography>
-                                    <ul>
-                                        {patient.background.map((b) => (
-                                            <li key={b}>{b}</li>
-                                        ))}
-                                    </ul>
-                                    <Typography fontWeight={600}>Family History:</Typography>
-                                    <ul>
-                                        {patient.familyHistory.map((fh) => (
-                                            <li key={fh}>{fh}</li>
-                                        ))}
-                                    </ul>
-                                </Box>
-                                <Box>
-                                    <Typography fontWeight={600}>Medications:</Typography>
-                                    <ul>
-                                        {patient.medications.map((m) => (
-                                            <li key={m}>{m}</li>
-                                        ))}
-                                    </ul>
-                                    <Typography fontWeight={600}>Allergies:</Typography>
-                                    <Typography>NKDA</Typography>
-                                </Box>
-                            </Stack>
-                        </CardContent>
-                    </Card>
+            {/* Bloods */}
+            <PatientSection title="Recent Bloods" pdfs={patient.pdfs.bloods}>
+                <DemographicsGrid data={patient.bloods} />
+            </PatientSection>
 
-                    {/* ECG */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box display="flex" alignItems="center" justifyContent="space-between">
-                                <Typography sx={sectionTitleSx}>ECG</Typography>
-                                <PdfIcons files={pdfMap.ecg} />
-                            </Box>
-                            <Typography variant="body2">Atrial fibrillation, RBBB</Typography>
-                        </CardContent>
-                    </Card>
+            {/* Right-Heart Catheter */}
+            <PatientSection title="Right-Heart Catheter" pdfs={patient.pdfs.rhc}>
+                <Text>{patient.rhc}</Text>
+            </PatientSection>
 
-                    {/* Bloods */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Typography sx={sectionTitleSx}>Recent Bloods</Typography>
-                            <Grid container spacing={1} sx={{ mt: 1 }}>
-                                {Object.entries(patient.bloods).map(([k, v]) => (
-                                    <Grid xs={6} key={k}>
-                                        <Typography variant="body2">
-                                            <strong>{k}:</strong> {v}
-                                        </Typography>
-                                    </Grid>
-                                ))}
-                            </Grid>
-                        </CardContent>
-                    </Card>
+            {/* Angiogram */}
+            <PatientSection title="Angiogram" pdfs={patient.pdfs.angio}>
+                <Text>{patient.angio}</Text>
+            </PatientSection>
 
-                    {/* Right Heart Catheter */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box display="flex" alignItems="center" justifyContent="space-between">
-                                <Typography sx={sectionTitleSx}>Right Heart Catheter</Typography>
-                                <PdfIcons files={pdfMap.rhc} />
-                            </Box>
-                            <Typography sx={{ mt: 1 }}>{patient.rhc}</Typography>
-                        </CardContent>
-                    </Card>
+            {/* CT Cardiac */}
+            <PatientSection title="CT Cardiac" pdfs={patient.pdfs.ct}>
+                <Text>{patient.ctSummary}</Text>
+            </PatientSection>
 
-                    {/* Angio */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box display="flex" alignItems="center" justifyContent="space-between">
-                                <Typography sx={sectionTitleSx}>Angiogram</Typography>
-                                <PdfIcons files={pdfMap.angio} />
-                            </Box>
-                            <Typography sx={{ mt: 1 }}>{patient.angio}</Typography>
-                        </CardContent>
-                    </Card>
+            {/* TOE / Tricuspid Anatomy */}
+            <PatientSection
+                title="TOE – Tricuspid Anatomy"
+                pdfs={patient.pdfs.toe}
+            >
+                <Text>{patient.toeSummary}</Text>
+            </PatientSection>
 
-                    {/* CT */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box display="flex" alignItems="center" justifyContent="space-between">
-                                <Typography sx={sectionTitleSx}>CT</Typography>
-                                <PdfIcons files={pdfMap.ct} />
-                            </Box>
-                            <Typography sx={{ mt: 1 }}>4D CT Cardiac: Right atrial enlargement, reflux into hepatic veins (possible right heart dysfunction), possible early hepatic fibrosis.</Typography>
-                        </CardContent>
-                    </Card>
-
-                    {/* TOE */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box display="flex" alignItems="center" justifyContent="space-between">
-                                <Typography sx={sectionTitleSx}>TOE / Tricuspid Anatomy</Typography>
-                                <PdfIcons files={pdfMap.toe} />
-                            </Box>
-                            <Typography sx={{ mt: 1 }}>{patient.toeSummary}</Typography>
-                        </CardContent>
-                    </Card>
-
-                    {/* Consults */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Box display="flex" alignItems="center" justifyContent="space-between">
-                                <Typography sx={sectionTitleSx}>Consults</Typography>
-                                <PdfIcons files={pdfMap.correspond} />
-                            </Box>
-                            <Typography sx={{ mt: 1 }}>
-                                {Object.entries(patient.consults).map(([k, v]) => (
-                                    <span key={k}><strong>{k}:</strong> {v}<br /></span>
-                                ))}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-
-                    {/* MDT Meeting Notes */}
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <CardContent>
-                            <Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>
-                            <EditableMDTMeeting />
-                        </CardContent>
-                    </Card>
+            {/* Cardiothoracic Surgery Consult */}
+            <PatientSection title="Cardiothoracic Surgery Consult" pdfs={patient.pdfs.consult}>
+                <Text>{patient.consultText}</Text>
+            </PatientSection>
         </PatientLayout>
-    )
+    );
 }

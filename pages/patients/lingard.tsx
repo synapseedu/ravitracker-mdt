@@ -141,7 +141,7 @@ export default function LingardPage() {
 
             {/* Renal Physician Consult */}
             <PatientSection title="Renal Physician Consult" pdfs={patient.pdfs.renal}>
-                <DemographicsGrid data={{ 'Renal Physician': 'Dr Kumar' }} />
+                <DemographicsGrid data={{ 'Renal Physician': 'Dr Kumar - Suitable for HD' }} />
             </PatientSection>
         </PatientLayout>
     );
