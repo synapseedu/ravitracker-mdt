@@ -1,296 +1,222 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import { Grid } from '../../components/ui'
+
+import { useEffect, useState } from 'react'
 import {
-  Box,
+  Row,
+  Col,
   Card,
-  CardContent,
   Typography,
   Tooltip,
-  IconButton,
-  TextField,
-  Stack,
-} from '../../components/ui'
+  Button,
+  Space,
+  Input,
+} from 'antd'
+import { FilePdfOutlined } from '@ant-design/icons'
 import PatientLayout from '../../components/PatientLayout'
-import { PdfIcon } from '../../components/ui'
 
-const sectionTitleSx = {
-  color: 'primary.main',
+const { Title, Text } = Typography
+
+/* ---------- visual helper (dark‑blue header, blue sub‑titles) ---------- */
+const PRIMARY = '#1d39c4'       // deeper Ant Design blue‑8
+const HEADER_BG = PRIMARY       // dark blue background
+const HEADER_TXT = '#ffffff'    // white text
+
+const headStyle = {
+  background: HEADER_BG,
+  color: HEADER_TXT,
   fontWeight: 600,
-  fontSize: 18,
-  mb: 1,
-};
+} as const
+const iconBtnStyle = { color: HEADER_TXT } as const
+const subHeadingStyle = { color: PRIMARY } as const
 
+/* ----------------------- Helpers ----------------------- */
 const pdfMap: Record<string, string[]> = {
   ct: ['Watson CT TAVI.pdf', 'Watson medtronic.pdf'],
   tte: ['Watson TTE 26.3.25.pdf'],
   angio: ['Watson angio.pdf'],
+  ecg: ['Watson ECG.pdf'],
   bloods: ['Watson bloods.pdf'],
   mmse: ['Watson MMSE.pdf'],
   referral: ['Watson Dr Bassin.pdf', 'Watson Dr Rogers referral.pdf'],
   respiratory: ['Watson respiratory Dr.pdf'],
-  ecg: ['Watson ECG.pdf'],
   mdt: ['Watson MDT.docx'],
-};
+}
 
-function PdfIcons({ files }: { files?: string[] }) {
-  if (!Array.isArray(files) || files.length === 0) return null
+const PdfIcons = ({ files }: { files?: string[] }) => {
+  if (!files?.length) return null
   return (
-    <Stack direction="row" spacing={1} ml={1} alignItems="center">
-      {files.map((filename) => (
-        <Tooltip title={filename} key={filename}>
-          <IconButton
-            component="a"
-            href={`/pdfs/${encodeURIComponent(filename)}`}
-            target="_blank"
-            rel="noopener noreferrer"
+    <Space>
+      {files.map((f) => (
+        <Tooltip title={f} key={f}>
+          <Button
+            type="text"
             size="small"
-          >
-            <PdfIcon fontSize="small" />
-          </IconButton>
+            href={`/pdfs/${encodeURIComponent(f)}`}
+            target="_blank"
+            icon={<FilePdfOutlined />}
+            style={iconBtnStyle}
+          />
         </Tooltip>
       ))}
-    </Stack>
+    </Space>
   )
 }
 
-const MDT_MEETING_KEY = 'watson_mdt_notes';
-
-function EditableMDTMeeting() {
-  const [notes, setNotes] = useState('');
+/* ------------------- MDT notes textarea ------------------- */
+const MDT_KEY = 'watson_mdt_notes'
+const EditableMDTMeeting = () => {
+  const [notes, setNotes] = useState('')
   useEffect(() => {
-    const stored = sessionStorage.getItem(MDT_MEETING_KEY);
-    if (stored) setNotes(stored);
-  }, []);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const val = e.target.value;
-    setNotes(val);
-    sessionStorage.setItem(MDT_MEETING_KEY, val);
-  };
-
+    const stored = sessionStorage.getItem(MDT_KEY)
+    if (stored) setNotes(stored)
+  }, [])
   return (
-    <TextField
-      fullWidth
-      multiline
-      minRows={4}
-      maxRows={12}
+    <Input.TextArea
+      autoSize={{ minRows: 4, maxRows: 12 }}
+      placeholder="Type or paste MDT notes and outcomes here (saved in this tab only)"
       value={notes}
-      placeholder="Type or paste MDT notes and outcomes here. (Edits are saved in your browser for this session only)"
-      onChange={handleChange}
-      variant="outlined"
+      onChange={(e) => {
+        const val = e.target.value
+        setNotes(val)
+        sessionStorage.setItem(MDT_KEY, val)
+      }}
     />
-  );
+  )
 }
 
+/* ====================== Page ====================== */
 export default function WatsonPatientPage() {
   return (
-    <PatientLayout title="Barry Watson">
-
-      <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid xs={6} sm={3}>
-          <Typography variant="subtitle2" color="textSecondary">DOB</Typography>
-          <Typography>9/12/1952</Typography>
-        </Grid>
-        <Grid xs={6} sm={3}>
-          <Typography variant="subtitle2" color="textSecondary">Age</Typography>
-          <Typography>72</Typography>
-        </Grid>
-        <Grid xs={6} sm={3}>
-          <Typography variant="subtitle2" color="textSecondary">MRN</Typography>
-          <Typography>0106881</Typography>
-        </Grid>
-        <Grid xs={6} sm={3}>
-          <Typography variant="subtitle2" color="textSecondary">Referral Date</Typography>
-          <Typography>&nbsp;</Typography>
-        </Grid>
-        <Grid xs={6} sm={3}>
-          <Typography variant="subtitle2" color="textSecondary">Structural Physician</Typography>
-          <Typography>Dr Bhindi</Typography>
-        </Grid>
-        <Grid xs={6} sm={3}>
-          <Typography variant="subtitle2" color="textSecondary">Referrer</Typography>
-          <Typography>Dr Rogers</Typography>
-        </Grid>
-        <Grid xs={6} sm={3}>
-          <Typography variant="subtitle2" color="textSecondary">Contact</Typography>
-          <Typography>0412 500 375</Typography>
-        </Grid>
-        <Grid xs={6} sm={3}>
-          <Typography variant="subtitle2" color="textSecondary">Email</Typography>
-          <Typography>sueandbazz@gmail.com</Typography>
-        </Grid>
-        <Grid xs={12} sm={3}>
-          <Typography variant="subtitle2" color="textSecondary">Weight/Height</Typography>
-          <Typography>125kg / 170cm</Typography>
-        </Grid>
-      </Grid>
+    <PatientLayout title={<Title level={3} style={{ color: PRIMARY, margin: 0 }}>Barry Watson</Title>}>
+      {/* Demographics */}
+      <Card bordered={false} style={{ marginBottom: 24 }}>
+        <Row gutter={[16, 8]}>
+          {[
+            ['DOB', '9/12/1952'],
+            ['Age', '72'],
+            ['MRN', '0106881'],
+            ['Referral Date', '—'],
+            ['Structural Physician', 'Dr Bhindi'],
+            ['Referrer', 'Dr Rogers'],
+            ['Contact', '0412 500 375'],
+            ['Email', 'sueandbazz@gmail.com'],
+            ['Weight / Height', '125 kg / 170 cm'],
+          ].map(([label, value]) => (
+            <Col xs={12} sm={6} key={label as string}>
+              <Text type="secondary">{label}</Text>
+              <br />
+              <Text>{value}</Text>
+            </Col>
+          ))}
+        </Row>
+      </Card>
 
       {/* Background */}
-      <Card variant="outlined" sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography sx={sectionTitleSx}>Background</Typography>
-          <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid xs={6}>
-              <Typography fontWeight={600} gutterBottom>Past Medical History:</Typography>
-              <Box component="ul" sx={{ pl: 2, m: 0 }}>
-                <li>Severe obesity (125kg, was 140kg)</li>
-                <li>CKD (creatinine 200)</li>
-                <li>Permanent AF</li>
-                <li>OSA on CPAP</li>
-                <li>HTN</li>
-                <li>Gout</li>
-                <li>Back pain, lumbar disc disease</li>
-                <li>Peripheral neuropathy</li>
-                <li>Osteopaenia</li>
-              </Box>
-            </Grid>
-            <Grid xs={6}>
-              <Typography fontWeight={600} gutterBottom>Medications:</Typography>
-              <Box component="ul" sx={{ pl: 2, m: 0 }}>
-                <li>Apixaban 5mg</li>
-                <li>Dapagliflozin 10mg</li>
-                <li>Atorvastatin 10mg</li>
-                <li>Motilium PRN</li>
-                <li>Telmisartan 40mg</li>
-                <li>Amlodipine 5mg</li>
-                <li>Vitamin D</li>
-                <li>Pantoprazole 40mg</li>
-                <li>Xalacom eye drops</li>
-                <li>Trelegy ellipta</li>
-                <li>Fish oil</li>
-                <li>Panadol</li>
-                <li>Furosemide 40mg mane <i>(new)</i></li>
-              </Box>
-            </Grid>
-          </Grid>
-        </CardContent>
+      <Card title="Background" headStyle={headStyle} style={{ marginBottom: 24 }}>
+        <Row gutter={16}>
+          <Col xs={24} md={12}>
+            <Title level={5} style={subHeadingStyle}>Past Medical History</Title>
+            <ul style={{ paddingLeft: 20, marginBottom: 0 }}>
+              {[
+                'Severe obesity (125 kg, was 140 kg)',
+                'CKD (creatinine 200)',
+                'Permanent AF',
+                'OSA on CPAP',
+                'HTN',
+                'Gout',
+                'Back pain, lumbar disc disease',
+                'Peripheral neuropathy',
+                'Osteopaenia',
+              ].map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </Col>
+          <Col xs={24} md={12}>
+            <Title level={5} style={subHeadingStyle}>Medications</Title>
+            <ul style={{ paddingLeft: 20, marginBottom: 0 }}>
+              {[
+                'Apixaban 5 mg',
+                'Dapagliflozin 10 mg',
+                'Atorvastatin 10 mg',
+                'Motilium PRN',
+                'Telmisartan 40 mg',
+                'Amlodipine 5 mg',
+                'Vitamin D',
+                'Pantoprazole 40 mg',
+                'Xalacom eye drops',
+                'Trelegy Ellipta',
+                'Fish oil',
+                'Panadol',
+                'Furosemide 40 mg mane (new)',
+              ].map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </Col>
+        </Row>
       </Card>
 
-      {/* Social & Functional Status */}
-      <Card variant="outlined" sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography sx={sectionTitleSx}>Social & Functional Status</Typography>
-          <Typography component="div" sx={{ mt: 1 }}>
-            Lives at home with wife and sons. Wife has low vision.<br />
-            Uses walking stick due to bad back.<br />
-            Independent with pADLs, shares household tasks.<br />
-            Still drives.<br />
-            Quit smoking 34 years ago (15 pack years).<br />
-            ETOH 1-2 std mid-strength/day, but has cut down.<br />
-            Worsening SOBOE – manages shops slowly, worse with hills/stairs.<br />
-            Occasional dizziness, denies syncope.<br />
-            Denies chest pain, oedema.<br />
-            Occasional poor CPAP tolerance.<br />
-          </Typography>
-        </CardContent>
+      {/* Social Status */}
+      <Card title="Social Status" headStyle={headStyle} style={{ marginBottom: 24 }}>
+        <Text>
+          Lives at home with wife and sons. Wife has low vision. Quit smoking 34 years ago (15 pack‑years). Drinks 1–2 mid‑strength beers/day (reduced).
+        </Text>
       </Card>
 
-      {/* TTE Section */}
-      <Card variant="outlined" sx={{ mb: 3 }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Typography sx={sectionTitleSx}>TTE</Typography>
-            <PdfIcons files={pdfMap.tte} />
-          </Box>
-          {/* ... */}
-        </CardContent>
+      {/* Functional Status */}
+      <Card title="Functional Status" headStyle={headStyle} style={{ marginBottom: 24 }}>
+        <Text>
+          Uses walking stick due to back pain. Independent with pADLs, shares household tasks. Still drives. Worsening SOBOE—shops slowly, worse with hills/stairs. Occasional dizziness, no syncope, chest pain or oedema. Occasional poor CPAP tolerance.
+        </Text>
       </Card>
 
-      {/* Angio / ECG Section */}
-      <Card variant="outlined" sx={{ mb: 3 }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Typography sx={sectionTitleSx}>Angio / ECG (28/5/25 Gosford)</Typography>
-            <Stack direction="row" spacing={1}>
-              <PdfIcons files={pdfMap.angio} />
-              <PdfIcons files={pdfMap.ecg} />
-            </Stack>
-          </Box>
-          <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid xs={12}>
-              <Typography variant="subtitle2" color="textSecondary">Angio</Typography>
-              <Typography>Mild non-obstructive CAD</Typography>
-            </Grid>
-            <Grid xs={12}>
-              <Typography variant="subtitle2" color="textSecondary">ECG</Typography>
-              <Typography>AF</Typography>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
+      {/* Sections with PDFs */}
+      {[
+        { key: 'tte', title: 'TTE' },
+        { key: 'angio', title: 'Angio (28 May 25 Gosford)' },
+        { key: 'ecg', title: 'ECG (28 May 25 Gosford)' },
+        { key: 'ct', title: 'CT TAVI / Access / Valve' },
+        { key: 'respiratory', title: 'Pulmonary / Respiratory' },
+        { key: 'bloods', title: 'Bloods' },
+        { key: 'referral', title: 'Other Consults' },
+      ].map(({ key, title, extra }) => (
+        <Card
+          key={key}
+          title={title}
+          headStyle={headStyle}
+          extra={
+            <Space>
+              <PdfIcons files={pdfMap[key]} />
+              {extra?.map((k) => (
+                <PdfIcons key={k} files={pdfMap[k]} />
+              ))}
+            </Space>
+          }
+          style={{ marginBottom: 24 }}
+        >
+          {key === 'angio' && (
+            <Row gutter={16}>
+              <Col span={24}>
+                <Text type="secondary">Angio:</Text> Mild non-obstructive CAD
+              </Col>
+            </Row>
+          )}
+          {key === 'ecg' && (
+            <Row gutter={16}>
+              <Col span={24}>
+                <Text type="secondary">ECG:</Text> AF
+              </Col>
+            </Row>
+          )}
+          {key === 'ct' && <Text type="secondary">Incidentals:</Text>}
+        </Card>
+      ))}
 
-      {/* CT TAVI / Access / Valve Section */}
-      <Card variant="outlined" sx={{ mb: 3 }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>
-            <PdfIcons files={pdfMap.ct} />
-          </Box>
-          <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">Incidentals</Typography><Typography>The HRCT chest (11/3/25): no evidence of parenchymal dysfunction</Typography></Grid>
-          </Grid>
-        </CardContent>
-      </Card>
-
-      {/* Pulmonary / Respiratory Section */}
-      <Card variant="outlined" sx={{ mb: 3 }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Typography sx={sectionTitleSx}>Pulmonary / Respiratory</Typography>
-            <PdfIcons files={pdfMap.respiratory} />
-          </Box>
-          <Typography component="div" sx={{ mt: 1 }}>
-            Normal pulmonary function; no COPD or asthma – puffers ceased.<br />
-            <b>Respiratory consult:</b> Dr Erdstein
-          </Typography>
-        </CardContent>
-      </Card>
-
-      {/* Bloods Section */}
-      <Card variant="outlined" sx={{ mb: 3 }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Typography sx={sectionTitleSx}>Bloods (30/4/25)</Typography>
-            <PdfIcons files={pdfMap.bloods} />
-          </Box>
-          <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid xs={12}>
-              <Typography variant="subtitle2" color="textSecondary">MOCA / MMSE</Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Typography>28/30</Typography>
-                <PdfIcons files={pdfMap.mmse} />
-              </Box>
-            </Grid>
-            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Hb</Typography><Typography>162</Typography></Grid>
-            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Plts</Typography><Typography>142</Typography></Grid>
-            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Cre</Typography><Typography>205</Typography></Grid>
-            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">eGFR</Typography><Typography>27</Typography></Grid>
-            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Albumin</Typography><Typography>&nbsp;</Typography></Grid>
-          </Grid>
-        </CardContent>
-      </Card>
-
-      {/* Other Consults Section */}
-      <Card variant="outlined" sx={{ mb: 3 }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Typography sx={sectionTitleSx}>Other Consults</Typography>
-            <PdfIcons files={pdfMap.referral} />
-          </Box>
-          <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Aged Care</Typography><Typography>&nbsp;</Typography></Grid>
-            <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Cardiothoracic Surgeon</Typography><Typography>Dr Bassin</Typography></Grid>
-          </Grid>
-        </CardContent>
-      </Card>
-
-      {/* MDT Meeting Notes Section */}
-      <Card variant="outlined" sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>
-          <EditableMDTMeeting />
-        </CardContent>
+      {/* MDT notes */}
+      <Card title="MDT Meeting Notes" headStyle={headStyle} style={{ marginBottom: 24 }}>
+        <EditableMDTMeeting />
       </Card>
     </PatientLayout>
-  );
+  )
 }
