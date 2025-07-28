@@ -1,102 +1,82 @@
-// pages/patients/index.tsx
 'use client'
 
-import { useEffect, useState } from 'react'
-import {
-    Container,
-    Box,
-    Typography,
-    Card,
-    CardContent,
-    Button,
-    Chip,
-    Stack,
-} from '../../components/ui'
+import { useState } from 'react'
+import { List, Card, Button, Tag, Typography } from 'antd'
 import { allPatients, Patient, getAge } from '../../data/patients'
 
 export default function Patients() {
-    const [patients] = useState<Patient[]>(allPatients)
+    /* keep only runtime state */
     const [presentedIds, setPresentedIds] = useState<string[]>([])
-    const [completedIds, setCompletedIds] = useState<string[]>([])
-
-    // Load from sessionStorage
-    useEffect(() => {
-        const storedPresented = sessionStorage.getItem('presentedPatients')
-        const storedCompleted = sessionStorage.getItem('completedPatients')
-        if (storedPresented) setPresentedIds(JSON.parse(storedPresented))
-        if (storedCompleted) setCompletedIds(JSON.parse(storedCompleted))
-    }, [])
-
-    // Save to sessionStorage
-    useEffect(() => {
-        sessionStorage.setItem('presentedPatients', JSON.stringify(presentedIds))
-        sessionStorage.setItem('completedPatients', JSON.stringify(completedIds))
-    }, [presentedIds, completedIds])
 
     const togglePresent = (id: string) => {
-        if (presentedIds.includes(id)) {
-            setPresentedIds(presentedIds.filter((pid) => pid !== id))
-        } else {
-            setPresentedIds([...presentedIds, id])
+        setPresentedIds((prev) =>
+            prev.includes(id) ? prev.filter((pid) => pid !== id) : [...prev, id]
+        )
+        // open patient page on first present
+        if (!presentedIds.includes(id)) {
             window.open(`/patients/${id}`, '_blank', 'noopener')
         }
     }
 
-    const visiblePatients = patients.filter((p) => !completedIds.includes(p.id))
-
     return (
-        <Container maxWidth="md" sx={{ py: 4 }}>
-            <Typography variant="h4" align="center" gutterBottom>
-                Patients to Present
-            </Typography>
-            <Box display="flex" flexDirection="column" gap={3}>
-                {visiblePatients.length === 0 ? (
-                    <Typography align="center">All patients presented!</Typography>
-                ) : (
-                    visiblePatients.map((patient) => {
-                        const isPresented = presentedIds.includes(patient.id)
+        <Card
+            title={<Typography.Title level={3}>Patients to Present</Typography.Title>}
+            bordered={false}
+            style={{ maxWidth: 800, margin: '32px auto' }}
+        >
+            {allPatients.length === 0 ? (
+                <Typography.Text>All patients presented!</Typography.Text>
+            ) : (
+                <List
+                    itemLayout="vertical"
+                    dataSource={allPatients}
+                    renderItem={(patient: Patient) => {
+                        const presented = presentedIds.includes(patient.id)
                         return (
-                            <Card
-                                key={patient.id}
-                                elevation={isPresented ? 1 : 3}
-                                sx={{ bgcolor: isPresented ? 'grey.50' : 'background.paper', opacity: isPresented ? 0.6 : 1 }}
-                            >
-                                <CardContent>
-                                    <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
-                                        <Box>
-                                            <Stack direction="row" alignItems="center" spacing={1}>
-                                                <Typography variant="h6" component="div">
-                                                    {patient.name}
-                                                </Typography>
-                                                {patient.status === 'private' && (
-                                                    <Chip label="NSP" color="primary" size="small" />
-                                                )}
-                                            </Stack>
-                                            <Typography variant="body2" color="text.secondary" mt={0.5}>
-                                                DOB: {patient.dob} &nbsp;|&nbsp; Age: {getAge(patient.dob)}
-                                            </Typography>
-                                            <Typography variant="body2" sx={{ mt: 1 }}>
-                                                <strong>Referring:</strong> {patient.referring}
-                                            </Typography>
-                                            <Typography variant="body2">
-                                                <strong>Consulting:</strong> {patient.consulting}
-                                            </Typography>
-                                        </Box>
+                            <List.Item key={patient.id} style={{ opacity: presented ? 0.6 : 1 }}>
+                                <Card
+                                    size="small"
+                                    bordered={presented}
+                                    style={{ background: presented ? '#fafafa' : undefined }}
+                                >
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center',
+                                            marginBottom: 4,
+                                        }}
+                                    >
+                                        <Typography.Title level={5} style={{ margin: 0 }}>
+                                            {patient.name}{' '}
+                                            {patient.status === 'private' && <Tag color="blue">NSP</Tag>}
+                                        </Typography.Title>
+
                                         <Button
-                                            variant={isPresented ? 'contained' : 'outlined'}
-                                            color={isPresented ? 'success' : 'primary'}
+                                            type={presented ? 'default' : 'primary'}
                                             onClick={() => togglePresent(patient.id)}
-                                            sx={{ minWidth: 120 }}
                                         >
-                                            {isPresented ? 'Presented' : 'Present'}
+                                            {presented ? 'Presented' : 'Present'}
                                         </Button>
-                                    </Stack>
-                                </CardContent>
-                            </Card>
+                                    </div>
+
+                                    <Typography.Text type="secondary">
+                                        DOB: {patient.dob} | Age: {getAge(patient.dob)}
+                                    </Typography.Text>
+                                    <br />
+                                    <Typography.Text>
+                                        <strong>Referring:</strong> {patient.referring}
+                                    </Typography.Text>
+                                    <br />
+                                    <Typography.Text>
+                                        <strong>Consulting:</strong> {patient.consulting || '—'}
+                                    </Typography.Text>
+                                </Card>
+                            </List.Item>
                         )
-                    })
-                )}
-            </Box>
-        </Container>
+                    }}
+                />
+            )}
+        </Card>
     )
 }
