@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import Grid from '@mui/material/GridLegacy';
+'use client'
+import React, { useEffect, useState } from 'react'
+import Grid from '@mui/material/GridLegacy'
 import {
   Box,
   Card,
-  CardHeader,
   CardContent,
   Typography,
   Tooltip,
   IconButton,
   TextField,
-} from '@mui/material';
+  Stack,
+} from '@mui/material'
 import PatientLayout from '../../components/PatientLayout'
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
 
 const sectionTitleSx = {
   color: 'primary.main',
@@ -32,9 +33,10 @@ const pdfMap: Record<string, string[]> = {
   mdt: ['Watson MDT.docx'],
 };
 
-function PdfIcons({ files }: { files: string[] }) {
+function PdfIcons({ files }: { files?: string[] }) {
+  if (!Array.isArray(files) || files.length === 0) return null
   return (
-    <Box ml={1} display="flex">
+    <Stack direction="row" spacing={1} ml={1} alignItems="center">
       {files.map((filename) => (
         <Tooltip title={filename} key={filename}>
           <IconButton
@@ -43,14 +45,13 @@ function PdfIcons({ files }: { files: string[] }) {
             target="_blank"
             rel="noopener noreferrer"
             size="small"
-            sx={{ p: 0, mr: 1 }}
           >
-            <PictureAsPdfIcon />
+            <PictureAsPdfIcon fontSize="small" />
           </IconButton>
         </Tooltip>
       ))}
-    </Box>
-  );
+    </Stack>
+  )
 }
 
 const MDT_MEETING_KEY = 'watson_mdt_notes';
@@ -85,54 +86,50 @@ export default function WatsonPatientPage() {
   return (
     <PatientLayout title="Barry Watson">
 
-      {/* Patient Details */}
-      <Typography variant="h6" sx={sectionTitleSx}>
-        Patient Details
-      </Typography>
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid xs={6}>
+        <Grid xs={6} sm={3}>
           <Typography variant="subtitle2" color="textSecondary">DOB</Typography>
           <Typography>9/12/1952</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={6} sm={3}>
           <Typography variant="subtitle2" color="textSecondary">Age</Typography>
           <Typography>72</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={6} sm={3}>
           <Typography variant="subtitle2" color="textSecondary">MRN</Typography>
           <Typography>0106881</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={6} sm={3}>
           <Typography variant="subtitle2" color="textSecondary">Referral Date</Typography>
           <Typography>&nbsp;</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={6} sm={3}>
           <Typography variant="subtitle2" color="textSecondary">Structural Physician</Typography>
           <Typography>Dr Bhindi</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={6} sm={3}>
           <Typography variant="subtitle2" color="textSecondary">Referrer</Typography>
           <Typography>Dr Rogers</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={6} sm={3}>
           <Typography variant="subtitle2" color="textSecondary">Contact</Typography>
           <Typography>0412 500 375</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={6} sm={3}>
           <Typography variant="subtitle2" color="textSecondary">Email</Typography>
           <Typography>sueandbazz@gmail.com</Typography>
         </Grid>
-        <Grid xs={12}>
+        <Grid xs={12} sm={3}>
           <Typography variant="subtitle2" color="textSecondary">Weight/Height</Typography>
           <Typography>125kg / 170cm</Typography>
         </Grid>
       </Grid>
 
       {/* Background */}
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Background</Typography>} />
+      <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
-          <Grid container spacing={2}>
+          <Typography sx={sectionTitleSx}>Background</Typography>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid xs={6}>
               <Typography fontWeight={600} gutterBottom>Past Medical History:</Typography>
               <Box component="ul" sx={{ pl: 2, m: 0 }}>
@@ -170,10 +167,10 @@ export default function WatsonPatientPage() {
       </Card>
 
       {/* Social & Functional Status */}
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Social & Functional Status</Typography>} />
+      <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
-          <Typography component="div">
+          <Typography sx={sectionTitleSx}>Social & Functional Status</Typography>
+          <Typography component="div" sx={{ mt: 1 }}>
             Lives at home with wife and sons. Wife has low vision.<br />
             Uses walking stick due to bad back.<br />
             Independent with pADLs, shares household tasks.<br />
@@ -189,21 +186,27 @@ export default function WatsonPatientPage() {
       </Card>
 
       {/* TTE Section */}
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>TTE</Typography>} action={<PdfIcons files={pdfMap.tte} />} />
+      <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Typography sx={sectionTitleSx}>TTE</Typography>
+            <PdfIcons files={pdfMap.tte} />
+          </Box>
           {/* ... */}
         </CardContent>
       </Card>
 
       {/* Angio / ECG Section */}
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader
-          title={<Typography sx={sectionTitleSx}>Angio / ECG (28/5/25 Gosford)</Typography>}
-          action={<><PdfIcons files={pdfMap.angio} /><PdfIcons files={pdfMap.ecg} /></>}
-        />
+      <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
-          <Grid container spacing={2}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Typography sx={sectionTitleSx}>Angio / ECG (28/5/25 Gosford)</Typography>
+            <Stack direction="row" spacing={1}>
+              <PdfIcons files={pdfMap.angio} />
+              <PdfIcons files={pdfMap.ecg} />
+            </Stack>
+          </Box>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid xs={12}>
               <Typography variant="subtitle2" color="textSecondary">Angio</Typography>
               <Typography>Mild non-obstructive CAD</Typography>
@@ -217,20 +220,26 @@ export default function WatsonPatientPage() {
       </Card>
 
       {/* CT TAVI / Access / Valve Section */}
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>} action={<PdfIcons files={pdfMap.ct} />} />
+      <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
-          <Grid container spacing={2}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Typography sx={sectionTitleSx}>CT TAVI / Access / Valve</Typography>
+            <PdfIcons files={pdfMap.ct} />
+          </Box>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid xs={12}><Typography variant="subtitle2" color="textSecondary">Incidentals</Typography><Typography>The HRCT chest (11/3/25): no evidence of parenchymal dysfunction</Typography></Grid>
           </Grid>
         </CardContent>
       </Card>
 
       {/* Pulmonary / Respiratory Section */}
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Pulmonary / Respiratory</Typography>} action={<PdfIcons files={pdfMap.respiratory} />} />
+      <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
-          <Typography component="div">
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Typography sx={sectionTitleSx}>Pulmonary / Respiratory</Typography>
+            <PdfIcons files={pdfMap.respiratory} />
+          </Box>
+          <Typography component="div" sx={{ mt: 1 }}>
             Normal pulmonary function; no COPD or asthma – puffers ceased.<br />
             <b>Respiratory consult:</b> Dr Erdstein
           </Typography>
@@ -238,13 +247,19 @@ export default function WatsonPatientPage() {
       </Card>
 
       {/* Bloods Section */}
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Bloods (30/4/25)</Typography>} action={<PdfIcons files={pdfMap.bloods} />} />
+      <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
-          <Grid container spacing={2}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Typography sx={sectionTitleSx}>Bloods (30/4/25)</Typography>
+            <PdfIcons files={pdfMap.bloods} />
+          </Box>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid xs={12}>
               <Typography variant="subtitle2" color="textSecondary">MOCA / MMSE</Typography>
-              <Typography>28/30 <IconButton size="small" sx={{ p: 0 }}>{<PictureAsPdfIcon />}</IconButton></Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Typography>28/30</Typography>
+                <PdfIcons files={pdfMap.mmse} />
+              </Box>
             </Grid>
             <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Hb</Typography><Typography>162</Typography></Grid>
             <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Plts</Typography><Typography>142</Typography></Grid>
@@ -256,10 +271,13 @@ export default function WatsonPatientPage() {
       </Card>
 
       {/* Other Consults Section */}
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>Other Consults</Typography>} action={<PdfIcons files={pdfMap.referral} />} />
+      <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
-          <Grid container spacing={2}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Typography sx={sectionTitleSx}>Other Consults</Typography>
+            <PdfIcons files={pdfMap.referral} />
+          </Box>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Aged Care</Typography><Typography>&nbsp;</Typography></Grid>
             <Grid xs={6}><Typography variant="subtitle2" color="textSecondary">Cardiothoracic Surgeon</Typography><Typography>Dr Bassin</Typography></Grid>
           </Grid>
@@ -267,9 +285,9 @@ export default function WatsonPatientPage() {
       </Card>
 
       {/* MDT Meeting Notes Section */}
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader title={<Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>} />
+      <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
+          <Typography sx={sectionTitleSx}>MDT Meeting Notes</Typography>
           <EditableMDTMeeting />
         </CardContent>
       </Card>
