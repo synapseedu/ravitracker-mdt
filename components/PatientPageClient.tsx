@@ -4,12 +4,12 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
   Button,
 } from '@mui/material'
-import { allPatients, Patient, getAge } from '../data/patients'
+import Grid from '@mui/material/GridLegacy'
+import { allPatients, getAge } from '../data/patients'
 
 export default function PatientPageClient() {
   const { query } = useRouter()
@@ -29,16 +29,16 @@ export default function PatientPageClient() {
   }
 
   const complete = () => {
-    const pres: string[] = JSON.parse(sessionStorage.getItem('presentedPatients')||'[]')
+    const pres: string[] = JSON.parse(sessionStorage.getItem('presentedPatients') || '[]')
     sessionStorage.setItem(
       'presentedPatients',
       JSON.stringify(pres.filter(x => x !== patient.id))
     )
-    const list: Patient[] = JSON.parse(sessionStorage.getItem('patientsList')||'[]')
-    sessionStorage.setItem(
-      'patientsList',
-      JSON.stringify(list.filter(x => x.id !== patient.id))
-    )
+    const done: string[] = JSON.parse(sessionStorage.getItem('completedPatients') || '[]')
+    if (!done.includes(patient.id)) {
+      done.push(patient.id)
+      sessionStorage.setItem('completedPatients', JSON.stringify(done))
+    }
     window.close()
   }
 

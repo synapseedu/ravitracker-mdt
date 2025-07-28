@@ -172,8 +172,7 @@ export default function GaffneyPatientPage() {
     return (
         <PatientLayout title={patient.name}>
                     <Box display="flex" alignItems="center" gap={2} mb={2}>
-                            {patient.name}
-                        </Typography>
+                        <Typography variant="h6">{patient.name}</Typography>
                         <Box
                             sx={{
                                 px: 1.2,
@@ -181,6 +180,7 @@ export default function GaffneyPatientPage() {
                                 bgcolor: '#1976d2',
                                 color: '#fff',
                                 borderRadius: 1,
+                            }}
                         >
                             NSP
                         </Box>
