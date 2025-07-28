@@ -15,21 +15,23 @@ import {
 import { allPatients, Patient, getAge } from '../../data/patients'
 
 export default function Patients() {
-    const [patients, setPatients] = useState<Patient[]>(allPatients)
+    const [patients] = useState<Patient[]>(allPatients)
     const [presentedIds, setPresentedIds] = useState<string[]>([])
+    const [completedIds, setCompletedIds] = useState<string[]>([])
+
     // Load from sessionStorage
     useEffect(() => {
-        const storedList = sessionStorage.getItem('patientsList')
         const storedPresented = sessionStorage.getItem('presentedPatients')
-        if (storedList) setPatients(JSON.parse(storedList))
+        const storedCompleted = sessionStorage.getItem('completedPatients')
         if (storedPresented) setPresentedIds(JSON.parse(storedPresented))
+        if (storedCompleted) setCompletedIds(JSON.parse(storedCompleted))
     }, [])
 
     // Save to sessionStorage
     useEffect(() => {
-        sessionStorage.setItem('patientsList', JSON.stringify(patients))
         sessionStorage.setItem('presentedPatients', JSON.stringify(presentedIds))
-    }, [patients, presentedIds])
+        sessionStorage.setItem('completedPatients', JSON.stringify(completedIds))
+    }, [presentedIds, completedIds])
 
     const togglePresent = (id: string) => {
         if (presentedIds.includes(id)) {
@@ -40,16 +42,18 @@ export default function Patients() {
         }
     }
 
+    const visiblePatients = patients.filter((p) => !completedIds.includes(p.id))
+
     return (
         <Container maxWidth="md" sx={{ py: 4 }}>
             <Typography variant="h4" align="center" gutterBottom>
                 Patients to Present
             </Typography>
             <Box display="flex" flexDirection="column" gap={3}>
-                {patients.length === 0 ? (
+                {visiblePatients.length === 0 ? (
                     <Typography align="center">All patients presented!</Typography>
                 ) : (
-                    patients.map((patient) => {
+                    visiblePatients.map((patient) => {
                         const isPresented = presentedIds.includes(patient.id)
                         return (
                             <Card

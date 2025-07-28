@@ -15,13 +15,10 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 const sectionTitleSx = {
   color: 'primary.main',
-  color: '#1677ff',
   fontWeight: 600,
   fontSize: 18,
   mb: 1,
 };
-
-  color: '#1677ff',
 
 const pdfMap: Record<string, string[]> = {
   ct: [

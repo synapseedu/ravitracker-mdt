@@ -13,21 +13,22 @@ import {
 import { allPatients, Patient, getAge } from '../data/patients'
 
 export default function PatientsClient() {
-  const [patients, setPatients]       = useState<Patient[]>(allPatients)
+  const [patients] = useState<Patient[]>(allPatients)
   const [presentedIds, setPresented]  = useState<string[]>([])
+  const [completedIds, setCompleted]  = useState<string[]>([])
   // hydrate from sessionStorage
   useEffect(() => {
-    const pL = sessionStorage.getItem('patientsList')
     const pP = sessionStorage.getItem('presentedPatients')
-    if (pL) setPatients(JSON.parse(pL))
+    const cP = sessionStorage.getItem('completedPatients')
     if (pP) setPresented(JSON.parse(pP))
+    if (cP) setCompleted(JSON.parse(cP))
   }, [])
 
   // persist on change
   useEffect(() => {
-    sessionStorage.setItem('patientsList', JSON.stringify(patients))
     sessionStorage.setItem('presentedPatients', JSON.stringify(presentedIds))
-  }, [patients, presentedIds])
+    sessionStorage.setItem('completedPatients', JSON.stringify(completedIds))
+  }, [presentedIds, completedIds])
 
   const toggle = (id: string) => {
     if (presentedIds.includes(id)) {
@@ -38,6 +39,8 @@ export default function PatientsClient() {
     }
   }
 
+  const visiblePatients = patients.filter(p => !completedIds.includes(p.id))
+
   return (
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
       <Container maxWidth="md">
@@ -45,10 +48,10 @@ export default function PatientsClient() {
           Patients to Present
         </Typography>
         <Box display="flex" flexDirection="column" gap={3}>
-          {patients.length === 0 ? (
+          {visiblePatients.length === 0 ? (
             <Typography align="center">All patients presented!</Typography>
           ) : (
-            patients.map((p) => {
+            visiblePatients.map((p) => {
               const done = presentedIds.includes(p.id)
               return (
                 <Card
