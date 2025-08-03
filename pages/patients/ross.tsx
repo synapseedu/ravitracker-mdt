@@ -30,7 +30,7 @@ const patient = {
         tte: ['Ross TTE.pdf'],
         angio: ['Ross angio.pdf'],
         ecg: ['Ross ECG.pdf'],
-        ct: ['Ross CT TAVI.pdf'],
+        ct: ['Ross CT TAVI.pdf', 'Ross medtronic.pdf'],
         pelvicUS: ['Ross pelvic ultrasound.pdf'], // NEW
         bloods: ['Ross Bloods.pdf'],
     },
