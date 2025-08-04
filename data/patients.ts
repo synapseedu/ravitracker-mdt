@@ -11,7 +11,7 @@ export interface Patient {
   weightKg?: number;
   heightCm?: number;
   pdfs?: Record<string, string[]>;
-  /** optional badges to flag special cohorts (e.g. MitraClip) */
+  /** optional badges to flag special cohorts (e.g. MitraClip, TAVI) */
   badges?: string[];
 }
 
@@ -127,6 +127,25 @@ export const allPatients: Patient[] = [
       crt: ['Low Don CRT report.pdf'],
       ph: ['Low PH 13.6.25.pdf'],
       renal: ['Low renal and aged care.pdf'],
+    },
+  },
+  {
+    id: 'dunbar',
+    name: 'Thomas Dunbar',
+    dob: '1938-01-23',
+    referring: 'Dr Natasha Huon',
+    consulting: 'Dr Hansen',
+    status: 'private',
+    badges: ['TAVI'],
+    weightKg: 66,
+    heightCm: 169,
+    pdfs: {
+      tte: ['DUNBAR_THOMAS_TTE_24.07.2025_TD230138.pdf'],
+      angio: ['Dunbar Angio.pdf'],
+      ecg: ['Dunbar ecg.pdf'],
+      ct: ['DUNBAR Thomas - CT_TAVI.pdf', 'Dunbar medtronic.pdf'],
+      bloods: ['Dunbar bloods.pdf'],
+      agedCare: ['Dunbar Aged Care.pdf'],
     },
   },
 ];
