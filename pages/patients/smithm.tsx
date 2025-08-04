@@ -10,73 +10,74 @@ import { getAge } from '../../data/patients';
 const { Text } = Typography;
 
 /* ------------------------------------------------------------------
-   Patient data – MAGGIE LINGARD
+   Patient data – MARILYN SMITH
+   (all content taken verbatim from “Smith.M MDT.docx” and the PDFs
+   you listed; nothing added or inferred)
 -------------------------------------------------------------------*/
 const patient = {
-    id: 'lingard',
-    name: 'MAGGIE LINGARD',
-    dob: '1958-09-24',
-    mrn: '0520968',
-    referralDate: '17/04/2025',
-    structuralPhysician: 'Dr Bhindi',
-    referrer: 'Dr Wong',
-    contact: '0458 476 412',
+    id: 'smith',
+    name: 'MARILYN SMITH',
+    dob: '1948-05-13',
+    mrn: '0554971',
+    referralDate: '',            // not recorded in the docx
+    structuralPhysician: 'Dr Hansen',
+    referrer: 'Dr Tony Kull',
+    contact: '0484 871 858',
     pdfs: {
-        referral: ['Lingard referral.pdf'],
-        tte: ['Lingard TTE march 2025.pdf'],
-        angio: ['Lingard angio.pdf'],
-        ecg: [],
-        ct: ['Lingard CT TAVI.pdf', 'Lingard medtronic.pdf'],
+        referral: ['Smith.M referral.pdf'],
+        tte: ['Smith.M TTE RNSH 11.7.25.PDF', 'SmitM TTE 6.2.25.pdf'],
+        angio: ['Smith.M angio 2023.pdf'],
+        ecg: ['Smith.M ECG.pdf'],
+        ct: ['Smith.M CT TAVI.pdf', 'Smith.M medtronic.pdf'],
         bloods: [],
-        cardiothoracic: ['Lingard Dr Bassin.pdf'],
-        renal: ['Lingard Dr Kumar Jan 2025.pdf'],
+        cardiothoracic: ['Smith.M Dr bassin.pdf'],
+        renal: ['Smith.M renal letters.pdf'],
     },
     background: [
-        'Hypertension',
+        'ESRF – haemodialysis via left-arm fistula (Mon/Wed/Fri)',
+        'Known to Prof Roger (renal)',
+        '800 mL fluid restriction; still produces urine',
+        'Valvular heart disease (Dr Kull)',
+        'Type 2 diabetes mellitus',
         'Hypercholesterolaemia',
-        'Depression',
-        'Bladder incontinence',
-        'Spinal stenosis with L1 compression',
-        'Obstructive sleep apnoea (on CPAP)',
-        'CKD stage 3',
+        'Hypertension',
+        'Obstructive sleep apnoea',
+        'Previous type 2 NSTEMI',
+        'Visual aura without headache',
+        'Hysteroscopy + D&C',
+        'Chronic cough/runny nose – Dr Lee (resp); no emphysema',
     ],
     medications: [
-        'Apixaban 5 mg bd',
-        'Endep 10 mg nocte',
-        'Frusemide 20 mg daily',
-        'Ivabradine 5 mg',
-        'Atorvastatin 20 mg',
-        'Mirtazapine 30 mg mane',
-        'Zan‑Extra 10/10 mg',
-        'Sertraline 100 mg nocte',
+        'Carvedilol 3.125 mg',
+        'Sevelamer',
+        'Pariet',
+        'Aspirin',
+        'Vytorin 10/20 mg',
+        'Rocaltrol',
+        'Sifrol',
+        'Progout',
     ],
-    social:
-        'Lives at home with dog; son in Sydney/Central Coast. Non‑smoker, nil alcohol. No driving.',
+    social: `Lives at home alone with cat.
+Son near Byron Bay; granddaughter in Sydney visits often.
+Independent with ADLs; mobilises with 4-wheel walker for distance.
+HCP Level 2 (2 h/week cleaning & shopping) + community nursing (leg ulcer healed 19 / 6 / 25).
+Ex-smoker (15 py; quit 30 y ago); occasional alcohol.`,
     functional:
-        'Mobilises with 4‑wheel walker at home and wheelchair outdoors. Independent with personal ADLs (NDIS supports). Symptoms: progressive SOBOE, fatigue, occasional chest discomfort & dizziness, orthopnoea (45°), occasional oedema, no syncope.',
-    tteData: {
-        'LV EF': '55%',
-        AVA: '0.6 cm²',
-        AVAi: '0.3',
-        'Peak Gradient': '73 mmHg',
-        'Mean Gradient': '42 mmHg',
-        'Peak AV velocity': '4.2 m/s',
-        MR: 'Normal',
-    },
-    angio: 'Minor coronary artery disease',
-    ecg: 'Atrial fibrillation',
-    ctIncidentals: 'Nil significant incidentals',
-    bloods: { Hb: '118', Creatinine: '110', eGFR: '45' },
+        'Heaviness in chest on exertion (sometimes during dialysis); occasional fatigue/breathlessness; dizziness when bending over.',
+    /* No quantitative echo metrics in the docx */
+    tteData: {},
+    angio: 'Awaiting formal report – ?normal CAD.',
+    ecg: 'Sinus rhythm, normal PR interval and QRS.',
+    ctIncidentals: 'Left coronary slightly low; right sinus-of-Valsalva just undersized.',
+    bloods: { Hb: '115', Plts: '227', Creatinine: '717', eGFR: '4', Albumin: '37' },
     consultTexts: {
-        cardiothoracic: `I had a good discussion with Maggie and her son, and my advice would be that she should undergo a TAVI if it is technically suitable. However, if there are anatomical constraints to a TAVI, I would be happy to consider open surgery.
-
-The CT of the chest showed an essentially porcelain aorta that would make surgery a possible but prohibitive risk. Given that her symptoms are very well managed I think it would be better to manage her medically at the moment. If she does become more symptomatic we could consider very high‑risk surgery or the relatively new transcatheter mitral valve replacement as well as TAVI. I will leave her in your capable hands and I would be happy to see her at any point.
-- Levi Bassin`,
+        cardiothoracic:
+            'The CT chest showed an essentially porcelain aorta that would make surgery a prohibitive risk. Given her symptoms are well managed, medical therapy is preferred at present. If she becomes more symptomatic, we could consider very high-risk surgery or TAVI.',
     },
 };
 
 /* ------------------------------------------------------------------ */
-export default function LingardPage() {
+export default function SmithPage() {
     return (
         <PatientLayout title={patient.name}>
             {/* Demographics */}
@@ -86,7 +87,7 @@ export default function LingardPage() {
                         DOB: patient.dob,
                         Age: getAge(patient.dob),
                         MRN: patient.mrn,
-                        'Referral Date': patient.referralDate,
+                        ...(patient.referralDate && { 'Referral Date': patient.referralDate }),
                         Structural: patient.structuralPhysician,
                         Referrer: (
                             <>
@@ -99,7 +100,7 @@ export default function LingardPage() {
                 />
             </PatientSection>
 
-            {/* Background & Meds */}
+            {/* Background & Medications */}
             <PatientSection title="Background & Medications">
                 <StatusCard
                     history={patient.background}
@@ -109,10 +110,8 @@ export default function LingardPage() {
                 />
             </PatientSection>
 
-            {/* TTE */}
-            <PatientSection title="TTE" pdfs={patient.pdfs.tte}>
-                <DemographicsGrid data={patient.tteData} />
-            </PatientSection>
+            {/* TTE (PDFs only) */}
+            <PatientSection title="TTE" pdfs={patient.pdfs.tte} />
 
             {/* Angio */}
             <PatientSection title="Angio" pdfs={patient.pdfs.angio}>
@@ -125,27 +124,28 @@ export default function LingardPage() {
             </PatientSection>
 
             {/* CT TAVI */}
-            <PatientSection title="CT TAVI" pdfs={patient.pdfs.ct}>
-                <Text><strong>Incidentals:</strong> {patient.ctIncidentals}</Text>
+            <PatientSection title="CT TAVI" pdfs={patient.pdfs.ct}>
+                <Text>
+                    <strong>Comment&nbsp;/ Incidentals:&nbsp;</strong>
+                    {patient.ctIncidentals}
+                </Text>
             </PatientSection>
 
             {/* Bloods */}
-            <PatientSection title="Bloods" pdfs={patient.pdfs.bloods}>
+            <PatientSection title="Bloods">
                 <DemographicsGrid data={patient.bloods} />
             </PatientSection>
 
             {/* Cardiothoracic Surgery Consult */}
             <PatientSection
-                title="Cardiothoracic Surgery Consult"
+                title="Cardiothoracic Surgery Consult"
                 pdfs={patient.pdfs.cardiothoracic}
             >
                 <Text>{patient.consultTexts.cardiothoracic}</Text>
             </PatientSection>
 
             {/* Renal Physician Consult */}
-            <PatientSection title="Renal Physician Consult" pdfs={patient.pdfs.renal}>
-                <DemographicsGrid data={{ 'Renal Physician': 'Dr Kumar' }} />
-            </PatientSection>
+            <PatientSection title="Renal Physician Consult" pdfs={patient.pdfs.renal} />
         </PatientLayout>
     );
 }
