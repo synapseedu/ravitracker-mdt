@@ -49,7 +49,14 @@ export default function Patients() {
                                     >
                                         <Typography.Title level={5} style={{ margin: 0 }}>
                                             {patient.name}{' '}
-                                            {patient.status === 'private' && <Tag color="blue">NSP</Tag>}
+                                            {patient.status === 'private' && (
+                                                <Tag color="blue">NSP</Tag>
+                                            )}
+                                            {patient.badges?.map((badge) => (
+                                                <Tag key={badge} color="purple">
+                                                    {badge}
+                                                </Tag>
+                                            ))}
                                         </Typography.Title>
 
                                         <Button

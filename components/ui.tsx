@@ -159,11 +159,11 @@ export function TextField({ multiline, minRows, maxRows, fullWidth, sx, style, .
       <Input.TextArea
         autoSize={{ minRows, maxRows }}
         style={{ width: fullWidth ? '100%' : undefined, ...(sx || {}), ...(style || {}) }}
-        {...(props as any)}
+        {...props}
       />
     );
   }
-  return <Input style={{ width: fullWidth ? '100%' : undefined, ...(sx || {}), ...(style || {}) }} {...(props as any)} />;
+  return <Input style={{ width: fullWidth ? '100%' : undefined, ...(sx || {}), ...(style || {}) }} {...props} />;
 }
 
 export const Divider = AntDivider;
