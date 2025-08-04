@@ -33,6 +33,7 @@ const patient = {
         cardiothoracic: ['Smith.M Dr bassin.pdf'],
         renal: ['Smith.M renal letters.pdf'],
     },
+
     /* Past medical history -------------------------------------------------- */
     background: [
         'ESRF – haemodialysis via left-arm fistula (Mon/Wed/Fri; Prof Roger)',
@@ -46,6 +47,7 @@ const patient = {
         'Hysteroscopy + D&C',
         'Chronic cough/runny nose – Dr Lee (resp); told not emphysema',
     ],
+
     /* Medications ----------------------------------------------------------- */
     medications: [
         'Carvedilol 3.125 mg',
@@ -57,14 +59,16 @@ const patient = {
         'Sifrol',
         'Progout',
     ],
+
     /* Social & functional --------------------------------------------------- */
-    social: `Lives alone with cat.  Son near Byron Bay; granddaughter in Sydney (visits often).
+    social: `Lives alone with cat. Son near Byron Bay; granddaughter in Sydney visits often.
 Independent with ADLs; mobilises with 4-wheel walker for distance.
 HCP Level 2 (2 h/week cleaning & shopping); community nurses (leg ulcer healed 19 / 6 / 25).
-Ex-smoker (15 py; quit 30 y ago).  Occasional alcohol.`,
+Ex-smoker (15 pack-years; quit 30 y ago). Occasional alcohol.`,
     functional:
-        'Heaviness in chest on exertion (sometimes during dialysis); occasional fatigue/breathlessness; dizziness when bending over.',
-    /* TTE 11 / 7 / 25 ------------------------------------------------------ */
+        'Heaviness in chest on exertion (sometimes during dialysis); occasional fatigue/breathlessness; dizziness when bending over. MOCA 30/30.',
+
+    /* TTE 11 / 7 / 25 ------------------------------------------------------- */
     tteData: {
         'LV EF': '55–60 %',
         AVA: '0.9 cm²',
@@ -76,11 +80,19 @@ Ex-smoker (15 py; quit 30 y ago).  Occasional alcohol.`,
         AR: 'Moderate',
         MR: 'Mild',
     },
+
     /* Other investigations -------------------------------------------------- */
     angio: 'Minor coronary artery disease',
     ecg: 'Sinus rhythm; normal PR interval and QRS',
     ctIncidentals: 'Left coronary slightly low; right sinus-of-Valsalva undersized',
-    bloods: { Hb: '115 (2 / 7 / 25)', MOCA: '30 / 30' },
+    bloods: {
+        Hb: '115',
+        Plts: '227',
+        Creatinine: '717',
+        eGFR: '4',
+        Albumin: '37',
+    },
+
     consultTexts: {
         cardiothoracic: `CT chest shows an essentially porcelain aorta → prohibitive surgical risk.
 Symptoms presently well managed; continue medical therapy.
@@ -161,7 +173,7 @@ export default function SmithPage() {
                 <Text>{patient.consultTexts.cardiothoracic}</Text>
             </PatientSection>
 
-            {/* Renal Physician letters */}
+            {/* Renal Physician Letters */}
             <PatientSection title="Renal Physician Letters" pdfs={patient.pdfs.renal} />
         </PatientLayout>
     );
