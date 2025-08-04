@@ -21,7 +21,7 @@ const patient = {
     structuralPhysician: 'Dr Bhindi',
     referrer: 'Prof Andrew Boyle',
     contact:
-        'St Ives Aged Care Facility ☎ 4963 2894; Daughter Barbara 0411 146 464, barbara.meaney@gmail.com',
+        'St Ives Aged Care Facility  4963 2894; Daughter Barbara 0411 146 464, barbara.meaney@gmail.com',
     pdfs: {
         referral: [
             'MOELLE ELEONORA referral.pdf',
