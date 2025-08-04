@@ -155,11 +155,17 @@ export function IconButton(props: React.ComponentProps<typeof AntButton>) {
 export const Tooltip = AntTooltip;
 export function TextField({ multiline, minRows, maxRows, fullWidth, sx, style, ...props }: TextFieldProps) {
   if (multiline) {
+    // Input.TextArea expects a different prop type than Input.
+    // Remove unsupported props (e.g. `prefix`) before spreading the rest
+    // to avoid type incompatibilities during compilation.
+    const { prefix: _prefix, ...rest } =
+      (props as React.ComponentProps<typeof Input.TextArea> & { prefix?: React.ReactNode });
+    void _prefix;
     return (
       <Input.TextArea
         autoSize={{ minRows, maxRows }}
         style={{ width: fullWidth ? '100%' : undefined, ...(sx || {}), ...(style || {}) }}
-        {...props}
+        {...rest}
       />
     );
   }
