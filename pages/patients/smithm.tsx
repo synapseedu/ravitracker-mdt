@@ -11,18 +11,18 @@ const { Text } = Typography;
 
 /* ------------------------------------------------------------------
    Patient data – MARILYN SMITH
-   (all content taken verbatim from “Smith.M MDT.docx” and the PDFs
-   you listed; nothing added or inferred)
 -------------------------------------------------------------------*/
 const patient = {
     id: 'smith',
     name: 'MARILYN SMITH',
     dob: '1948-05-13',
     mrn: '0554971',
-    referralDate: '',            // not recorded in the docx
+    referralDate: '22/05/2025',
     structuralPhysician: 'Dr Hansen',
     referrer: 'Dr Tony Kull',
     contact: '0484 871 858',
+    weight: '75 kg',
+    height: '154 cm',
     pdfs: {
         referral: ['Smith.M referral.pdf'],
         tte: ['Smith.M TTE RNSH 11.7.25.PDF', 'SmitM TTE 6.2.25.pdf'],
@@ -33,10 +33,9 @@ const patient = {
         cardiothoracic: ['Smith.M Dr bassin.pdf'],
         renal: ['Smith.M renal letters.pdf'],
     },
+    /* Past medical history -------------------------------------------------- */
     background: [
-        'ESRF – haemodialysis via left-arm fistula (Mon/Wed/Fri)',
-        'Known to Prof Roger (renal)',
-        '800 mL fluid restriction; still produces urine',
+        'ESRF – haemodialysis via left-arm fistula (Mon/Wed/Fri; Prof Roger)',
         'Valvular heart disease (Dr Kull)',
         'Type 2 diabetes mellitus',
         'Hypercholesterolaemia',
@@ -45,8 +44,9 @@ const patient = {
         'Previous type 2 NSTEMI',
         'Visual aura without headache',
         'Hysteroscopy + D&C',
-        'Chronic cough/runny nose – Dr Lee (resp); no emphysema',
+        'Chronic cough/runny nose – Dr Lee (resp); told not emphysema',
     ],
+    /* Medications ----------------------------------------------------------- */
     medications: [
         'Carvedilol 3.125 mg',
         'Sevelamer',
@@ -57,22 +57,35 @@ const patient = {
         'Sifrol',
         'Progout',
     ],
-    social: `Lives at home alone with cat.
-Son near Byron Bay; granddaughter in Sydney visits often.
+    /* Social & functional --------------------------------------------------- */
+    social: `Lives alone with cat.  Son near Byron Bay; granddaughter in Sydney (visits often).
 Independent with ADLs; mobilises with 4-wheel walker for distance.
-HCP Level 2 (2 h/week cleaning & shopping) + community nursing (leg ulcer healed 19 / 6 / 25).
-Ex-smoker (15 py; quit 30 y ago); occasional alcohol.`,
+HCP Level 2 (2 h/week cleaning & shopping); community nurses (leg ulcer healed 19 / 6 / 25).
+Ex-smoker (15 py; quit 30 y ago).  Occasional alcohol.`,
     functional:
         'Heaviness in chest on exertion (sometimes during dialysis); occasional fatigue/breathlessness; dizziness when bending over.',
-    /* No quantitative echo metrics in the docx */
-    tteData: {},
-    angio: 'Awaiting formal report – ?normal CAD.',
-    ecg: 'Sinus rhythm, normal PR interval and QRS.',
-    ctIncidentals: 'Left coronary slightly low; right sinus-of-Valsalva just undersized.',
-    bloods: { Hb: '115', Plts: '227', Creatinine: '717', eGFR: '4', Albumin: '37' },
+    /* TTE 11 / 7 / 25 ------------------------------------------------------ */
+    tteData: {
+        'LV EF': '55–60 %',
+        AVA: '0.9 cm²',
+        AVAi: '0.5',
+        'Peak Gradient': '60 mmHg',
+        'Mean Gradient': '33 mmHg',
+        'Peak AV velocity': '3.9 m/s',
+        SVI: '51.4',
+        AR: 'Moderate',
+        MR: 'Mild',
+    },
+    /* Other investigations -------------------------------------------------- */
+    angio: 'Minor coronary artery disease',
+    ecg: 'Sinus rhythm; normal PR interval and QRS',
+    ctIncidentals: 'Left coronary slightly low; right sinus-of-Valsalva undersized',
+    bloods: { Hb: '115 (2 / 7 / 25)', MOCA: '30 / 30' },
     consultTexts: {
-        cardiothoracic:
-            'The CT chest showed an essentially porcelain aorta that would make surgery a prohibitive risk. Given her symptoms are well managed, medical therapy is preferred at present. If she becomes more symptomatic, we could consider very high-risk surgery or TAVI.',
+        cardiothoracic: `CT chest shows an essentially porcelain aorta → prohibitive surgical risk.
+Symptoms presently well managed; continue medical therapy.
+If symptoms progress, consider very high-risk surgery or TAVI.
+– Dr Levi Bassin (2023)`,
     },
 };
 
@@ -87,7 +100,7 @@ export default function SmithPage() {
                         DOB: patient.dob,
                         Age: getAge(patient.dob),
                         MRN: patient.mrn,
-                        ...(patient.referralDate && { 'Referral Date': patient.referralDate }),
+                        'Referral Date': patient.referralDate,
                         Structural: patient.structuralPhysician,
                         Referrer: (
                             <>
@@ -96,6 +109,8 @@ export default function SmithPage() {
                             </>
                         ),
                         Contact: patient.contact,
+                        Weight: patient.weight,
+                        Height: patient.height,
                     }}
                 />
             </PatientSection>
@@ -110,8 +125,10 @@ export default function SmithPage() {
                 />
             </PatientSection>
 
-            {/* TTE (PDFs only) */}
-            <PatientSection title="TTE" pdfs={patient.pdfs.tte} />
+            {/* TTE */}
+            <PatientSection title="TTE" pdfs={patient.pdfs.tte}>
+                <DemographicsGrid data={patient.tteData} />
+            </PatientSection>
 
             {/* Angio */}
             <PatientSection title="Angio" pdfs={patient.pdfs.angio}>
@@ -126,7 +143,7 @@ export default function SmithPage() {
             {/* CT TAVI */}
             <PatientSection title="CT TAVI" pdfs={patient.pdfs.ct}>
                 <Text>
-                    <strong>Comment&nbsp;/ Incidentals:&nbsp;</strong>
+                    <strong>Incidentals:&nbsp;</strong>
                     {patient.ctIncidentals}
                 </Text>
             </PatientSection>
@@ -144,8 +161,8 @@ export default function SmithPage() {
                 <Text>{patient.consultTexts.cardiothoracic}</Text>
             </PatientSection>
 
-            {/* Renal Physician Consult */}
-            <PatientSection title="Renal Physician Consult" pdfs={patient.pdfs.renal} />
+            {/* Renal Physician letters */}
+            <PatientSection title="Renal Physician Letters" pdfs={patient.pdfs.renal} />
         </PatientLayout>
     );
 }
