@@ -11,7 +11,7 @@ export interface Patient {
   weightKg?: number;
   heightCm?: number;
   pdfs?: Record<string, string[]>;
-  /** optional badges to show special flags (e.g. MitraClip) */
+  /** optional badges to flag special cohorts (e.g. MitraClip) */
   badges?: string[];
 }
 
@@ -82,27 +82,11 @@ export const allPatients: Patient[] = [
 
   /* ─────────── Private patients (NSP list) ─────────── */
   { id: 'mcguire', name: 'Stephen McGuire', dob: '1953-07-22', referring: 'Dr Gemma Figtree', consulting: 'Dr Bhindi', status: 'private' },
-  {
-    id: 'nas',
-    name: 'Arnold Nas',
-    dob: '1947-07-30',
-    referring: 'Dr Clyne Fernandes',
-    consulting: 'Dr Bhindi',
-    status: 'private',
-    badges: ['TriClip'],
-  },
+  { id: 'nas', name: 'Arnold Nas', dob: '1947-07-30', referring: 'Dr Clyne Fernandes', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'newlands', name: 'Patricia Newlands', dob: '1940-11-08', referring: 'Dr Chrishan Nalliah', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'shepherd', name: 'Graham Shepherd', dob: '1942-09-15', referring: 'Dr Tony Kull', consulting: 'Dr Hansen', status: 'private' },
   { id: 'russ', name: 'Gary Russ', dob: '1946-07-10', referring: 'Dr Helestrand', consulting: 'Dr Bhindi', status: 'private' },
-  {
-    id: 'vandevelde',
-    name: 'Janice Van de Velde',
-    dob: '1936-06-01',
-    referring: 'Dr Choong',
-    consulting: 'Dr Bhindi',
-    status: 'private',
-    badges: ['TriClip'],
-  },
+  { id: 'vandevelde', name: 'Janice Van de Velde', dob: '1936-06-01', referring: 'Dr Choong', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'gaffney', name: 'Marian Gaffney', dob: '1943-07-18', referring: 'Dr Usaid Allahwala', consulting: '', status: 'private' },
   { id: 'mooney', name: 'Grahame Mooney', dob: '1942-12-31', referring: 'Dr James Rogers', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'sorentino', name: 'Carlos Sorentino', dob: '1945-09-26', referring: 'Dr Kozor', consulting: 'Dr Hansen', status: 'private' },
@@ -115,12 +99,34 @@ export const allPatients: Patient[] = [
     consulting: 'Dr Bhindi',
     status: 'private',
     badges: ['MitraClip'],
+    weightKg: 75,
+    heightCm: 154,
     pdfs: {
       referral: ['MOELLE ELEONORA referral.pdf', 'Moelle Eleonora Prof Boyle 2024.pdf'],
       tte: ['Moelle echo.pdf', 'MOELLE TOE Report.pdf'],
       angio: ['Moelle ANgio.pdf'],
       ecg: ['Moelle ecg.pdf'],
       agedCare: ['Moelle aged care pt 1.pdf', 'Moelle Aged care pt2.pdf'],
+    },
+  },
+  {
+    id: 'low',
+    name: 'Donald Low',
+    dob: '1944-11-26',
+    referring: 'Dr Shubhada Kharwadkar',
+    consulting: 'Dr Hansen',
+    status: 'private',
+    badges: ['MitraClip'],
+    weightKg: 78,
+    heightCm: 170,
+    pdfs: {
+      referral: ['Low Dr Brereton 26111944.pdf'],
+      tte: ['Low Royal Northshore Hospital TOE review for MitraClip.pdf', 'Low_Donald_TOE report.pdf'],
+      angio: ['Low Angio.pdf'],
+      ecg: ['Low ECG.pdf'],
+      crt: ['Low Don CRT report.pdf'],
+      ph: ['Low PH 13.6.25.pdf'],
+      renal: ['Low renal and aged care.pdf'],
     },
   },
 ];
