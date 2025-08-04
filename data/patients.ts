@@ -11,6 +11,8 @@ export interface Patient {
   weightKg?: number;
   heightCm?: number;
   pdfs?: Record<string, string[]>;
+  /** optional badges to show special flags (e.g. MitraClip) */
+  badges?: string[];
 }
 
 export const allPatients: Patient[] = [
@@ -59,7 +61,7 @@ export const allPatients: Patient[] = [
     dob: '1937-12-22',
     referring: 'Dr Rao',
     consulting: 'Dr Bhindi',
-    status: 'public',        // public-MDT list
+    status: 'public',
     pdfs: {
       tte: ['Edwards TTE.pdf'],
       toe: ['Edwards TOE.pdf'],
@@ -78,7 +80,7 @@ export const allPatients: Patient[] = [
     status: 'public',
   },
 
-  /* ─────────── Private patients (NSP list – unchanged) ─────────── */
+  /* ─────────── Private patients (NSP list) ─────────── */
   { id: 'mcguire', name: 'Stephen McGuire', dob: '1953-07-22', referring: 'Dr Gemma Figtree', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'nas', name: 'Arnold Nas', dob: '1947-07-30', referring: 'Dr Clyne Fernandes', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'newlands', name: 'Patricia Newlands', dob: '1940-11-08', referring: 'Dr Chrishan Nalliah', consulting: 'Dr Bhindi', status: 'private' },
@@ -89,6 +91,22 @@ export const allPatients: Patient[] = [
   { id: 'mooney', name: 'Grahame Mooney', dob: '1942-12-31', referring: 'Dr James Rogers', consulting: 'Dr Bhindi', status: 'private' },
   { id: 'sorentino', name: 'Carlos Sorentino', dob: '1945-09-26', referring: 'Dr Kozor', consulting: 'Dr Hansen', status: 'private' },
   { id: 'austin', name: 'Gaetane Austin', dob: '1941-11-18', referring: 'TBC', consulting: 'Dr Hansen', status: 'private' },
+  {
+    id: 'moelle',
+    name: 'Eleonora (Nora) Moelle',
+    dob: '1933-02-21',
+    referring: 'Prof Andrew Boyle',
+    consulting: 'Dr Bhindi',
+    status: 'private',
+    badges: ['MitraClip'],
+    pdfs: {
+      referral: ['MOELLE ELEONORA referral.pdf', 'Moelle Eleonora Prof Boyle 2024.pdf'],
+      tte: ['Moelle echo.pdf', 'MOELLE TOE Report.pdf'],
+      angio: ['Moelle ANgio.pdf'],
+      ecg: ['Moelle ecg.pdf'],
+      agedCare: ['Moelle aged care pt 1.pdf', 'Moelle Aged care pt2.pdf'],
+    },
+  },
 ];
 
 export function getAge(dob: string): number {
