@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { List, Card, Button, Tag, Typography, Checkbox, Space } from 'antd'
+import type { CheckboxChangeEvent } from 'antd/es/checkbox'
 import { allPatients, Patient, getAge } from '../../data/patients'
 
 export default function Patients() {
@@ -30,7 +31,9 @@ export default function Patients() {
         return true
     })
 
-    const handleFilterChange = (name: keyof typeof filters) => (e: any) => {
+    const handleFilterChange = (name: keyof typeof filters) => (
+        e: CheckboxChangeEvent,
+    ) => {
         setFilters((prev) => ({ ...prev, [name]: e.target.checked }))
     }
 
