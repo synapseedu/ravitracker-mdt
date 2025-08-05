@@ -5,8 +5,47 @@ import StatusCard from './StatusCard';
 import PatientSection from './PatientSection';
 import PdfIcons from './PdfIcons';
 import { getAge } from '../../data/patients';
-import { PatientRecord } from '../../data/patientRecords';
 import React from 'react';
+
+interface PatientRecord {
+  id: string;
+  name: string;
+  dob: string;
+  mrn?: string;
+  referralDate?: string;
+  structuralPhysician: string;
+  referrer: string;
+  contact?: string;
+  email?: string;
+  weight?: string;
+  weightKg?: number;
+  height?: string;
+  heightCm?: number;
+  pdfs?: Record<string, string[]>;
+  history?: string[];
+  background?: string[];
+  medications?: string[];
+  social?: string;
+  functional?: string;
+  tteSummary?: string[];
+  tteData?: Record<string, string>;
+  toeSummary?: string[];
+  toeData?: Record<string, string>;
+  rhc?: React.ReactNode;
+  angioSummary?: string;
+  angio?: string;
+  ecgSummary?: string;
+  ecg?: string;
+  ctIncidentals?: string;
+  respiratorySummary?: string;
+  ctsSummary?: string;
+  bloods?: Record<string, string | number | null>;
+  agedCare?: string;
+  agedCareNote?: string;
+  moca?: string;
+  frailtyScore?: string;
+  consultTexts?: Record<string, string>;
+}
 
 const { Text } = Typography;
 
@@ -40,10 +79,10 @@ export default function PatientPage({ patient }: { patient: PatientRecord }) {
       {(patient.history || patient.background) && (
         <PatientSection title="Background">
           <StatusCard
-            history={patient.history ?? patient.background}
-            medications={patient.medications}
-            social={patient.social}
-            functional={patient.functional}
+            history={(patient.history ?? patient.background)!}
+            medications={patient.medications!}
+            social={patient.social!}
+            functional={patient.functional!}
           />
         </PatientSection>
       )}
@@ -62,7 +101,7 @@ export default function PatientPage({ patient }: { patient: PatientRecord }) {
         <PatientSection title="TOE" pdfs={patient.pdfs?.toe}>
           {patient.toeSummary &&
             patient.toeSummary.map((line: string) => (
-              <Text key={line} display="block">
+              <Text key={line} style={{ display: 'block' }}>
                 {line}
               </Text>
             ))}
