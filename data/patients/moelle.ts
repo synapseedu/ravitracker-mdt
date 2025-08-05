@@ -1,37 +1,67 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "moelle",
-  name: "Eleonora (Nora) Moelle",
-  dob: "1933-02-21",
-  referring: "Prof Andrew Boyle",
-  consulting: "Dr Bhindi",
-  status: "private",
-  badges: [
-    "MitraClip"
-  ],
-  weightKg: 75,
-  heightCm: 154,
+  id: 'moelle',
+  name: 'Eleonora (Nora) Moelle',
+  dob: '1933-02-21',
+  mrn: 'MO0005432',
+  referralDate: '',
+  referring: 'Prof Andrew Boyle',
+  consulting: 'Dr Bhindi',
+  contact: '—',
+  weight: '75 kg',
+  height: '154 cm',
+  status: 'private',
+  badges: ['MitraClip'],
   pdfs: {
-    referral: [
-      "MOELLE ELEONORA referral.pdf",
-      "Moelle Eleonora Prof Boyle 2024.pdf"
-    ],
-    tte: [
-      "Moelle echo.pdf",
-      "MOELLE TOE Report.pdf"
-    ],
-    angio: [
-      "Moelle ANgio.pdf"
-    ],
-    ecg: [
-      "Moelle ecg.pdf"
-    ],
-    agedCare: [
-      "Moelle aged care pt 1.pdf",
-      "Moelle Aged care pt2.pdf"
-    ]
-  }
+    referral: ['MOELLE ELEONORA referral.pdf', 'Moelle Eleonora Prof Boyle 2024.pdf'],
+    tte: ['Moelle echo.pdf', 'MOELLE TOE Report.pdf'],
+    angio: ['Moelle ANgio.pdf'],
+    ecg: ['Moelle ecg.pdf'],
+    agedCare: ['Moelle aged care pt 1.pdf', 'Moelle Aged care pt2.pdf'],
+  },
+  background: [
+    'Severe degenerative mitral regurgitation',
+    'Heart failure with preserved ejection fraction',
+    'Hypertension',
+    'Dyslipidaemia',
+    'Osteoarthritis',
+  ],
+  medications: [
+    'Apixaban 5 mg bd',
+    'Bisoprolol 5 mg mane',
+    'Frusemide 40 mg mane',
+    'Atorvastatin 20 mg nocte',
+  ],
+  social: 'Widowed; lives with daughter; non-smoker.',
+  functional: 'NYHA III — breathless after 100 m; sleeps with two pillows.',
+  tteData: {
+    'LV EF': '55 %',
+    MR: 'Severe',
+    TR: 'Mild',
+    'LA Volume': '100 ml',
+    'Pulmonary Pressure': '45 mmHg',
+    Comments: 'Flail posterior leaflet causing severe MR.',
+  },
+  toeData: {
+    'MR Etiology': 'Degenerative posterior leaflet',
+    EROA: '0.5 cm²',
+    'Regurgitant Volume': '55 ml',
+    Comments: 'Adequate clip landing zone.',
+  },
+  angio: 'Non-obstructive coronaries; mild pulmonary hypertension.',
+  ecg: 'Atrial fibrillation with controlled rate.',
+  ctIncidentals: 'No significant incidental findings.',
+  bloods: {
+    MOCA: '23/30',
+    Frailty: '4/10',
+    Hb: '120',
+    Plts: '240',
+    INR: '1.3',
+    Cre: '85',
+    eGFR: '61',
+  },
+  agedCare: 'Moderate cognitive impairment but supportive family.',
 };
 
 export default patient;

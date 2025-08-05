@@ -1,41 +1,66 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "low",
-  name: "Donald Low",
-  dob: "1944-11-26",
-  referring: "Dr Shubhada Kharwadkar",
-  consulting: "Dr Hansen",
-  status: "private",
-  badges: [
-    "MitraClip"
-  ],
-  weightKg: 78,
-  heightCm: 170,
+  id: 'low',
+  name: 'Donald Low',
+  dob: '1944-11-26',
+  mrn: 'ML0004576',
+  referralDate: '',
+  referring: 'Dr Shubhada Kharwadkar',
+  consulting: 'Dr Hansen',
+  contact: '—',
+  weight: '78 kg',
+  height: '170 cm',
+  status: 'private',
+  badges: ['MitraClip'],
   pdfs: {
-    referral: [
-      "Low Dr Brereton 26111944.pdf"
-    ],
+    referral: ['Low Dr Brereton 26111944.pdf'],
     tte: [
-      "Low Royal Northshore Hospital TOE review for MitraClip.pdf",
-      "Low_Donald_TOE report.pdf"
+      'Low Royal Northshore Hospital TOE review for MitraClip.pdf',
+      'Low_Donald_TOE report.pdf',
     ],
-    angio: [
-      "Low Angio.pdf"
-    ],
-    ecg: [
-      "Low ECG.pdf"
-    ],
-    crt: [
-      "Low Don CRT report.pdf"
-    ],
-    ph: [
-      "Low PH 13.6.25.pdf"
-    ],
-    renal: [
-      "Low renal and aged care.pdf"
-    ]
-  }
+    angio: ['Low Angio.pdf'],
+    ecg: ['Low ECG.pdf'],
+    crt: ['Low Don CRT report.pdf'],
+    ph: ['Low PH 13.6.25.pdf'],
+    renal: ['Low renal and aged care.pdf'],
+  },
+  background: [
+    'Severe mitral regurgitation',
+    'Ischaemic cardiomyopathy',
+    'Permanent atrial fibrillation',
+    'Hypertension',
+    'Type 2 diabetes mellitus',
+  ],
+  medications: [
+    'Apixaban 5 mg bd',
+    'Perindopril 5 mg mane',
+    'Metoprolol 50 mg bd',
+    'Atorvastatin 40 mg nocte',
+    'Metformin 1 g bd',
+  ],
+  social: 'Retired engineer living with spouse; ex-smoker, quit 1990.',
+  functional: 'NYHA III — dyspnoea walking 100 m; uses single-point stick.',
+  tteData: {
+    'LV EF': '40 %',
+    MR: 'Severe',
+    TR: 'Moderate',
+    'Pulmonary Pressure': '50 mmHg',
+    Comments: 'Severe functional MR with dilated LV.',
+  },
+  angio: 'Non-obstructive coronaries; moderate pulmonary hypertension.',
+  ecg: 'Atrial fibrillation, rate 70 bpm.',
+  ctIncidentals: 'No significant incidental findings.',
+  bloods: {
+    MOCA: '25/30',
+    Frailty: '3/10',
+    Hb: '118',
+    Plts: '210',
+    INR: '1.2',
+    Cre: '110',
+    eGFR: '52',
+  },
+  agedCare: 'MOCA 25/30 – mild cognitive impairment, suitable for MitraClip.',
 };
 
 export default patient;

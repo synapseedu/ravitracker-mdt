@@ -1,15 +1,69 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "austin",
-  name: "Gaetane Austin",
-  dob: "1941-11-18",
-  referring: "TBC",
-  consulting: "Dr Hansen",
-  status: "private",
-  badges: [
-    "TAVI"
-  ]
+  id: 'austin',
+  name: 'Gaetane Austin',
+  dob: '1941-11-18',
+  mrn: 'ME00457693',
+  referralDate: '',
+  consulting: 'Dr Peter Hansen',
+  referring: 'Dr Peter Vale',
+  contact: '—',
+  weight: '90 kg',
+  height: '161 cm',
+  status: 'private',
+  badges: ['TAVI'],
+  pdfs: {
+    tte: ['TTE AUSTIN_GAETANE_18111941_13.02.2025_GA181141.pdf'],
+    angio: ['Austin Angio.pdf'],
+    ecg: ['Austin ECG 02.25.pdf'],
+    ct: ['GA 18.11.41.pdf'],
+    agedCare: ['Austin Aged Care.pdf'],
+    moca: ['Austin MOCA.pdf'],
+  },
+  background: [
+    'Severe aortic stenosis',
+    'Stent to LAD (25 Feb 2025)',
+    'Hypertension',
+    'Dyslipidaemia',
+    'Chronic atrial fibrillation (failed cardioversion 2012)',
+    '↑ BMI',
+    'Severe shoulder osteoarthritis; right foot arthritis (surg 2014)',
+    'Cervical laminectomy 2012',
+    'Haemochromatosis carrier (mild ↑ iron stores)',
+    'Left reverse total-shoulder replacement 2019',
+  ],
+  medications: [
+    'Dabigatran 110 mg bd',
+    'Irbesartan 300/25 mg mane',
+    'Irbesartan 150 mg nocte',
+    'Metoprolol 50 mg bd',
+  ],
+  social: 'Lives in Fiji, helps with family business; daughters deeply involved in care; has home carers.',
+  functional: 'NYHA III — SOB on mild exertion; walks ≈ 500 m but limited by breath/hip pain.',
+  tteData: {
+    'LV EF': '65 %',
+    AVA: '0.6 cm²',
+    'Peak Gradient': '97 mmHg',
+    'Mean Gradient': '63 mmHg',
+    SVI: '32.7 ml/m²',
+    'Peak AV velocity': '4.93 m/s',
+    AR: 'Mild',
+    Comments: 'Tri-leaflet valve; heavily calcified; severe AS (paradoxical LF-LG).',
+  },
+  angio: 'Severe proximal LAD stenosis; severe AS. CT (MM) advised SAVR±CABG not ideal; LAD stent 02/2025.',
+  ecg: 'Atrial fibrillation, LBBB, 68 bpm.',
+  ctIncidentals: 'No significant incidental findings.',
+  bloods: {
+    MOCA: '12/30',
+    Frailty: '4/10',
+    Hb: '129',
+    Plts: '253',
+    INR: '1.2',
+    Cre: '76',
+    eGFR: '63',
+  },
+  agedCare: 'MOCA 12/30 indicates moderate-to-high delirium risk; family aware.',
 };
 
 export default patient;
