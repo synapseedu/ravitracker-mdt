@@ -1,15 +1,65 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "nas",
-  name: "Arnold Nas",
-  dob: "1947-07-30",
-  referring: "Dr Clyne Fernandes",
-  consulting: "Dr Bhindi",
-  status: "private",
-  badges: [
-    "TriClip"
-  ]
+  id: 'nas',
+  name: 'Arnold Nas',
+  dob: '1947-07-30',
+  mrn: 'AN0003211',
+  referralDate: '',
+  referring: 'Dr Clyne Fernandes',
+  consulting: 'Dr Bhindi',
+  contact: '—',
+  weight: '82 kg',
+  height: '168 cm',
+  status: 'private',
+  badges: ['TriClip'],
+  pdfs: {
+    tte: ['Nas TTE.pdf'],
+    toe: ['Nas TOE.pdf'],
+    angio: ['Nas Angio.pdf'],
+    ecg: ['Nas ECG.pdf'],
+    agedCare: ['Nas Aged Care.pdf'],
+  },
+  background: [
+    'Severe tricuspid regurgitation',
+    'Chronic right ventricular failure',
+    'Permanent atrial fibrillation',
+    'Hypertension',
+    'Obstructive sleep apnoea',
+  ],
+  medications: [
+    'Apixaban 5 mg bd',
+    'Bumetanide 1 mg bd',
+    'Metoprolol 50 mg bd',
+    'Spironolactone 25 mg mane',
+  ],
+  social: 'Retired teacher living with spouse; non-smoker.',
+  functional: 'NYHA III — abdominal distension and fatigue.',
+  tteData: {
+    'LV EF': '55 %',
+    TR: 'Severe',
+    'RV Size': 'Severely dilated',
+    'RVSP': '60 mmHg',
+    Comments: 'Severe functional TR with annular dilatation.',
+  },
+  toeData: {
+    'TR Etiology': 'Functional',
+    'Coaptation Gap': '7 mm',
+    Comments: 'Suitable for TriClip.',
+  },
+  angio: 'Mild non-obstructive coronary artery disease.',
+  ecg: 'Atrial fibrillation, rate 80 bpm.',
+  ctIncidentals: 'Mild ascites.',
+  bloods: {
+    MOCA: '24/30',
+    Frailty: '4/10',
+    Hb: '130',
+    Plts: '250',
+    INR: '1.2',
+    Cre: '98',
+    eGFR: '60',
+  },
+  agedCare: 'Moderate delirium risk; family support in place.',
 };
 
 export default patient;

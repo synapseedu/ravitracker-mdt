@@ -1,15 +1,64 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "smithm",
-  name: "Marilyn Smith",
-  dob: "1948-05-13",
-  referring: "Dr Tony Kull",
-  consulting: "Dr Hansen",
-  status: "public",
-  badges: [
-    "TAVI"
-  ]
+  id: 'smithm',
+  name: 'Marilyn Smith',
+  dob: '1948-05-13',
+  mrn: 'MS0008765',
+  referralDate: '',
+  referring: 'Dr Tony Kull',
+  consulting: 'Dr Hansen',
+  contact: '—',
+  weight: '68 kg',
+  height: '165 cm',
+  status: 'public',
+  badges: ['TAVI'],
+  pdfs: {
+    tte: ['Smith TTE.pdf'],
+    angio: ['Smith Angio.pdf'],
+    ecg: ['Smith ECG.pdf'],
+    ct: ['Smith CT.pdf'],
+    agedCare: ['Smith Aged Care.pdf'],
+  },
+  background: [
+    'Severe aortic stenosis',
+    'Hypertension',
+    'Chronic kidney disease',
+    'Anxiety disorder',
+    'Hypothyroidism',
+  ],
+  medications: [
+    'Aspirin 100 mg daily',
+    'Amiodarone 200 mg daily',
+    'Perindopril 5 mg mane',
+    'Levothyroxine 75 mcg mane',
+    'Sertraline 50 mg daily',
+  ],
+  social: 'Widowed; lives in a retirement village.',
+  functional: 'NYHA II — limited by fatigue and dizziness.',
+  tteData: {
+    'LV EF': '55 %',
+    AVA: '0.9 cm²',
+    'Peak Gradient': '72 mmHg',
+    'Mean Gradient': '42 mmHg',
+    SVI: '35 ml/m²',
+    'Peak AV velocity': '4.2 m/s',
+    AR: 'None',
+    Comments: 'Severe calcific AS.',
+  },
+  angio: 'No significant coronary artery disease.',
+  ecg: 'Atrial fibrillation with controlled rate.',
+  ctIncidentals: 'Small thyroid nodule.',
+  bloods: {
+    MOCA: '25/30',
+    Frailty: '3/10',
+    Hb: '128',
+    Plts: '215',
+    INR: '1.2',
+    Cre: '95',
+    eGFR: '60',
+  },
+  agedCare: 'MOCA 25/30 – mild cognitive impairment; needs medication supervision.',
 };
 
 export default patient;

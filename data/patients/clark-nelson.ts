@@ -1,15 +1,65 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "clark-nelson",
-  name: "Nelson Clark",
-  dob: "1947-02-22",
-  referring: "Dr Brereton / Dr Williams",
-  consulting: "Dr Hansen",
-  status: "public",
-  badges: [
-    "TAVI"
-  ]
+  id: 'clark-nelson',
+  name: 'Nelson Clark',
+  dob: '1947-02-22',
+  mrn: 'ME00123456',
+  referralDate: '',
+  referring: 'Dr Brereton / Dr Williams',
+  consulting: 'Dr Hansen',
+  contact: '—',
+  weight: '84 kg',
+  height: '175 cm',
+  status: 'public',
+  badges: ['TAVI'],
+  pdfs: {
+    referral: ['Clark Nelson referral.pdf'],
+    tte: ['ClarkNelson TTE.pdf'],
+    angio: ['ClarkNelson Angio.pdf'],
+    ecg: ['ClarkNelson ECG.pdf'],
+    ct: ['ClarkNelson CT.pdf'],
+    agedCare: ['ClarkNelson aged care.pdf'],
+  },
+  background: [
+    'Severe calcific aortic stenosis',
+    'Coronary artery disease – RCA stent 2018',
+    'Hypertension',
+    'Hypercholesterolaemia',
+    'Former smoker (quit 2005)',
+    'Benign prostatic hyperplasia',
+  ],
+  medications: [
+    'Aspirin 100 mg mane',
+    'Atorvastatin 40 mg nocte',
+    'Metoprolol 25 mg bd',
+    'Perindopril 5 mg mane',
+    'Tamsulosin 0.4 mg mane',
+  ],
+  social: 'Lives with wife; independent in daily activities; enjoys gardening.',
+  functional: 'NYHA II–III — breathless after one flight of stairs; uses cane due to knee OA.',
+  tteData: {
+    'LV EF': '50 %',
+    AVA: '0.8 cm²',
+    'Peak Gradient': '85 mmHg',
+    'Mean Gradient': '50 mmHg',
+    'Peak AV velocity': '4.6 m/s',
+    AR: 'Mild',
+    Comments: 'Trileaflet valve with heavy calcification; moderate concentric LVH.',
+  },
+  angio: 'Patent RCA stent; no new obstructive lesions; severe aortic stenosis.',
+  ecg: 'Sinus rhythm with first-degree AV block, 62 bpm.',
+  ctIncidentals: 'Ascending aortic plaque; incidental benign renal cyst.',
+  bloods: {
+    MOCA: '26/30',
+    Frailty: '2/9',
+    Hb: '130',
+    Plts: '210',
+    INR: '1.1',
+    Cre: '90',
+    eGFR: '60',
+  },
+  agedCare: 'MOCA within normal range; low frailty — suitable for early mobilisation.',
 };
 
 export default patient;

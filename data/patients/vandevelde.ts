@@ -1,15 +1,66 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "vandevelde",
-  name: "Janice Van de Velde",
-  dob: "1936-06-01",
-  referring: "Dr Choong",
-  consulting: "Dr Bhindi",
-  status: "private",
-  badges: [
-    "TriClip"
-  ]
+  id: 'vandevelde',
+  name: 'Janice Van de Velde',
+  dob: '1936-06-01',
+  mrn: 'JV0006123',
+  referralDate: '',
+  referring: 'Dr Choong',
+  consulting: 'Dr Bhindi',
+  contact: '—',
+  weight: '72 kg',
+  height: '158 cm',
+  status: 'private',
+  badges: ['TriClip'],
+  pdfs: {
+    tte: ['VanDeVelde TTE.pdf'],
+    toe: ['VanDeVelde TOE.pdf'],
+    angio: ['VanDeVelde Angio.pdf'],
+    ecg: ['VanDeVelde ECG.pdf'],
+    agedCare: ['VanDeVelde Aged Care.pdf'],
+  },
+  background: [
+    'Severe tricuspid regurgitation',
+    'Heart failure with preserved ejection fraction',
+    'Permanent atrial fibrillation',
+    'Hypertension',
+    'Chronic kidney disease',
+  ],
+  medications: [
+    'Apixaban 5 mg bd',
+    'Metoprolol 25 mg bd',
+    'Frusemide 40 mg mane',
+    'Spironolactone 25 mg mane',
+    'Atorvastatin 20 mg nocte',
+  ],
+  social: 'Widowed; lives with daughter.',
+  functional: 'NYHA III — oedema and dyspnoea on minimal activity.',
+  tteData: {
+    'LV EF': '60 %',
+    TR: 'Severe',
+    'RV Size': 'Moderately dilated',
+    'RVSP': '55 mmHg',
+    Comments: 'Functional TR with severe annular dilation.',
+  },
+  toeData: {
+    'TR Etiology': 'Functional',
+    'Coaptation Gap': '6 mm',
+    Comments: 'Favourable anatomy for TriClip.',
+  },
+  angio: 'Normal coronary arteries.',
+  ecg: 'Atrial fibrillation, rate controlled.',
+  ctIncidentals: 'Hepatic cyst.',
+  bloods: {
+    MOCA: '23/30',
+    Frailty: '4/10',
+    Hb: '118',
+    Plts: '205',
+    INR: '1.3',
+    Cre: '112',
+    eGFR: '48',
+  },
+  agedCare: 'Moderate cognitive impairment; requires family support.',
 };
 
 export default patient;

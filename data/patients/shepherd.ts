@@ -1,15 +1,64 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "shepherd",
-  name: "Graham Shepherd",
-  dob: "1942-09-15",
-  referring: "Dr Tony Kull",
-  consulting: "Dr Hansen",
-  status: "private",
-  badges: [
-    "TAVI"
-  ]
+  id: 'shepherd',
+  name: 'Graham Shepherd',
+  dob: '1942-09-15',
+  mrn: 'GS0005123',
+  referralDate: '',
+  referring: 'Dr Tony Kull',
+  consulting: 'Dr Hansen',
+  contact: '—',
+  weight: '83 kg',
+  height: '174 cm',
+  status: 'private',
+  badges: ['TAVI'],
+  pdfs: {
+    tte: ['Shepherd TTE.pdf'],
+    angio: ['Shepherd Angio.pdf'],
+    ecg: ['Shepherd ECG.pdf'],
+    ct: ['Shepherd CT.pdf'],
+    agedCare: ['Shepherd Aged Care.pdf'],
+  },
+  background: [
+    'Severe aortic stenosis',
+    'Previous CABG 2010',
+    'Hypertension',
+    'Hyperlipidaemia',
+    'Chronic kidney disease stage 3',
+  ],
+  medications: [
+    'Aspirin 100 mg daily',
+    'Bisoprolol 5 mg mane',
+    'Rosuvastatin 20 mg nocte',
+    'Frusemide 40 mg mane',
+    'Perindopril 4 mg mane',
+  ],
+  social: 'Lives with spouse; walks dog daily.',
+  functional: 'NYHA II — short of breath on moderate exertion.',
+  tteData: {
+    'LV EF': '50 %',
+    AVA: '0.7 cm²',
+    'Peak Gradient': '82 mmHg',
+    'Mean Gradient': '48 mmHg',
+    SVI: '32 ml/m²',
+    'Peak AV velocity': '4.5 m/s',
+    AR: 'Trace',
+    Comments: 'Severe AS with concentric LVH.',
+  },
+  angio: 'Patent grafts; severe AS.',
+  ecg: 'Sinus rhythm with LBBB.',
+  ctIncidentals: 'No significant incidental findings.',
+  bloods: {
+    MOCA: '28/30',
+    Frailty: '2/10',
+    Hb: '132',
+    Plts: '210',
+    INR: '1.0',
+    Cre: '102',
+    eGFR: '58',
+  },
+  agedCare: 'Independent at home; low delirium risk.',
 };
 
 export default patient;

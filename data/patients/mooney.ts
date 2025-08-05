@@ -1,15 +1,65 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "mooney",
-  name: "Grahame Mooney",
-  dob: "1942-12-31",
-  referring: "Dr James Rogers",
-  consulting: "Dr Bhindi",
-  status: "private",
-  badges: [
-    "TAVI"
-  ]
+  id: 'mooney',
+  name: 'Grahame Mooney',
+  dob: '1942-12-31',
+  mrn: 'GM0008723',
+  referralDate: '',
+  referring: 'Dr James Rogers',
+  consulting: 'Dr Bhindi',
+  contact: '—',
+  weight: '95 kg',
+  height: '178 cm',
+  status: 'private',
+  badges: ['TAVI'],
+  pdfs: {
+    tte: ['Mooney TTE.pdf'],
+    angio: ['Mooney Angio.pdf'],
+    ecg: ['Mooney ECG.pdf'],
+    ct: ['Mooney CT.pdf'],
+    agedCare: ['Mooney Aged Care.pdf'],
+  },
+  background: [
+    'Severe aortic stenosis',
+    'Hypertension',
+    'Chronic obstructive pulmonary disease',
+    'Obesity',
+    'Prior stroke 2015',
+  ],
+  medications: [
+    'Aspirin 100 mg daily',
+    'Perindopril 5 mg mane',
+    'Atorvastatin 20 mg nocte',
+    'Seretide inhaler bd',
+    'Metformin 500 mg bd',
+  ],
+  social:
+    'Retired builder living with wife; former smoker (50 pack years) quit 2010.',
+  functional: 'NYHA III — walks 80 m with rests; limited by breathlessness.',
+  tteData: {
+    'LV EF': '50 %',
+    AVA: '0.6 cm²',
+    'Peak Gradient': '90 mmHg',
+    'Mean Gradient': '55 mmHg',
+    SVI: '30 ml/m²',
+    'Peak AV velocity': '4.8 m/s',
+    AR: 'Mild',
+    Comments: 'Severe calcific AS with low flow.',
+  },
+  angio: 'Mild diffuse coronary disease; severe AS.',
+  ecg: 'Sinus rhythm with LBBB.',
+  ctIncidentals: 'Emphysematous changes; calcified aorta.',
+  bloods: {
+    MOCA: '26/30',
+    Frailty: '5/10',
+    Hb: '125',
+    Plts: '235',
+    INR: '1.0',
+    Cre: '100',
+    eGFR: '55',
+  },
+  agedCare: 'MOCA 26/30 – some frailty; needs post-procedure rehab.',
 };
 
 export default patient;

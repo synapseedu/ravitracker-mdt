@@ -1,15 +1,65 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "gaffney",
-  name: "Marian Gaffney",
-  dob: "1943-07-18",
-  referring: "Dr Usaid Allahwala",
-  consulting: "",
-  status: "private",
-  badges: [
-    "TAVI"
-  ]
+  id: 'gaffney',
+  name: 'Marian Gaffney',
+  dob: '1943-07-18',
+  mrn: 'ME00312205',
+  referralDate: '',
+  referring: 'Dr Usaid Allahwala',
+  consulting: 'Dr Bhindi',
+  contact: '—',
+  weight: '72 kg',
+  height: '163 cm',
+  status: 'private',
+  badges: ['TAVI'],
+  pdfs: {
+    referral: ['Gaffney referral.pdf'],
+    tte: ['Gaffney TTE.pdf'],
+    angio: ['Gaffney Angio.pdf'],
+    ecg: ['Gaffney ECG.pdf'],
+    ct: ['Gaffney CT 2025.pdf'],
+    agedCare: ['Gaffney aged care.pdf'],
+  },
+  background: [
+    'Severe symptomatic aortic stenosis',
+    'LAD stent 2019',
+    'Hypertension',
+    'Type 2 diabetes mellitus',
+    'Stage 3 chronic kidney disease',
+    'Osteoarthritis',
+  ],
+  medications: [
+    'Aspirin 100 mg mane',
+    'Atorvastatin 40 mg nocte',
+    'Metformin 500 mg bd',
+    'Perindopril 5 mg mane',
+    'Furosemide 40 mg mane',
+  ],
+  social: 'Retired schoolteacher; widowed; daughter assists with transport.',
+  functional: 'NYHA III — dyspnoea after <50 m; uses two pillows at night.',
+  tteData: {
+    'LV EF': '55 %',
+    AVA: '0.7 cm²',
+    'Peak Gradient': '92 mmHg',
+    'Mean Gradient': '55 mmHg',
+    'Peak AV velocity': '4.8 m/s',
+    AR: 'Trace',
+    Comments: 'Heavily calcified trileaflet valve; mild concentric LVH.',
+  },
+  angio: 'Patent LAD stent; no new obstructive lesions; severe calcific aortic valve.',
+  ecg: 'Sinus rhythm with LVH, 74 bpm.',
+  ctIncidentals: 'Mild aortic arch atheroma; otherwise unremarkable.',
+  bloods: {
+    MOCA: '24/30',
+    Frailty: '3/9',
+    Hb: '118',
+    Plts: '250',
+    INR: '1.0',
+    Cre: '102',
+    eGFR: '48',
+  },
+  agedCare: 'Monitor renal function post-procedure; MOCA 24/30 suggests low delirium risk.',
 };
 
 export default patient;

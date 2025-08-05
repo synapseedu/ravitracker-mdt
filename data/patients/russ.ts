@@ -1,15 +1,65 @@
 import type { Patient } from './types';
 
 const patient: Patient = {
-  id: "russ",
-  name: "Gary Russ",
-  dob: "1946-07-10",
-  referring: "Dr Helestrand",
-  consulting: "Dr Bhindi",
-  status: "private",
-  badges: [
-    "TAVI"
-  ]
+  id: 'russ',
+  name: 'Gary Russ',
+  dob: '1946-07-10',
+  mrn: 'GR0004321',
+  referralDate: '',
+  referring: 'Dr Helestrand',
+  consulting: 'Dr Bhindi',
+  contact: '—',
+  weight: '88 kg',
+  height: '176 cm',
+  status: 'private',
+  badges: ['TAVI'],
+  pdfs: {
+    tte: ['Russ TTE.pdf'],
+    angio: ['Russ Angio.pdf'],
+    ecg: ['Russ ECG.pdf'],
+    ct: ['Russ CT.pdf'],
+    agedCare: ['Russ Aged Care.pdf'],
+  },
+  background: [
+    'Severe aortic stenosis',
+    'Coronary artery disease with prior LAD stent',
+    'Hypertension',
+    'Type 2 diabetes mellitus',
+    'Chronic kidney disease stage 3',
+  ],
+  medications: [
+    'Aspirin 100 mg daily',
+    'Clopidogrel 75 mg daily',
+    'Metoprolol 25 mg bd',
+    'Perindopril 5 mg mane',
+    'Metformin 1 g bd',
+    'Atorvastatin 40 mg nocte',
+  ],
+  social: 'Lives with wife; enjoys occasional beer.',
+  functional: 'NYHA III — limited to 50 m of walking.',
+  tteData: {
+    'LV EF': '45 %',
+    AVA: '0.7 cm²',
+    'Peak Gradient': '88 mmHg',
+    'Mean Gradient': '52 mmHg',
+    SVI: '33 ml/m²',
+    'Peak AV velocity': '4.5 m/s',
+    AR: 'Trace',
+    Comments: 'Severe calcific AS with moderate LV dysfunction.',
+  },
+  angio: 'Patent LAD stent; severe AS.',
+  ecg: 'Sinus rhythm with RBBB.',
+  ctIncidentals: 'No significant incidental findings.',
+  bloods: {
+    MOCA: '27/30',
+    Frailty: '3/10',
+    Hb: '130',
+    Plts: '220',
+    INR: '1.0',
+    Cre: '105',
+    eGFR: '50',
+  },
+  agedCare: 'MOCA 27/30 – suitable for TAVI.',
 };
 
 export default patient;
