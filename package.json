@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check-pdfs": "node scripts/check-pdfs.js",
+    "test": "npm run lint && npm run check-pdfs"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.5",
