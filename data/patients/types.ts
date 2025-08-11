@@ -34,6 +34,7 @@ export interface Patient {
   ctsSummary?: string;
   cognitive?: Record<string, string | number | null>;
   bloods?: Record<string, string | number | null>;
+  investigationSummary?: Record<string, string | string[]>;
   agedCare?: string;
   agedCareNote?: string;
   consultTexts?: Record<string, string>;
