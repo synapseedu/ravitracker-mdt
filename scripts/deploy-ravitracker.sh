@@ -8,6 +8,10 @@ git pull origin main               # grab newest commit
 docker build -t ravitracker-frontend .
 docker rm -f ravitracker-frontend 2>/dev/null || true
 
+# Remove any stopped containers and dangling images to free disk space
+docker container prune -f
+docker image prune -f
+
 docker run -d \
   --name ravitracker-frontend \
   --restart unless-stopped \
