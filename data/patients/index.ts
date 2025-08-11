@@ -18,7 +18,6 @@ import moelle from './moelle';
 import low from './low';
 import dunbar from './dunbar';
 import washington from './washington';
-import stevenson from './stevenson';
 
 export const allPatients: Patient[] = [
   newbould,
