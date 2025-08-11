@@ -19,6 +19,7 @@ export const allPatients: Patient[] = [
   shepherd,
   gaffney,
   washington,
+  thorpe
 ];
 
 export const patientMap: Record<string, Patient> = allPatients.reduce(
