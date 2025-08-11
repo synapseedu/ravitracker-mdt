@@ -35,8 +35,9 @@ const patient: Patient = {
       'Smith.M medtronic.pdf', // 3mensio/Evolut review 16/06/2025: L coronary slightly low (~9.8 mm); R SOV just undersized; annulus mean Ø 23.3; perimeter 72.5; STJ ~27; SOV ~29. 
     ],
     ctsx: [
-      'Smith.M Dr bassin.pdf', // 17/11/2023 Dr Levi Bassin (CTSx): porcelain aorta → open surgery prohibitive; manage medically unless more symptomatic; then consider high‑risk surgery or TAVI. 
+      'Smith.M Dr bassin.pdf', // 17/11/2023 Dr Levi Bassin (CTSx): porcelain aorta → open surgery prohibitive; manage medically unless more symptomatic; then consider high‑risk surgery or TAVI.
     ],
+    renal: ['Smith.M renal letters.pdf'],
   },
 
   background: [
@@ -115,6 +116,7 @@ const patient: Patient = {
     consults: [
       'Cardiothoracic Surgery — Dr Levi Bassin (17/11/2023): CT chest showed essentially porcelain aorta → open surgery prohibitive risk; symptoms well‑managed → recommend medical therapy; if symptoms worsen, consider very high‑risk surgery or TAVI. ',
       'Referring Interventional Cardiology — Dr Tony Kull (22/05/2025): Severe AS; on haemodialysis; porcelain aorta → surgery too risky; symptoms mild but history of APO ×3; request consideration for TAVI at RNSH. ',
+      'Renal — Dr Akshay Athavale (Dec 2024 & Feb 2025 letters): stable on Mon/Wed/Fri haemodialysis; hypotension persists; regular renal follow‑up planned. ',
     ],
   },
 };
