@@ -6,6 +6,8 @@ import PatientSection from './PatientSection';
 import PdfIcons from './PdfIcons';
 import { getAge } from '../../data/patients';
 import React from 'react';
+import ConsultsList from './ConsultsList';
+import type { Consults } from '../../data/patients/types';
 
 interface PatientRecord {
   id: string;
@@ -44,6 +46,7 @@ interface PatientRecord {
   agedCare?: string;
   agedCareNote?: string;
   consultTexts?: Record<string, string>;
+  consults?: Consults;
 }
 
 const { Text } = Typography;
@@ -68,6 +71,13 @@ export default function PatientPage({ patient }: { patient: PatientRecord }) {
     demographics.Weight = patient.weight ?? `${patient.weightKg} kg`;
   if (patient.height || patient.heightCm)
     demographics.Height = patient.height ?? `${patient.heightCm} cm`;
+
+  const ctPdfs = Array.from(
+    new Set([
+      ...(patient.pdfs?.ct ?? []),
+      ...(patient.pdfs?.medtronic ?? []),
+    ]),
+  );
 
   return (
     <PatientLayout title={patient.name}>
@@ -128,8 +138,8 @@ export default function PatientPage({ patient }: { patient: PatientRecord }) {
         </PatientSection>
       )}
 
-      {(patient.ctIncidentals || patient.pdfs?.ct) && (
-        <PatientSection title="CT TAVI / Access / Valve" pdfs={patient.pdfs?.ct}>
+      {(patient.ctIncidentals || ctPdfs.length) && (
+        <PatientSection title="CT TAVI / Access / Valve" pdfs={ctPdfs}>
           {patient.ctIncidentals && (
             <>
               <Text type="secondary">Incidentals:</Text>&nbsp;{patient.ctIncidentals}
@@ -171,6 +181,12 @@ export default function PatientPage({ patient }: { patient: PatientRecord }) {
       {patient.agedCareNote && (
         <PatientSection title="Aged Care Note" pdfs={patient.pdfs?.agedCareNote}>
           <Text>{patient.agedCareNote}</Text>
+        </PatientSection>
+      )}
+
+      {patient.consults && (
+        <PatientSection title="Consults">
+          <ConsultsList consults={patient.consults} />
         </PatientSection>
       )}
     </PatientLayout>
