@@ -7,27 +7,23 @@ const patient: Patient = {
   mrn: 'ME00143507',
   referralDate: '', // not specified
   referring: 'Dr Usaid Allahwala',
-  consulting: 'Dr Hansen',
-  contact: '02 9877 0498',
+  consulting: 'Dr Peter Hansen',
+  contact: 'Phone: 02 9877 0498',
   weight: '73 kg',
   height: '155 cm',
   status: 'private',
   badges: ['TAVI'],
 
   pdfs: {
-    tte: [
-      'GAFFNEY_MARIAN_ sev as tte _08072025_MG180743.pdf',
-      'TTE GAFFNEY_MARIAN_18071943_11022025_MG180743 (1).pdf',
-    ],
+    tte: ['GAFFNEY_MARIAN TTE 08072025_MG180743.pdf'],
     angio: ['Gaffney Angio.pdf'],
-    ecg: [],
-    ct: [],
-
-    // consult/supporting docs
-    respiratory: ['Gaffney Garrick Don rv.pdf'],
+    ecg: [], // no standalone ECG file provided
+    ct: [],  // no CT-TAVI PDF provided (Medtronic plan below)
+    medtronic: ['Gaffney medtronic.pdf'],
+    respiratory: ['Gaffney respiratory.pdf'],
+    agedCare: ['gaffney dr warrier.pdf'],
     endocrinology: ['gaffney endorine.pdf'],
     gastro: ['gaffney gastro.pdf'],
-    agedCare: ['gaffney dr warrier.pdf'],
   },
 
   background: [
@@ -35,36 +31,35 @@ const patient: Patient = {
     'Type 2 diabetes mellitus',
     'Chronic lymphocytic leukaemia (Dr Raymond McKinley)',
     'Multinodular goitre with mild hyperthyroidism',
-    'Acromegaly — pituitary tumour resection Sep 2023 (Dr Little; Dr Rory Clifton‑Bligh)',
+    'Acromegaly — pituitary tumour resection Sep 2023 (Dr Little); follow‑up with Prof Rory Clifton‑Bligh',
     'Hypertension',
     'Hypercholesterolaemia',
     'GORD',
     'Colonic polyps',
-    'Ventricular ectopy (Dr Allahwala)',
+    'Ventricular ectopy (cardiology follow‑up with Dr Allahwala; 2022 TTE mild AS/AR)',
   ],
 
   medications: [
-    'Azopt 1% eye drops 1 drop BD both eyes',
-    'Metoprolol 50 mg BD',
+    'Metoprolol 50 mg bd',
     'Rosuvastatin 5 mg nocte',
     'Metformin XR 1 g nocte',
+    'Clopidogrel 75 mg daily',
+    'Pantoprazole 40 mg bd',
     'Ferrograd C 325/500 mg — 1 tab twice weekly',
     'Magnesium 500 mg daily',
-    'Clopidogrel 75 mg daily',
-    'Poly Gel 0.3% eye gel PRN',
-    'Pantoprazole 40 mg BD',
+    'Azopt 1% eye drops — 1 drop bd both eyes',
+    'PolyGel 0.3% eye gel — prn',
   ],
 
   social:
-    'Lives alone; retired secretary; mobilises with stick; non‑smoker; very occasional alcohol.',
+    'Lives alone; retired secretary; mobilises with a stick; non‑smoker; very occasional alcohol.',
   functional:
-    'NYHA III. Worsening SOBOE over 6–12 months; estimated exercise tolerance ~100 m.',
+    'NYHA III. Worsening dyspnoea over 6–12 months; exercise tolerance ~100 m.',
 
-  // Key echo numbers (8 Jul 2025)
   tteData: {
     'LV EF': '65 %',
     AVA: '0.7 cm²',
-    'AVA index': '0.41 cm²/m²',
+    AVAi: '0.41 cm²/m²',
     'Peak Gradient': '64 mmHg',
     'Mean Gradient': '38 mmHg',
     SVI: '38 mL/m²',
@@ -72,65 +67,100 @@ const patient: Patient = {
     AR: 'Trivial',
     MR: 'Mild',
     Comments:
-      'Trileaflet AV with marked calcification and restricted opening → severe AS. Marked posterior MAC with mild MS (MG 6 mmHg, PHT 77 ms, MVA ~2.8 cm²).',
+      'Trileaflet AV with marked calcification and restricted opening — severe AS. Marked posterior MAC with mild transmitral stenosis (mean diastolic PG 6 mmHg; PHT 77 ms; MVA ~2.8 cm²).',
   },
 
-  angio: 'Patent ostial LCx stent; mild disease elsewhere; right‑dominant system.',
-  ecg: 'Sinus rhythm, first‑degree PR, ventricular ectopics.',
+  angio:
+    'Patent stent in ostial LCx with mild disease elsewhere; mild LAD and RCA disease; right dominant; radial access.',
+
+  ecg: 'Sinus rhythm, first‑degree PR; ventricular ectopics (per notes).',
 
   ctIncidentals:
-    '7 mm lung nodule noted on imaging; very slow growth over years. Plan: follow‑up with respiratory; life expectancy > 12 months per consult.',
+    'No dedicated CT-TAVI PDF supplied. Medtronic plan notes annulus derived Ø ≈20.5–20.8 mm, annular angulation ≈41°. See investigation summary for access and coronaries.',
 
   cognitive: {
     MOCA: '27/30',
     Frailty: '4',
+    AUS: '2',
   },
 
   bloods: {
     Hb: '135',
     Plts: '143',
-    INR: '—',
     Cre: '49',
     eGFR: '88',
     Albumin: '40',
     WBC: '11.1',
   },
 
-  // Per‑investigation summaries with sources
   investigationSummary: {
-    tte:
-      '08/07/2025: Severe calcific AS (AVA 0.7 cm², AVAi 0.41 cm²/m², MG 38 mmHg, PG 64 mmHg, SVi 38 mL/m²). Trivial AR. Mild MR with significant posterior MAC; mild MS (MG 6 mmHg, PHT 77 ms; MVA ≈2.8 cm²).',
-    angio:
-      '07/07/2025: Right‑dominant coronaries; patent ostial LCx DES (2/2025); mild disease in LAD/LCx/RCA; LM with separate LAD/LCx origins.',
-    ctTavi:
-      'Incidental 7 mm lung nodule; very slow change over years; outpatient follow‑up arranged (no immediate contraindication to TAVI).',
+    'TTE (08/07/2025)': {
+      summary:
+        'EF 65%; AVA 0.7 cm² (AVAi 0.41); PG 64 / MG 38 mmHg; SVI 38 mL/m²; severe calcific trileaflet AS; trivial AR; mild MR. Posterior MAC with mild MS (mean 6 mmHg; PHT 77 ms; MVA ~2.8 cm²).',
+      links: ['GAFFNEY_MARIAN TTE 08072025_MG180743.pdf'],
+    },
+    'Angiogram (07/07/2025)': {
+      summary:
+        'Widely patent ostial LCx stent; mild proximal LAD; mild RCA; right dominant. Admitted for TAVI workup.',
+      links: ['Gaffney Angio.pdf'],
+    },
+    'ECG': {
+      summary: 'Sinus rhythm, 1° AV block, ventricular ectopy (from clinical notes).',
+      links: [],
+    },
+    'CT / Medtronic': {
+      summary:
+        'Annulus area ~329 mm²; derived Ø 20.5–20.8 mm; annular angulation ≈41°. Left main height ~10.6 mm; right ~17.9 mm. SOV diameters ~29.4/26.7/28.2 mm; STJ ~21.1–21.7 mm. Femoral access: R EIA 4.9×5.9 mm; L EIA 5.6×6.5 mm (borderline small).',
+      links: ['Gaffney medtronic.pdf'],
+    },
+    'Respiratory / Lung nodule': {
+      summary:
+        '7 mm pulmonary nodule; very slow interval growth on prior imaging; life expectancy >12 months; follow‑up with respiratory in rooms; not a barrier to TAVI.',
+      links: ['Gaffney respiratory.pdf'],
+    },
   },
+
   consults: [
     {
-      date: '2025',
-      clinician: 'Respiratory — Dr Garrick Don',
+      specialty: 'Interventional Cardiology',
+      clinician: 'Dr Usaid Allahwala',
       outcome:
-        '7 mm lung nodule with very slow growth; >12‑month life‑expectancy; outpatient review arranged; proceed once clinically appropriate.',
-      source: ['Gaffney Garrick Don rv.pdf'],
+        'Coronary angiography shows patent LCx stent with only mild residual disease; proceed with TAVI work‑up.',
+      links: ['Gaffney Angio.pdf'],
     },
     {
-      date: '2025',
-      clinician: 'Endocrinology',
-      outcome: 'No endocrine barriers to proceeding with TAVI.',
-      source: ['gaffney endorine.pdf'],
-    },
-    {
-      date: '2025',
-      clinician: 'Gastroenterology',
+      specialty: 'Structural Cardiology',
+      clinician: 'Dr Peter Hansen',
       outcome:
-        'Bowel symptoms related to compaction on AXR; managed with laxatives; no barrier to TAVI from GI perspective.',
-      source: ['gaffney gastro.pdf'],
+        'Consulting physician for TAVI pathway (referral and echo overseen).',
+      links: ['GAFFNEY_MARIAN TTE 08072025_MG180743.pdf'],
     },
     {
-      date: '2025',
-      clinician: 'Aged Care / Geriatrics — Dr Warrier',
-      outcome: 'Appropriate to proceed with TAVI from geriatrics perspective.',
-      source: ['gaffney dr warrier.pdf'],
+      specialty: 'Respiratory',
+      clinician: 'Dr Garrick Don',
+      outcome:
+        'Slow‑growing 7 mm lung nodule; follow‑up arranged; not expected to limit TAVI candidacy.',
+      links: ['Gaffney respiratory.pdf'],
+    },
+    {
+      specialty: 'Aged Care / Geriatrics',
+      clinician: 'Dr Warrier',
+      outcome:
+        'Appropriate for TAVI from geriatrics perspective; may need rehab post‑procedure given functional decline.',
+      links: ['gaffney dr warrier.pdf'],
+    },
+    {
+      specialty: 'Endocrinology',
+      clinician: 'Prof Rory Clifton‑Bligh',
+      outcome: 'Ongoing follow‑up for acromegaly; no barriers to TAVI noted.',
+      links: ['gaffney endorine.pdf'],
+    },
+    {
+      specialty: 'Gastroenterology',
+      clinician: '—',
+      outcome:
+        'Assessed for bowel symptoms; abdominal X‑ray showed fecal compaction—treated with laxatives.',
+      links: ['gaffney gastro.pdf'],
     },
   ],
 };
