@@ -1,11 +1,9 @@
 import type { Patient } from './types';
 export type { Patient } from './types';
-import ross from './ross';
-import mcmullen from './mcmullen';
+import newbould from './newbould';
+import stevenson from './stevenson';
+import bogle from './bogle';
 import smithm from './smithm';
-import bromley from './bromley';
-import edwards from './edwards';
-import clarkNelson from './clark-nelson';
 import mcguire from './mcguire';
 import nas from './nas';
 import newlands from './newlands';
@@ -21,12 +19,10 @@ import low from './low';
 import dunbar from './dunbar';
 
 export const allPatients: Patient[] = [
-  ross,
-  mcmullen,
+  newbould,
+  stevenson,
+  bogle,
   smithm,
-  bromley,
-  edwards,
-  clarkNelson,
   mcguire,
   nas,
   newlands,
