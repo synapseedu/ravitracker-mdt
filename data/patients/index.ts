@@ -1,14 +1,15 @@
-import type { Patient } from './types';
-export type { Patient } from './types';
+import type { Patient } from './types'
+export type { Patient } from './types'
 
-import newbould from './newbould';
-import stevenson from './stevenson';
-import bogle from './bogle';
-import smithm from './smithm';
-import shepherd from './shepherd';
-import gaffney from './gaffney';
-import washington from './washington';
-import wadey from './wadey';
+import newbould from './newbould'
+import stevenson from './stevenson'
+import bogle from './bogle'
+import smithm from './smithm'
+import shepherd from './shepherd'
+import gaffney from './gaffney'
+import washington from './washington'
+import wadey from './wadey'
+import thorpe from './thorpe'
 
 export const allPatients: Patient[] = [
   newbould,
