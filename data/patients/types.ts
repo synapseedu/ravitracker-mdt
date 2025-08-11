@@ -1,5 +1,25 @@
 import React from 'react';
 
+export interface InvestigationDetail {
+  date: string;
+  summary: string;
+  source: string[];
+}
+
+export interface ConsultRecord {
+  date: string;
+  clinician: string;
+  outcome: string;
+  source: string[];
+}
+
+export interface SimpleConsult {
+  clinician: string;
+  recommendation: string;
+}
+
+export type Consults = ConsultRecord[] | Record<string, SimpleConsult>;
+
 export interface Patient {
   id: string;
   name: string;
@@ -18,6 +38,7 @@ export interface Patient {
   history?: string[];
   background?: string[];
   medications?: string[];
+  allergies?: string[];
   social?: string;
   functional?: string;
   tteSummary?: string[];
@@ -34,10 +55,11 @@ export interface Patient {
   ctsSummary?: string;
   cognitive?: Record<string, string | number | null>;
   bloods?: Record<string, string | number | null>;
-  investigationSummary?: Record<string, string | string[]>;
+  investigationSummary?: Record<string, string | string[] | InvestigationDetail[]>;
   agedCare?: string;
   agedCareNote?: string;
   consultTexts?: Record<string, string>;
+  consults?: Consults;
   pelvicReport?: React.ReactNode;
   /** public = MDT list; private = NSP list */
   status?: 'public' | 'private';

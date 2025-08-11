@@ -80,7 +80,7 @@ const patient: Patient = {
     CRP: '1.7',
   },
 
-  investigationsSummary: {
+  investigationSummary: {
     tte: [
       {
         date: '2025-07-16',
