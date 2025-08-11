@@ -18,7 +18,7 @@ const patient: Patient = {
         tte: ['Wadey TTE RNSH.pdf'],
         angio: ['Wadey Cath.pdf'],
         ecg: ['Wadey ECG.pdf'],
-        ct: ['Wadey CT TAVI.pdf'],
+        ct: ['Wadey CT TAVI.pdf', 'Wadey Medtronic.pdf'],
         medtronic: ['Wadey Medtronic.pdf'],
         bloods: ['Wadey bloods.pdf'],
         agedCare: ['Wadey geris review.pdf'],
@@ -71,6 +71,10 @@ const patient: Patient = {
         'Sinus rhythm with premature supraventricular complexes; minimal voltage criteria for LVH.',
     ctIncidentals:
         'No CT contraindication to TAVI. RUL mass‑like consolidation with surrounding GG change—likely infective/inflammatory; follow to resolution recommended. Adjacent pleural thickening/small effusion; mixed SMA plaque (possible 50–75% narrowing). Heavy carotid origin calcification (R 25–50%, L <25%). Bilateral partially calcified renal cortical cysts (R up to 60 mm, L up to 17 mm).',
+    respiratorySummary:
+        'Respiratory consult: RUL changes most consistent with CAP; repeat CT chest in 6–8 weeks to exclude underlying lesion; plan RFTs when pneumonia resolves; assuming clearance, no respiratory objection to TAVI.',
+    agedCare:
+        'Orthogeriatrics: no absolute contraindication; proceed once medically stable; delirium risk discussed and consented.',
     cognitive: {
         MOCA: '24/30 — mild cognitive impairment (delayed recall deficit); OT notes he may need assistance with remembering new information.',
     },
