@@ -75,8 +75,7 @@ const patient: Patient = {
 
   ecg: 'Sinus rhythm, first-degree PR; ventricular ectopics (per notes).',
 
-  ctIncidentals:
-    'No dedicated CT-TAVI PDF supplied. Medtronic planning report summarised below.',
+  ctIncidentals: 'Medtronic planning report summarised below.',
 
   cognitive: {
     MOCA: '27/30',
