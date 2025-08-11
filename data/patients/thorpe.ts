@@ -17,7 +17,7 @@ const patient: Patient = {
         tte: ['THORPE_ROBIN_TTE.pdf', 'Robin thorpe tte.pdf', 'Robin thorpe stress echo.pdf'],
         angio: ['Thorpe Angio.pdf'],
         ecg: [],
-        ct: ['Thorpe CT TAVI.pdf'],
+        ct: ['Thorpe CT TAVI.pdf', 'THORPE Medtronic.pdf'],
         medtronic: ['THORPE Medtronic.pdf'],
         referral: ['Thorpe Dr Trivedi ref.pdf'],
         respiratory: ['Thorpe Resp rv.pdf'],
@@ -82,9 +82,9 @@ const patient: Patient = {
         incidentalFindings:
             'Left tracheoesophageal thyroid/parathyroid tissue; punctate‑calcified mediastinal/hilar nodes (largest 14 mm, subcarinal); mild basal subpleural reticulation; bilateral renal cysts; mild prostatomegaly.',
         respiratory:
-            'Respiratory review arranged — Dr Hibbert to review mediastinal/hilar lymphadenopathy; outpatient PFTs and repeat CT chest planned.',
+            'Dr Hibbert to review CT TAVI re hilar and mediastinal lymphadenopathy and advise further PFTs as outpatient; repeat CT – timing to be decided after Dr Hibbert reviews.',
         cardiothoracic:
-            'Dr Brereton: suitable and would desire salvage; recommends TAVI sooner rather than later given remoteness, activity and occupation.',
+            'Dr Brereton: Suitable for & would desire salvage. Worsening AS outside of gradients, but level of stenosis is significant. I would recommend TAVI sooner rather than later based on remoteness, activity and occupation.',
     },
 };
 
