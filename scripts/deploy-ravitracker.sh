@@ -1,14 +1,13 @@
-# scripts/deploy-ravitracker.sh
 #!/usr/bin/env bash
 set -euo pipefail
 
 REPO_DIR=/root/ravitracker-mdt
 cd "$REPO_DIR"
 
-# Make Git ignore executable-bit noise (common on VPS)
+# Avoid noisy diffs from exec-bit flips
 git config --local core.filemode false
 
-# Always sync cleanly to origin/main (won’t fail on local edits)
+# Always sync cleanly to origin/main
 git fetch origin main
 git reset --hard origin/main
 git clean -fdx
@@ -17,11 +16,9 @@ git clean -fdx
 docker build --pull -t ravitracker-frontend .
 docker rm -f ravitracker-frontend 2>/dev/null || true
 
-# Free space (safe defaults)
+# Free space
 docker container prune -f
 docker image prune -f
-# If disk is tight, consider:
-# docker system prune -af --volumes
 
 docker run -d \
   --name ravitracker-frontend \
