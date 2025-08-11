@@ -18,7 +18,7 @@ const patient: Patient = {
     tte: ['Shepherd TTE Choong.pdf'],
     angio: ['Shepherd Angio Gosford 06.2025.pdf'],
     ecg: ['shepherd ecg.pdf'],
-    ct: ['SHEPHERD Graham - CT TAVI.pdf'],
+    ct: ['SHEPHERD Graham - CT TAVI.pdf', 'Shepherd medtronic.pdf'],
     referral: ['SHEPHERD Graham - TAVI referral from Tony Kull.pdf'],
     medtronic: ['Shepherd medtronic.pdf'],
     geriatrics: ['shepherd dr warrier.pdf'],
