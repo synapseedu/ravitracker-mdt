@@ -31,12 +31,12 @@ const patient: Patient = {
     'Type 2 diabetes mellitus',
     'Chronic lymphocytic leukaemia (Dr Raymond McKinley)',
     'Multinodular goitre with mild hyperthyroidism',
-    'Acromegaly — pituitary tumour resection Sep 2023 (Dr Little); follow‑up with Prof Rory Clifton‑Bligh',
+    'Acromegaly — pituitary tumour resection Sep 2023 (Dr Little); follow-up with Prof Rory Clifton-Bligh',
     'Hypertension',
     'Hypercholesterolaemia',
     'GORD',
     'Colonic polyps',
-    'Ventricular ectopy (cardiology follow‑up with Dr Allahwala; 2022 TTE mild AS/AR)',
+    'Ventricular ectopy (cardiology follow-up with Dr Allahwala; 2022 TTE mild AS/AR)',
   ],
 
   medications: [
@@ -52,7 +52,7 @@ const patient: Patient = {
   ],
 
   social:
-    'Lives alone; retired secretary; mobilises with a stick; non‑smoker; very occasional alcohol.',
+    'Lives alone; retired secretary; mobilises with a stick; non-smoker; very occasional alcohol.',
   functional:
     'NYHA III. Worsening dyspnoea over 6–12 months; exercise tolerance ~100 m.',
 
@@ -73,10 +73,10 @@ const patient: Patient = {
   angio:
     'Patent stent in ostial LCx with mild disease elsewhere; right dominant; radial access.',
 
-  ecg: 'Sinus rhythm, first‑degree PR; ventricular ectopics (per notes).',
+  ecg: 'Sinus rhythm, first-degree PR; ventricular ectopics (per notes).',
 
   ctIncidentals:
-    'No dedicated CT‑TAVI PDF supplied. Medtronic planning report summarised below.',
+    'No dedicated CT-TAVI PDF supplied. Medtronic planning report summarised below.',
 
   cognitive: {
     MOCA: '27/30',
@@ -93,32 +93,12 @@ const patient: Patient = {
     WBC: '11.1',
   },
 
-  // ✅ Change: array of InvestigationDetail items
+  // ✅ Use plain strings to satisfy `string[] | InvestigationDetail[]`
   investigationSummary: [
-    {
-      title: 'TTE (08/07/2025)',
-      summary:
-        'EF 65%; AVA 0.7 cm² (AVAi 0.41); PG/MG 64/38 mmHg; SVI 38 mL/m². Severe calcific trileaflet AS; trivial AR; mild MR. Posterior MAC with mild MS (mean 6 mmHg; PHT 77 ms; MVA ~2.8 cm²).',
-      links: ['GAFFNEY_MARIAN TTE 08072025_MG180743.pdf'],
-    },
-    {
-      title: 'Angiogram (Jul 2025)',
-      summary:
-        'Ostial LCx stent widely patent; mild LAD/RCA disease; right dominant. Proceeding with TAVI work‑up.',
-      links: ['Gaffney Angio.pdf'],
-    },
-    {
-      title: 'CT / Medtronic planning',
-      summary:
-        'Annulus area ~329 mm² (derived Ø ~20.5–20.8 mm); annular angulation ~41°. LM height ~10.6 mm; R ~17.9 mm. SOV ~29/27/28 mm; STJ ~21–22 mm. Femoral access borderline small (R EIA 4.9×5.9 mm; L EIA 5.6×6.5 mm).',
-      links: ['Gaffney medtronic.pdf'],
-    },
-    {
-      title: 'Respiratory (lung nodule)',
-      summary:
-        '7 mm pulmonary nodule with very slow interval growth; >12‑month life expectancy; outpatient follow‑up—no barrier to TAVI.',
-      links: ['Gaffney respiratory.pdf'],
-    },
+    'TTE (08/07/2025): EF 65%; AVA 0.7 cm² (AVAi 0.41); PG/MG 64/38 mmHg; SVI 38 mL/m²; severe calcific trileaflet AS; trivial AR; mild MR; posterior MAC with mild MS (mean 6 mmHg; PHT 77 ms; MVA ≈2.8 cm²).',
+    'Angiogram (Jul 2025): Ostial LCx stent widely patent; mild LAD/RCA disease; right dominant — proceeding with TAVI work-up.',
+    'CT / Medtronic planning: Annulus area ~329 mm² (derived Ø ~20.5–20.8 mm); annular angulation ~41°; LM height ~10.6 mm, R ~17.9 mm; SOV ~29/27/28 mm; STJ ~21–22 mm; femoral access borderline small (R EIA 4.9×5.9 mm, L EIA 5.6×6.5 mm).',
+    'Respiratory (lung nodule): 7 mm nodule with very slow interval growth; life expectancy >12 months; outpatient follow-up — no barrier to TAVI.',
   ],
 
   consults: [
@@ -126,7 +106,7 @@ const patient: Patient = {
       specialty: 'Interventional Cardiology',
       clinician: 'Dr Usaid Allahwala',
       outcome:
-        'Coronary angiography shows patent LCx stent with only mild residual disease; proceed with TAVI work‑up.',
+        'Coronary angiography shows patent LCx stent with only mild residual disease; proceed with TAVI work-up.',
       links: ['Gaffney Angio.pdf'],
     },
     {
@@ -139,27 +119,27 @@ const patient: Patient = {
       specialty: 'Respiratory',
       clinician: 'Dr Garrick Don',
       outcome:
-        'Slow‑growing 7 mm lung nodule; follow‑up arranged; not expected to limit TAVI candidacy.',
+        'Slow-growing 7 mm lung nodule; follow-up arranged; not expected to limit TAVI candidacy.',
       links: ['Gaffney respiratory.pdf'],
     },
     {
       specialty: 'Aged Care / Geriatrics',
       clinician: 'Dr Warrier',
       outcome:
-        'Appropriate for TAVI from geriatrics perspective; may need rehab post‑procedure given functional decline.',
+        'Appropriate for TAVI from geriatrics perspective; may need rehab post-procedure given functional decline.',
       links: ['gaffney dr warrier.pdf'],
     },
     {
       specialty: 'Endocrinology',
-      clinician: 'Prof Rory Clifton‑Bligh',
-      outcome: 'Ongoing follow‑up for acromegaly; no barriers to TAVI noted.',
+      clinician: 'Prof Rory Clifton-Bligh',
+      outcome: 'Ongoing follow-up for acromegaly; no barriers to TAVI noted.',
       links: ['gaffney endorine.pdf'],
     },
     {
       specialty: 'Gastroenterology',
       clinician: '—',
       outcome:
-        'Assessed for bowel symptoms; abdominal X‑ray showed fecal compaction—treated with laxatives.',
+        'Assessed for bowel symptoms; abdominal X-ray showed fecal compaction—treated with laxatives.',
       links: ['gaffney gastro.pdf'],
     },
   ],
