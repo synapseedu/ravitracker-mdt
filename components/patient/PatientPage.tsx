@@ -39,11 +39,10 @@ interface PatientRecord {
   ctIncidentals?: string;
   respiratorySummary?: string;
   ctsSummary?: string;
+  cognitive?: Record<string, string | number | null>;
   bloods?: Record<string, string | number | null>;
   agedCare?: string;
   agedCareNote?: string;
-  moca?: string;
-  frailtyScore?: string;
   consultTexts?: Record<string, string>;
 }
 
@@ -148,6 +147,12 @@ export default function PatientPage({ patient }: { patient: PatientRecord }) {
       {patient.ctsSummary && (
         <PatientSection title="Cardiothoracic Surgery Consult" pdfs={patient.pdfs?.cts}>
           <Text>{patient.ctsSummary}</Text>
+        </PatientSection>
+      )}
+
+      {patient.cognitive && (
+        <PatientSection title="Cognitive" pdfs={patient.pdfs?.moca ?? patient.pdfs?.cognitive}>
+          <DemographicsGrid data={patient.cognitive} />
         </PatientSection>
       )}
 
