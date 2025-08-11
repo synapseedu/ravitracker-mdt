@@ -26,6 +26,7 @@ const patient: Patient = {
     ],
     ct: [
       'Smith.M CT TAVI.pdf', // PRP CT‑TAVI 13/05/2025: detailed annulus/coronary heights + access vessels; aorto‑iliac plaque/tortuosity; formal impression provided. :contentReference[oaicite:2]{index=2}
+      'Smith.M medtronic.pdf',
     ],
     referral: [
       'Smith.M referral.pdf', // 22/05/2025 Kull→Hansen: severe AS; porcelain aorta; on haemodialysis; consider TAVI at RNSH. :contentReference[oaicite:3]{index=3}
