@@ -98,60 +98,41 @@ const patient: Patient = {
 
   // Per‑investigation summaries with sources
   investigationSummary: {
-    tte: {
-      date: '2025-07-08',
-      summary:
-        'Severe calcific AS (AVA 0.7 cm², AVAi 0.41 cm²/m², MG 38 mmHg, PG 64 mmHg, SVi 38 mL/m²). Trivial AR. Mild MR with significant posterior MAC; mild MS (MG 6 mmHg, PHT 77 ms; MVA ≈2.8 cm²).',
-      files: ['GAFFNEY_MARIAN_ sev as tte _08072025_MG180743.pdf'],
-      source: 'Echo report 08/07/2025.',
-    },
-    angio: {
-      date: '2025-07-07',
-      summary:
-        'Right‑dominant coronaries; patent ostial LCx DES (2/2025); mild disease in LAD/LCx/RCA; LM with separate LAD/LCx origins.',
-      files: ['Gaffney Angio.pdf'],
-      source: 'Cath report 07/07/2025.',
-    },
-    ctTavi: {
-      date: '',
-      summary:
-        'Incidental 7 mm lung nodule; very slow change over years; outpatient follow‑up arranged (no immediate contraindication to TAVI).',
-      files: [],
-      source: 'See Respiratory consult.',
-    },
-    consults: [
-      {
-        specialty: 'Respiratory',
-        clinician: 'Dr Garrick Don',
-        date: '2025',
-        outcome:
-          '7 mm lung nodule with very slow growth; >12‑month life‑expectancy; outpatient review arranged; proceed once clinically appropriate.',
-        files: ['Gaffney Garrick Don rv.pdf'],
-      },
-      {
-        specialty: 'Endocrinology',
-        clinician: '—',
-        date: '2025',
-        outcome: 'No endocrine barriers to proceeding with TAVI.',
-        files: ['gaffney endorine.pdf'],
-      },
-      {
-        specialty: 'Gastroenterology',
-        clinician: '—',
-        date: '2025',
-        outcome:
-          'Bowel symptoms related to compaction on AXR; managed with laxatives; no barrier to TAVI from GI perspective.',
-        files: ['gaffney gastro.pdf'],
-      },
-      {
-        specialty: 'Aged Care / Geriatrics',
-        clinician: 'Dr Warrier',
-        date: '2025',
-        outcome: 'Appropriate to proceed with TAVI from geriatrics perspective.',
-        files: ['gaffney dr warrier.pdf'],
-      },
-    ],
+    tte:
+      '08/07/2025: Severe calcific AS (AVA 0.7 cm², AVAi 0.41 cm²/m², MG 38 mmHg, PG 64 mmHg, SVi 38 mL/m²). Trivial AR. Mild MR with significant posterior MAC; mild MS (MG 6 mmHg, PHT 77 ms; MVA ≈2.8 cm²).',
+    angio:
+      '07/07/2025: Right‑dominant coronaries; patent ostial LCx DES (2/2025); mild disease in LAD/LCx/RCA; LM with separate LAD/LCx origins.',
+    ctTavi:
+      'Incidental 7 mm lung nodule; very slow change over years; outpatient follow‑up arranged (no immediate contraindication to TAVI).',
   },
+  consults: [
+    {
+      date: '2025',
+      clinician: 'Respiratory — Dr Garrick Don',
+      outcome:
+        '7 mm lung nodule with very slow growth; >12‑month life‑expectancy; outpatient review arranged; proceed once clinically appropriate.',
+      source: ['Gaffney Garrick Don rv.pdf'],
+    },
+    {
+      date: '2025',
+      clinician: 'Endocrinology',
+      outcome: 'No endocrine barriers to proceeding with TAVI.',
+      source: ['gaffney endorine.pdf'],
+    },
+    {
+      date: '2025',
+      clinician: 'Gastroenterology',
+      outcome:
+        'Bowel symptoms related to compaction on AXR; managed with laxatives; no barrier to TAVI from GI perspective.',
+      source: ['gaffney gastro.pdf'],
+    },
+    {
+      date: '2025',
+      clinician: 'Aged Care / Geriatrics — Dr Warrier',
+      outcome: 'Appropriate to proceed with TAVI from geriatrics perspective.',
+      source: ['gaffney dr warrier.pdf'],
+    },
+  ],
 };
 
 export default patient;

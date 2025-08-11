@@ -98,14 +98,11 @@ const patient: Patient = {
       'CT TAVI (10/07/2025): valve calcium score 2191; ascending aorta 44 mm; addendum notes ≥moderate–severe R ICA stenosis and possible high-grade R vertebral origin stenosis.',
     ecg:
       'ECG on file—sinus rhythm noted.',
-    consults: {
-      geriatrics:
-        'Dr Warrier: appropriate to proceed with TAVI from geriatrics perspective.',
-      cardiothoracic:
-        'Dr Brereton: suitable for surgical salvage.',
-      renal:
-        'Dr Simon Roger: happy to proceed with TAVI; cease spironolactone and irbesartan 5 days pre-CT and 5 days pre‑TAVI; low likelihood of dialysis required.',
-    },
+    consults: [
+      'Geriatrics — Dr Warrier: appropriate to proceed with TAVI from geriatrics perspective.',
+      'Cardiothoracic — Dr Brereton: suitable for surgical salvage.',
+      'Renal — Dr Simon Roger: happy to proceed with TAVI; cease spironolactone and irbesartan 5 days pre-CT and 5 days pre‑TAVI; low likelihood of dialysis required.',
+    ],
   },
 };
 
