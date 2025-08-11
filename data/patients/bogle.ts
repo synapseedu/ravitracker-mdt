@@ -81,7 +81,6 @@ const patient: Patient = {
   },
   agedCare:
     'Lives independently; family support available. No formal aged-care assessment attached.',
-  plan: 'MDT approved for Transfemoral TAVI. No concerning features for TF access or deployment. Reasonable baseline cognition/social supports; no life-limiting pathology identified.',
 };
 
 export default patient;

@@ -32,11 +32,10 @@ export interface Patient {
   ctIncidentals?: string;
   respiratorySummary?: string;
   ctsSummary?: string;
+  cognitive?: Record<string, string | number | null>;
   bloods?: Record<string, string | number | null>;
   agedCare?: string;
   agedCareNote?: string;
-  moca?: string;
-  frailtyScore?: string;
   consultTexts?: Record<string, string>;
   pelvicReport?: React.ReactNode;
   /** public = MDT list; private = NSP list */
