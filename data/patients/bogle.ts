@@ -27,7 +27,7 @@ const patient: Patient = {
     ct: [
       'Bogle CT TAVI.pdf', // 08/07/2025 PRP: mild aorto‑iliac tortuosity; aorto‑iliac atherosclerosis without high‑grade stenosis; 3‑vessel arch; vessel calibres adequate (e.g., R EIA 8×9 mm; L EIA 7×8 mm); 14‑mm opacity abutting mediastinum; consider PET; ?Sievers I bicuspid R/L calcified raphe.
       'Norman bogle CT Tavi aortic root.pdf', // Additional CT aortic root measurements/images.
-      'Norman bogle CT Tavi aortic root_1.pdf', // Additional CT aortic root measurements/images.
+      'Bogle medtronic.pdf', // 3mensio/Evolut analysis: annulus mean Ø 24.1 mm (perimeter 75.8 mm; area‑derived Ø 23.7 mm); LVOT mean Ø 23.6 mm; STJ Ø 28.3 mm; SOV Ø ~35.7 mm; annular angulation ≈42°; ?Sievers I bicuspid.
     ],
     oncology: [
       'Bogle oncology letters april 25.pdf', // Collated cancer history; no recurrence/metastases on 02/04/2025 CT noted.
