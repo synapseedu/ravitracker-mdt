@@ -17,6 +17,7 @@ import austin from './austin';
 import moelle from './moelle';
 import low from './low';
 import dunbar from './dunbar';
+import washington from './washington';
 
 export const allPatients: Patient[] = [
   newbould,
@@ -36,6 +37,7 @@ export const allPatients: Patient[] = [
   moelle,
   low,
   dunbar,
+  washington,
 ];
 
 export const patientMap: Record<string, Patient> = allPatients.reduce(
