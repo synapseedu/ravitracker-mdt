@@ -15,7 +15,9 @@ const patient: Patient = {
   badges: ['TAVI'],
 
   pdfs: {
-    // (no TTE PDF provided; values below from MDT sheet you shared)
+    tte: [
+      'Smith.M TTE RNSH 11.7.25.PDF', // 11/07/2025 RNSH: EF 55–60%; AVA 0.9 (AVAi 0.5); MG 33; PG 60; SVI 51.4; moderate AR; mild MR.
+    ],
     angio: [
       'Smith.M angio 2023.pdf', // 29/03/2023 NSTEMI work-up: normal coronaries; left-dominant; radial access; no complications. :contentReference[oaicite:0]{index=0}
     ],
