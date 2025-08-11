@@ -9,25 +9,25 @@ const patient: Patient = {
     referring: 'Dr Malcolm Anastasius / Prof Peter Vale',
     consulting: 'Dr Peter Hansen',
     contact: '—',
-    weight: '47 kg',  // from TTE 15/07/2025 :contentReference[oaicite:0]{index=0}
-    height: '160 cm', // from TTE 15/07/2025 :contentReference[oaicite:1]{index=1}
+    weight: '47 kg',  // from TTE 15/07/2025 
+    height: '160 cm', // from TTE 15/07/2025 
     status: 'private',
     badges: ['MitraClip', 'TriClip'],
 
     pdfs: {
         tte: [
-            'Washington TTE.pdf', // 15/07/2025: EF ~65%; severe MR (anterior leaflet flail) with mean MV gradient 4 mmHg; severe TR (RVSP ~61 mmHg); moderate AS (AVA 1.1 cm²; PG/MG 31/16); mild–moderate AR; severely dilated atria. :contentReference[oaicite:2]{index=2}
+            'Washington TTE.pdf', // 15/07/2025: EF ~65%; severe MR (anterior leaflet flail) with mean MV gradient 4 mmHg; severe TR (RVSP ~61 mmHg); moderate AS (AVA 1.1 cm²; PG/MG 31/16); mild–moderate AR; severely dilated atria. 
         ],
         toe: [
-            'Washington TOE 22.7.25.pdf', // 22/07/2025 (Anastasius): Severe MR (EROA 0.55 cm²; RVol 61 mL) — A3 flail + P2 prolapse; moderate posterior MAC; MVA 4.4 cm²; suggested TEER strategy (1× NTW medial, 1× NT A2/P2). Severe secondary TR (EROA 0.36 cm²), type IIIb; max anteroseptal gap 4 mm; GLIDE 2. :contentReference[oaicite:3]{index=3}
+            'Washington TOE 22.7.25.pdf', // 22/07/2025 (Anastasius): Severe MR (EROA 0.55 cm²; RVol 61 mL) — A3 flail + P2 prolapse; moderate posterior MAC; MVA 4.4 cm²; suggested TEER strategy (1× NTW medial, 1× NT A2/P2). Severe secondary TR (EROA 0.36 cm²), type IIIb; max anteroseptal gap 4 mm; GLIDE 2. 
         ],
         rhc: [
-            'Washington RHC.pdf', // 24/07/2025 cath: RA mean ~10 (v 15), PA 55/16 (m 30), PCWP 24; CO ~3.1 L/min; PVR ~1.9 WU; mild, non‑obstructive CAD. :contentReference[oaicite:4]{index=4}
+            'Washington RHC.pdf', // 24/07/2025 cath: RA mean ~10 (v 15), PA 55/16 (m 30), PCWP 24; CO ~3.1 L/min; PVR ~1.9 WU; mild, non‑obstructive CAD. 
         ],
         consults: [
-            'Washington aged care.pdf', // Orthogeriatrics (Dr Carl Ward, 23/07/2025): RUDAS 26/30; independent in pADLs; no aged‑care contraindication to TriClip. :contentReference[oaicite:5]{index=5}
-            'Washington cardio consult 22.7.25.pdf', // Cardiology WR (Mowbray/Di Sano, 23/07/2025): severe MR/TR; recommend TriClip; arrange outpatient angiogram; aim discharge post geris review. :contentReference[oaicite:6]{index=6}
-            'Washington Dr Vale letters + TTE.pdf', // Prof Peter Vale letter (25/03/2024) + prior TTE: AF on apixaban (reduced dose), CCF, HTN, moderate MR/TR at that time; meds list and longitudinal context. :contentReference[oaicite:7]{index=7}
+            'Washington aged care.pdf', // Orthogeriatrics (Dr Carl Ward, 23/07/2025): RUDAS 26/30; independent in pADLs; no aged‑care contraindication to TriClip. 
+            'Washington cardio consult 22.7.25.pdf', // Cardiology WR (Mowbray/Di Sano, 23/07/2025): severe MR/TR; recommend TriClip; arrange outpatient angiogram; aim discharge post geris review. 
+            'Washington Dr Vale letters + TTE.pdf', // Prof Peter Vale letter (25/03/2024) + prior TTE: AF on apixaban (reduced dose), CCF, HTN, moderate MR/TR at that time; meds list and longitudinal context. 
         ],
     },
 
@@ -67,7 +67,7 @@ const patient: Patient = {
         AR: 'Mild–moderate',
         MR: 'Severe (posterior jet; anterior leaflet flail)',
         Comments:
-            'Normal LV size and systolic function; severely dilated LA/RA; severe MR and severe TR; moderate AS; no pericardial effusion. :contentReference[oaicite:8]{index=8}',
+            'Normal LV size and systolic function; severely dilated LA/RA; severe MR and severe TR; moderate AS; no pericardial effusion. ',
     },
 
     // TOE (22/07/2025) — key TEER metrics
@@ -81,14 +81,14 @@ const patient: Patient = {
         'Tricuspid type': 'IIIb; max anteroseptal gap 4 mm',
         'GLIDE score': '2',
         Notes:
-            'Challenging medial origin of MR with calcium shelf under P3; consider 1× NTW medially + 1× NT A2/P2. :contentReference[oaicite:9]{index=9}',
+            'Challenging medial origin of MR with calcium shelf under P3; consider 1× NTW medially + 1× NT A2/P2. ',
     },
 
-    angio: 'Mild, non‑obstructive coronary artery disease on coronary angiography. :contentReference[oaicite:10]{index=10}',
+    angio: 'Mild, non‑obstructive coronary artery disease on coronary angiography. ',
     ecg: 'Atrial fibrillation (baseline rhythm during admission).',
 
     cognitive: {
-        MOCA: '26/30', // RUDAS 26/30 documented by OT; functionally independent in pADLs. :contentReference[oaicite:11]{index=11}
+        MOCA: '26/30', // RUDAS 26/30 documented by OT; functionally independent in pADLs. 
     },
 
     bloods: {
@@ -102,15 +102,15 @@ const patient: Patient = {
 
     investigationSummary: {
         tte:
-            '15/07/2025: EF ~65%; severe MR (anterior leaflet flail), severe TR (RVSP ~61 mmHg); moderate AS (AVA 1.1 cm²; PG/MG 31/16); mild–moderate AR; severely dilated atria. :contentReference[oaicite:12]{index=12}',
+            '15/07/2025: EF ~65%; severe MR (anterior leaflet flail), severe TR (RVSP ~61 mmHg); moderate AS (AVA 1.1 cm²; PG/MG 31/16); mild–moderate AR; severely dilated atria. ',
         toe:
-            '22/07/2025 (Dr Malcolm Anastasius): Severe MR — EROA 0.55 cm², RVol 61 mL — A3 flail + P2 prolapse; MVA 4.4 cm²; recommend TEER strategy (1× NTW medial ± 1× NT A2/P2). Severe secondary TR — EROA 0.36 cm²; type IIIb; gap 4 mm; GLIDE 2. :contentReference[oaicite:13]{index=13}',
+            '22/07/2025 (Dr Malcolm Anastasius): Severe MR — EROA 0.55 cm², RVol 61 mL — A3 flail + P2 prolapse; MVA 4.4 cm²; recommend TEER strategy (1× NTW medial ± 1× NT A2/P2). Severe secondary TR — EROA 0.36 cm²; type IIIb; gap 4 mm; GLIDE 2. ',
         rhcLhc:
-            '24/07/2025 cath: RA mean ~10 (v 15); PA 55/16 (m 30); PCWP 24; CO ~3.1 L/min; PVR ~1.9 WU. Coronaries: mild non‑obstructive disease. :contentReference[oaicite:14]{index=14}',
+            '24/07/2025 cath: RA mean ~10 (v 15); PA 55/16 (m 30); PCWP 24; CO ~3.1 L/min; PVR ~1.9 WU. Coronaries: mild non‑obstructive disease. ',
         consults: [
-            'Orthogeriatrics — Dr Carl Ward (23/07/2025): RUDAS 26/30; mobile and self‑caring; **no aged‑care contraindication to TriClip**. :contentReference[oaicite:15]{index=15}',
-            'Cardiology Ward Round — Mowbray / Di Sano (23/07/2025): severe biventricular failure with severe MR/TR; **recommend TriClip**; plan discharge post geriatrics review; outpatient angiogram. :contentReference[oaicite:16]{index=16}',
-            'Referring Cardiology — Prof Peter Vale (25/03/2024): AF on reduced‑dose apixaban (weight <60 kg, age >80), HF, HTN; earlier echo with moderate MR/TR; continued conservative management at that time. :contentReference[oaicite:17]{index=17}',
+            'Orthogeriatrics — Dr Carl Ward (23/07/2025): RUDAS 26/30; mobile and self‑caring; **no aged‑care contraindication to TriClip**. ',
+            'Cardiology Ward Round — Mowbray / Di Sano (23/07/2025): severe biventricular failure with severe MR/TR; **recommend TriClip**; plan discharge post geriatrics review; outpatient angiogram. ',
+            'Referring Cardiology — Prof Peter Vale (25/03/2024): AF on reduced‑dose apixaban (weight <60 kg, age >80), HF, HTN; earlier echo with moderate MR/TR; continued conservative management at that time. ',
             'Feasibility Meeting (05/08/2025 — Hansen, Choong, Bromhead, Auton): TOE reviewed; small LV cavity; pathology at P2 and A3 flail. Options discussed: (1) single medial P1–P2 clip, or (2) two clips (2× Pascal or 2× NTW). *Per MDT notes.*',
         ],
     },
