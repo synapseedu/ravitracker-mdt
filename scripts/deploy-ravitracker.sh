@@ -13,12 +13,16 @@ git reset --hard origin/main
 git clean -fdx
 
 # Build & (re)run
-docker build --pull -t ravitracker-frontend .
+if docker image inspect ravitracker-frontend >/dev/null 2>&1; then
+  CACHE_FROM="--cache-from=ravitracker-frontend"
+else
+  CACHE_FROM=""
+fi
+docker build --pull $CACHE_FROM -t ravitracker-frontend .
 docker rm -f ravitracker-frontend 2>/dev/null || true
 
-# Free space
-docker container prune -f
-docker image prune -f
+# Retain Docker cache to speed up subsequent builds.
+# Prune images/containers manually if disk space becomes an issue.
 
 docker run -d \
   --name ravitracker-frontend \
