@@ -8,6 +8,7 @@ import smithm from './smithm';
 import shepherd from './shepherd';
 import gaffney from './gaffney';
 import washington from './washington';
+import wadey from './wadey';
 
 export const allPatients: Patient[] = [
   newbould,
