@@ -5,7 +5,7 @@ const patient: Patient = {
   name: 'Marian Gaffney',
   dob: '1943-07-18',
   mrn: 'ME00143507',
-  referralDate: '', // not specified
+  referralDate: '',
   referring: 'Dr Usaid Allahwala',
   consulting: 'Dr Peter Hansen',
   contact: 'Phone: 02 9877 0498',
@@ -17,8 +17,8 @@ const patient: Patient = {
   pdfs: {
     tte: ['GAFFNEY_MARIAN TTE 08072025_MG180743.pdf'],
     angio: ['Gaffney Angio.pdf'],
-    ecg: [], // no standalone ECG file provided
-    ct: [],  // no CT-TAVI PDF provided (Medtronic plan below)
+    ecg: [],
+    ct: [],
     medtronic: ['Gaffney medtronic.pdf'],
     respiratory: ['Gaffney respiratory.pdf'],
     agedCare: ['gaffney dr warrier.pdf'],
@@ -71,12 +71,12 @@ const patient: Patient = {
   },
 
   angio:
-    'Patent stent in ostial LCx with mild disease elsewhere; mild LAD and RCA disease; right dominant; radial access.',
+    'Patent stent in ostial LCx with mild disease elsewhere; right dominant; radial access.',
 
   ecg: 'Sinus rhythm, first‑degree PR; ventricular ectopics (per notes).',
 
   ctIncidentals:
-    'No dedicated CT-TAVI PDF supplied. Medtronic plan notes annulus derived Ø ≈20.5–20.8 mm, annular angulation ≈41°. See investigation summary for access and coronaries.',
+    'No dedicated CT‑TAVI PDF supplied. Medtronic planning report summarised below.',
 
   cognitive: {
     MOCA: '27/30',
@@ -93,32 +93,33 @@ const patient: Patient = {
     WBC: '11.1',
   },
 
-  investigationSummary: {
-    'TTE (08/07/2025)': {
+  // ✅ Change: array of InvestigationDetail items
+  investigationSummary: [
+    {
+      title: 'TTE (08/07/2025)',
       summary:
-        'EF 65%; AVA 0.7 cm² (AVAi 0.41); PG 64 / MG 38 mmHg; SVI 38 mL/m²; severe calcific trileaflet AS; trivial AR; mild MR. Posterior MAC with mild MS (mean 6 mmHg; PHT 77 ms; MVA ~2.8 cm²).',
+        'EF 65%; AVA 0.7 cm² (AVAi 0.41); PG/MG 64/38 mmHg; SVI 38 mL/m². Severe calcific trileaflet AS; trivial AR; mild MR. Posterior MAC with mild MS (mean 6 mmHg; PHT 77 ms; MVA ~2.8 cm²).',
       links: ['GAFFNEY_MARIAN TTE 08072025_MG180743.pdf'],
     },
-    'Angiogram (07/07/2025)': {
+    {
+      title: 'Angiogram (Jul 2025)',
       summary:
-        'Widely patent ostial LCx stent; mild proximal LAD; mild RCA; right dominant. Admitted for TAVI workup.',
+        'Ostial LCx stent widely patent; mild LAD/RCA disease; right dominant. Proceeding with TAVI work‑up.',
       links: ['Gaffney Angio.pdf'],
     },
-    'ECG': {
-      summary: 'Sinus rhythm, 1° AV block, ventricular ectopy (from clinical notes).',
-      links: [],
-    },
-    'CT / Medtronic': {
+    {
+      title: 'CT / Medtronic planning',
       summary:
-        'Annulus area ~329 mm²; derived Ø 20.5–20.8 mm; annular angulation ≈41°. Left main height ~10.6 mm; right ~17.9 mm. SOV diameters ~29.4/26.7/28.2 mm; STJ ~21.1–21.7 mm. Femoral access: R EIA 4.9×5.9 mm; L EIA 5.6×6.5 mm (borderline small).',
+        'Annulus area ~329 mm² (derived Ø ~20.5–20.8 mm); annular angulation ~41°. LM height ~10.6 mm; R ~17.9 mm. SOV ~29/27/28 mm; STJ ~21–22 mm. Femoral access borderline small (R EIA 4.9×5.9 mm; L EIA 5.6×6.5 mm).',
       links: ['Gaffney medtronic.pdf'],
     },
-    'Respiratory / Lung nodule': {
+    {
+      title: 'Respiratory (lung nodule)',
       summary:
-        '7 mm pulmonary nodule; very slow interval growth on prior imaging; life expectancy >12 months; follow‑up with respiratory in rooms; not a barrier to TAVI.',
+        '7 mm pulmonary nodule with very slow interval growth; >12‑month life expectancy; outpatient follow‑up—no barrier to TAVI.',
       links: ['Gaffney respiratory.pdf'],
     },
-  },
+  ],
 
   consults: [
     {
@@ -131,8 +132,7 @@ const patient: Patient = {
     {
       specialty: 'Structural Cardiology',
       clinician: 'Dr Peter Hansen',
-      outcome:
-        'Consulting physician for TAVI pathway (referral and echo overseen).',
+      outcome: 'Consulting physician for TAVI pathway.',
       links: ['GAFFNEY_MARIAN TTE 08072025_MG180743.pdf'],
     },
     {
