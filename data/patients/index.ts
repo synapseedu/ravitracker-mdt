@@ -19,6 +19,7 @@ export const allPatients: Patient[] = [
   shepherd,
   gaffney,
   washington,
+  wadey,
   thorpe
 ];
 
