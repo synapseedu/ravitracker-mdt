@@ -16,29 +16,28 @@ const patient: Patient = {
 
   pdfs: {
     tte: [
-      'Bogle Gosford TTE 23.5.25.pdf', // Severe AS; AVA 0.81 cm² (AVAi); max PG 140 mmHg; mean PG 72 mmHg; mild–moderate AR/MR; mildly dilated ascending aorta (4.0 cm); trivial pericardial effusion.:contentReference[oaicite:0]{index=0}
+      'Bogle Gosford TTE 23.5.25.pdf', // Severe AS; AVA 0.81 cm² (AVAi); max PG 140 mmHg; mean PG 72 mmHg; mild–moderate AR/MR; mildly dilated ascending aorta (4.0 cm); trivial pericardial effusion.
     ],
     angio: [
-      'Bogle angio.pdf', // 23/07/2025 RNSH cath: mild non‑obstructive CAD; mild LAD/LCx/RCA disease; right‑dominant system; radial access.:contentReference[oaicite:1]{index=1}
+      'Bogle angio.pdf', // 23/07/2025 RNSH cath: mild non‑obstructive CAD; mild LAD/LCx/RCA disease; right‑dominant system; radial access.
     ],
     ecg: [
-      'Bogle ECG.pdf', // 12/06/2025: sinus rhythm; normal QRS (unconfirmed automated report visible on trace).:contentReference[oaicite:2]{index=2}
+      'Bogle ECG.pdf', // 12/06/2025: sinus rhythm; normal QRS (unconfirmed automated report visible on trace).
     ],
     ct: [
-      'Bogle CT TAVI.pdf', // 08/07/2025 PRP: mild aorto‑iliac tortuosity; aorto‑iliac atherosclerosis without high‑grade stenosis; 3‑vessel arch; vessel calibres adequate (e.g., R EIA 8×9 mm; L EIA 7×8 mm); 14‑mm opacity abutting mediastinum; consider PET; ?Sievers I bicuspid R/L calcified raphe.:contentReference[oaicite:3]{index=3}
+      'Bogle CT TAVI.pdf', // 08/07/2025 PRP: mild aorto‑iliac tortuosity; aorto‑iliac atherosclerosis without high‑grade stenosis; 3‑vessel arch; vessel calibres adequate (e.g., R EIA 8×9 mm; L EIA 7×8 mm); 14‑mm opacity abutting mediastinum; consider PET; ?Sievers I bicuspid R/L calcified raphe.
       'Norman bogle CT Tavi aortic root.pdf', // Additional CT aortic root measurements/images.
       'Norman bogle CT Tavi aortic root_1.pdf', // Additional CT aortic root measurements/images.
     ],
     oncology: [
-      'Bogle oncology letters april 25.pdf', // Collated cancer history; no recurrence/metastases on 02/04/2025 CT noted.:contentReference[oaicite:4]{index=4}
-      'Bogle oncology letters.pdf', // Medical oncology follow‑up: stable disease; notes literacy limitation (numbers/dates only) and social support from brother.:contentReference[oaicite:5]{index=5}
-      'Bogle oncology letters_1.pdf', // Radiation oncology/medical oncology letters: stable imaging; discharged from radiation oncology clinic; ongoing surveillance arrangements.:contentReference[oaicite:6]{index=6}
+      'Bogle oncology letters april 25.pdf', // Collated cancer history; no recurrence/metastases on 02/04/2025 CT noted.
+      'Bogle oncology letters.pdf', // Medical oncology follow‑up: stable disease; notes literacy limitation (numbers/dates only) and social support from brother.
     ],
     referral: [
-      'Bogle referral.pdf', // Coastal Cardiology letter (12/06/2025): severe AS (MG 72, AVA 0.8); bicuspid AV; CTCA Ca score 1272 with mild‑moderate CAD; TAVR referral to RNSH; started nebivolol 1.25 mg mane.:contentReference[oaicite:7]{index=7}
+      'Bogle referral.pdf', // Coastal Cardiology letter (12/06/2025): severe AS (MG 72, AVA 0.8); bicuspid AV; CTCA Ca score 1272 with mild‑moderate CAD; TAVR referral to RNSH; started nebivolol 1.25 mg mane.
     ],
     medtronic: [
-      'Bogle medtronic.pdf', // 3mensio/Evolut analysis: annulus mean Ø 24.1 mm (perimeter 75.8 mm; area‑derived Ø 23.7 mm); LVOT mean Ø 23.6 mm; STJ Ø 28.3 mm; SOV Ø ~35.7 mm; annular angulation ≈42°; ?Sievers I bicuspid.:contentReference[oaicite:8]{index=8}
+      'Bogle medtronic.pdf', // 3mensio/Evolut analysis: annulus mean Ø 24.1 mm (perimeter 75.8 mm; area‑derived Ø 23.7 mm); LVOT mean Ø 23.6 mm; STJ Ø 28.3 mm; SOV Ø ~35.7 mm; annular angulation ≈42°; ?Sievers I bicuspid.
     ],
   },
 
@@ -82,13 +81,13 @@ const patient: Patient = {
     AR: 'Mild–moderate',
     MR: 'Mild–moderate',
     Comments:
-      'Severe calcific AS with mild–moderate AR. Mildly dilated ascending aorta. Trivial pericardial effusion.:contentReference[oaicite:9]{index=9}',
+      'Severe calcific AS with mild–moderate AR. Mildly dilated ascending aorta. Trivial pericardial effusion.',
   },
 
-  angio: 'Mild non‑obstructive coronary artery disease — mild LAD/LCx/RCA disease; right‑dominant.:contentReference[oaicite:10]{index=10}',
-  ecg: 'Sinus rhythm with normal QRS complex.:contentReference[oaicite:11]{index=11}',
+  angio: 'Mild non‑obstructive coronary artery disease — mild LAD/LCx/RCA disease; right‑dominant.',
+  ecg: 'Sinus rhythm with normal QRS complex.',
   ctIncidentals:
-    '?Sievers Type I bicuspid with R/L Ca raphe. Aorto‑iliac atherosclerosis without high‑grade stenosis; mild tortuosity; 14‑mm mediastinal opacity near L inferior pulmonary vein (consider PET).:contentReference[oaicite:12]{index=12}',
+    '?Sievers Type I bicuspid with R/L Ca raphe. Aorto‑iliac atherosclerosis without high‑grade stenosis; mild tortuosity; 14‑mm mediastinal opacity near L inferior pulmonary vein (consider PET).',
 
   cognitive: {
     MOCA: 'Unable to read or write',
@@ -105,19 +104,19 @@ const patient: Patient = {
 
   investigationSummary: {
     tte:
-      '21/05/2025 (Gosford): Severe AS (AVA 0.81 cm²; max PG 140; mean 72) with mild–moderate AR/MR; EF >55%; mild–moderate LVH; mildly dilated ascending aorta (4.0 cm); trivial effusion.:contentReference[oaicite:13]{index=13}',
+      '21/05/2025 (Gosford): Severe AS (AVA 0.81 cm²; max PG 140; mean 72) with mild–moderate AR/MR; EF >55%; mild–moderate LVH; mildly dilated ascending aorta (4.0 cm); trivial effusion.',
     ct:
-      '08/07/2025 PRP CT‑TAVI: Access vessels adequate (e.g., R EIA 8×9 mm; L EIA 7×8 mm), mild tortuosity; aorto‑iliac atherosclerosis without high‑grade stenosis; 3‑vessel arch; incidental 14‑mm mediastinal opacity for PET consideration; suggests ?Sievers I bicuspid (R/L raphe).:contentReference[oaicite:14]{index=14}',
+      '08/07/2025 PRP CT‑TAVI: Access vessels adequate (e.g., R EIA 8×9 mm; L EIA 7×8 mm), mild tortuosity; aorto‑iliac atherosclerosis without high‑grade stenosis; 3‑vessel arch; incidental 14‑mm mediastinal opacity for PET consideration; suggests ?Sievers I bicuspid (R/L raphe).',
     angio:
-      '23/07/2025 RNSH cath: Mild non‑obstructive CAD (LAD/LCx/RCA mild disease); right dominant; radial access; proceed with AVR workup.:contentReference[oaicite:15]{index=15}',
+      '23/07/2025 RNSH cath: Mild non‑obstructive CAD (LAD/LCx/RCA mild disease); right dominant; radial access; proceed with AVR workup.',
     ecg:
-      '12/06/2025: Sinus rhythm, normal QRS; automated unconfirmed read on strip.:contentReference[oaicite:16]{index=16}',
+      '12/06/2025: Sinus rhythm, normal QRS; automated unconfirmed read on strip.',
     medtronic:
-      '3mensio/Evolut (reviewed 14/07/2025): Annulus mean Ø 24.1 mm (perimeter 75.8 mm); LVOT mean Ø 23.6 mm; STJ Ø 28.3 mm; SOV ≈35.7 mm; annular angulation ≈42°; ?Sievers I bicuspid; sizing grid provided.:contentReference[oaicite:17]{index=17}',
+      '3mensio/Evolut (reviewed 14/07/2025): Annulus mean Ø 24.1 mm (perimeter 75.8 mm); LVOT mean Ø 23.6 mm; STJ Ø 28.3 mm; SOV ≈35.7 mm; annular angulation ≈42°; ?Sievers I bicuspid; sizing grid provided.',
     consults: [
-      'Radiation Oncology — Dr Roland Yeghiaian‑Alvandi (26/02/2025): 4.5 years post‑chemoradiation for locally advanced NSCLC; most recent CT (Dec) stable; discharged from radiation oncology clinic; follow‑up as needed.:contentReference[oaicite:18]{index=18}',
-      'Medical Oncology — Dr Matthew Chan (09/04/2025 letter referenced; printed 30/06/2025): No evidence of recurrence or metastatic disease on 02/04/2025 CT; ongoing surveillance with Prof Michael Back; return if new symptoms; notes literacy limitation and family support.:contentReference[oaicite:19]{index=19}:contentReference[oaicite:20]{index=20}',
-      'Referring Cardiology — Dr Karthik Rangasamy (12/06/2025): Severe symptomatic AS (MG 72; AVA 0.8); bicuspid AV; CTCA Ca score 1272 with mild–moderate CAD; recommended TAVR over surgery; referred to RNSH (Dr Bhindi); started nebivolol 1.25 mg mane.:contentReference[oaicite:21]{index=21}',
+      'Radiation Oncology — Dr Roland Yeghiaian‑Alvandi (26/02/2025): 4.5 years post‑chemoradiation for locally advanced NSCLC; most recent CT (Dec) stable; discharged from radiation oncology clinic; follow‑up as needed.',
+      'Medical Oncology — Dr Matthew Chan (09/04/2025 letter referenced; printed 30/06/2025): No evidence of recurrence or metastatic disease on 02/04/2025 CT; ongoing surveillance with Prof Michael Back; return if new symptoms; notes literacy limitation and family support.',
+      'Referring Cardiology — Dr Karthik Rangasamy (12/06/2025): Severe symptomatic AS (MG 72; AVA 0.8); bicuspid AV; CTCA Ca score 1272 with mild–moderate CAD; recommended TAVR over surgery; referred to RNSH (Dr Bhindi); started nebivolol 1.25 mg mane.',
     ],
   },
 };
